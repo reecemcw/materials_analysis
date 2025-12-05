@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Material Risk Analysis</title>
+  
+  <!-- Inter font for clean, modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-content">
+        <h1 class="app-title">Material Risk Analysis</h1>
+        <span class="version-tag">v1.0.0</span>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      <!-- Articles Table Section -->
+      <section class="section articles-section">
+        <div class="table-wrapper">
+          <table class="articles-table">
+            <thead>
+              <tr>
+                <th class="col-image"></th>
+                <th class="col-date">Date</th>
+                <th class="col-publisher">Publisher</th>
+                <th class="col-author">Author</th>
+                <th class="col-title">Title</th>
+                <th class="col-tags">Tags</th>
+              </tr>
+            </thead>
+            <tbody id="articles-tbody">
+              <!-- Articles will be dynamically loaded here -->
+              <tr class="loading-row">
+                <td colspan="6">
+                  <div class="loading-state">
+                    <div class="loading-spinner"></div>
+                    <span>Loading articles...</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Query Interface Section -->
+      <section class="section query-section">
+        <div class="query-layout">
+          <!-- Query Input (Left) -->
+          <div class="query-input-container">
+            <textarea 
+              id="query-input"
+              class="query-textarea"
+              placeholder="What's happening with the price of lithium?"
+              rows="6"
+            ></textarea>
+            <button id="submit-query" class="submit-button">
+              <span class="button-text">Ask Question</span>
+              <svg class="button-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M1 8L15 8M15 8L8 1M15 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Response Output (Right) -->
+          <div class="query-response-container">
+            <div id="query-response" class="query-response">
+              <!-- Response will appear here -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
