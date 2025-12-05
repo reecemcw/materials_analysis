@@ -4,7 +4,9 @@
   "description": "NodeJS App which (ethically) scrapes materials analysis articles, stores article data, generates metadata, and allows the user to query the database with natural language effectively with RAG. ",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +26,9 @@
   "bugs": {
     "url": "https://github.com/reecemcw/materials_analysis/issues"
   },
-  "homepage": "https://github.com/reecemcw/materials_analysis#readme"
+  "homepage": "https://github.com/reecemcw/materials_analysis#readme",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
