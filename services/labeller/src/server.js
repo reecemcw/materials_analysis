@@ -2,15 +2,15 @@ const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '../../../.env') });
 const express = require('express');
 const cors = require('cors');
-const scraperRoutes = require('./routes');
+const labellerRoutes = require('./routes');
 const logger = require('./utils/logger');
 
 const app = express();
-const PORT = process.env.SCRAPER_PORT || 3001;
+const PORT = process.env.LABELLER_PORT || 3002;
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 // Request logging
 app.use((req, res, next) => {
@@ -19,14 +19,15 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/api', scraperRoutes);
+app.use('/api', labellerRoutes);
 
 // Health check
 app.get('/health', (req, res) => {
   res.json({ 
     status: 'healthy', 
-    service: 'scraper',
-    timestamp: new Date().toISOString()
+    service: 'labeller',
+    timestamp: new Date().toISOString(),
+    apiKeyConfigured: !!process.env.ANTHROPIC_API_KEY
   });
 });
 
@@ -40,7 +41,10 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  logger.info(`Scraper service running on port ${PORT}`);
+  logger.info(`Labeller service running on port ${PORT}`);
+  if (!process.env.ANTHROPIC_API_KEY) {
+    logger.warn('WARNING: ANTHROPIC_API_KEY not configured');
+  }
 });
 
 module.exports = app;
