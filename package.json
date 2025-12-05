@@ -1,0 +1,28 @@
+{
+  "name": "materials_analysis_app",
+  "version": "1.0.0",
+  "description": "NodeJS App which (ethically) scrapes materials analysis articles, stores article data, generates metadata, and allows the user to query the database with natural language effectively with RAG. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reecemcw/materials_analysis.git"
+  },
+  "keywords": [
+    "materials",
+    "analysis",
+    "rag",
+    "ai",
+    "llm",
+    "metatagging",
+    "scrape"
+  ],
+  "author": "Reece McWalter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reecemcw/materials_analysis/issues"
+  },
+  "homepage": "https://github.com/reecemcw/materials_analysis#readme"
+}
