@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm test",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "dev:scraper": "cd services/scraper && nodemon server.js"
   },
   "repository": {
     "type": "git",
