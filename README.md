@@ -9,8 +9,8 @@ This is a NodeJS app which intends to:
 
 | Seq | Feature | Description | Status |
 | :--- | :--- | :--- | :--- |
-| 1   | Scraper | Ethical scraping service which pulls article representation from target publishers | IN PROGRESS |
-| 2   | Article Object Write Service | Standardise format of article representations | IN PROGRESS |
+| 1   | Scraper | Ethical scraping service which pulls article representation from target publishers | Initial Release |
+| 2   | Article Object Write Service | Standardise format of article representations | Initial Release |
 | 3   | Metatagging Service | Enhanced labelling of initial article representations which better enable the knowledge graph | IN PROGRESS |
 | 4   | Knowledge Graph | Knowlege graph schema which enables RAG on the article representations | IN PROGRESS |
 | 5   | Front End | Simple web app with queriable text space | IN PROGRESS |
