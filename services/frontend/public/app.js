@@ -40,7 +40,7 @@ class MaterialRiskApp {
       }
 
       const data = await response.json();
-      this.articles = data.articles || [];
+      this.articles = data.taggedArticles || [];
 
       if (this.articles.length === 0) {
         tbody.innerHTML = `
