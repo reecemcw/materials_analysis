@@ -2,9 +2,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import dotenv from 'dotenv';
-import express, { json } from 'express';
+import express from 'express';
 import cors from 'cors';
-import labellerRoutes from './routes.js';
+import graphRoutes from './routes.js';
 import logger from './utils/logger.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -14,11 +14,11 @@ const __dirname = dirname(__filename);
 dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
 const app = express();
-const PORT = process.env.LABELLER_PORT || 3002;
+const PORT = process.env.GRAPH_PORT || 3003;
 
 // Middleware
 app.use(cors());
-app.use(express.json( {limit: '10mb' } ));
+app.use(express.json());
 
 // Request logging
 app.use((req, res, next) => {
@@ -27,15 +27,14 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/api', labellerRoutes);
+app.use('/api', graphRoutes);
 
 // Health check
 app.get('/health', (req, res) => {
   res.json({ 
     status: 'healthy', 
-    service: 'labeller',
-    timestamp: new Date().toISOString(),
-    apiKeyConfigured: !!process.env.ANTHROPIC_API_KEY
+    service: 'knowledge-graph',
+    timestamp: new Date().toISOString()
   });
 });
 
@@ -49,10 +48,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  logger.info(`Labeller service running on port ${PORT}`);
-  if (!process.env.ANTHROPIC_API_KEY) {
-    warn('WARNING: ANTHROPIC_API_KEY not configured');
-  }
+  logger.info(`Knowledge Graph service running on port ${PORT}`);
 });
 
 export default app;

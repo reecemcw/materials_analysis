@@ -1,26 +1,27 @@
 {
-  "name": "@article-kb/frontend",
-  "type": "module",
+  "name": "@article-kb/knowledge-graph",
   "version": "1.0.0",
-  "description": "Frontend web interface for article knowledge base",
+  "description": "Knowledge graph service for article relationships",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "express": "^4.18.2",
     "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
     "axios": "^1.6.0",
-    "@anthropic-ai/sdk": "^0.29.0",
     "winston": "^3.11.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2",
     "jest": "^29.7.0",
     "eslint": "^8.55.0"
-  }
+  },
+  "type": "module"
 }

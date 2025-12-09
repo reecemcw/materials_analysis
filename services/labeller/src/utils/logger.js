@@ -1,21 +1,21 @@
-const winston = require('winston');
+import { createLogger, format as _format, transports as _transports } from 'winston';
 
-const logger = winston.createLogger({
+const logger = createLogger({
   level: process.env.LOG_LEVEL || 'info',
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.errors({ stack: true }),
-    winston.format.json()
+  format: _format.combine(
+    _format.timestamp(),
+    _format.errors({ stack: true }),
+    _format.json()
   ),
   defaultMeta: { service: 'labeller' },
   transports: [
-    new winston.transports.Console({
-      format: winston.format.combine(
-        winston.format.colorize(),
-        winston.format.simple()
+    new _transports.Console({
+      format: _format.combine(
+        _format.colorize(),
+        _format.simple()
       )
     })
   ]
 });
 
-module.exports = logger;
+export default logger;

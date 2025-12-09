@@ -1,16 +1,25 @@
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../../../.env') });
-const express = require('express');
-const cors = require('cors');
-const scraperRoutes = require('./routes');
-const logger = require('./utils/logger');
+import {join, dirname} from 'path';
+import axios from 'axios';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import express, { json } from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import scraperRoutes from './routes.js';
+import logger from './utils/logger.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Load environment variables
+dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
 const app = express();
 const PORT = process.env.SCRAPER_PORT || 3001;
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(json());
 
 // Request logging
 app.use((req, res, next) => {
@@ -43,4 +52,4 @@ app.listen(PORT, () => {
   logger.info(`Scraper service running on port ${PORT}`);
 });
 
-module.exports = app;
+export default app;

@@ -1,8 +1,9 @@
 {
   "name": "@article-kb/scraper",
   "version": "1.0.0",
+  "type": "module",
   "description": "Web scraper service for article extraction",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
