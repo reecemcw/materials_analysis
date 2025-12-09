@@ -1,6 +1,6 @@
 {
   "name": "materials_analysis_app",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "NodeJS App which (ethically) scrapes materials analysis articles, stores article data, generates metadata, and allows the user to query the database with natural language effectively with RAG. ",
   "main": "index.js",
   "scripts": {
