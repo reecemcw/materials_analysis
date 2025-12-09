@@ -11,18 +11,12 @@ const TEST_URLS = [
   'https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/',
   'https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/',
   'https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths',
-  
-  // Tech News
-  'https://techcrunch.com',
-  'https://arstechnica.com',
-  
-  // General News
-  'https://www.bbc.com/news',
-  'https://www.reuters.com',
-  
-  // Wikipedia (good for testing)
-  'https://en.wikipedia.org/wiki/Lithium',
-  'https://en.wikipedia.org/wiki/Supply_chain'
+  'https://www.proactiveinvestors.co.uk/companies/news/1079569/tech-bytes-antimony-the-obscure-metal-that-could-choke-tech-supply-chains-1079569.html#:~:text=Why%20antimony%20matters%20for%20tech,becomes%20harder%20—%20and%20more%20expensive.',
+  'https://www.theaustralian.com.au/business/stockhead/content/pinnacle-ramps-up-exploration-at-adina-east-as-lithium-prices-rebound/news-story/6ba22c20be01303c23368c4d234bcecc',
+  'https://www.bbc.co.uk/worklife/article/20251104-the-story-behind-the-scramble-for-greenlands-rare-earths',
+  'https://www.juniorminingnetwork.com/junior-miner-news/press-releases/3348-nasdaq/crml/192976-crml-executes-term-sheet-for-50-50-joint-venture-with-eu-and-nato-member-romania-creating-a-fully-integrated-mine-to-processing-supply-chain-for-long-term-security-for-the-european-manufacturing-national-security-sectors.html',
+  'https://www.tradingview.com/news/reuters.com,2025:newsml_L4N3XF0ZI:0-critical-metals-partners-with-romania-s-fpcu-to-set-up-rare-earth-processing-plant/',
+  'https://renewablesnow.com/news/vulcan-breaks-ground-on-german-lithium-geothermal-project-1286352/'
 ];
 
 // Colors for console output

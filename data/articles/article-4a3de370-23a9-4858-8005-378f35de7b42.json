@@ -1,5 +1,5 @@
 {
-  "id": "cf898606-8fed-474e-8db9-18ab57f67806",
+  "id": "4a3de370-23a9-4858-8005-378f35de7b42",
   "url": "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
   "title": "Securing Defense Supply Chains in a Rare Earth World",
   "author": null,
@@ -12,60 +12,5 @@
     "Aerospace & Defense",
     "Industrial Metals"
   ],
-  "scrapedAt": "2025-12-09T11:03:09.030Z",
-  "labels": {
-    "categories": [
-      "Defense & Security",
-      "Supply Chain Management"
-    ],
-    "topics": [
-      "rare earth elements",
-      "defense procurement",
-      "supply chain security",
-      "China trade relations",
-      "military technology"
-    ],
-    "entities": {
-      "people": [],
-      "organizations": [
-        "Office of Strategic Capital",
-        "Vulcan Elements",
-        "ReElement Technologies",
-        "Lockheed Martin",
-        "RTX",
-        "Northrop Grumman",
-        "Honeywell",
-        "Raytheon"
-      ],
-      "locations": [
-        "United States",
-        "China",
-        "Japan",
-        "Australia",
-        "Korea",
-        "Malaysia"
-      ],
-      "products": [
-        "F-35",
-        "Virginia-class submarine",
-        "Arleigh Burke destroyer",
-        "Tomahawk missile",
-        "NdFeB magnets"
-      ]
-    },
-    "keywords": [
-      "DFARS 2027 ban",
-      "rare earth monopoly",
-      "supply chain traceability",
-      "Defense Production Act",
-      "friendshoring"
-    ],
-    "sentiment": "neutral",
-    "summary": "The article analyzes the U.S. military's strategic pivot away from Chinese rare earth dependencies through the 2027 DFARS ban and significant investments in alternative suppliers. It details how critical rare earth elements are embedded throughout defense systems and the vulnerabilities created by China's market dominance.",
-    "readingTime": "4",
-    "complexity": "intermediate",
-    "contentType": "analysis",
-    "labelledAt": "2025-12-09T11:03:16.196Z",
-    "modelUsed": "claude-sonnet-4-20250514"
-  }
+  "scrapedAt": "2025-12-09T14:20:04.604Z"
 }

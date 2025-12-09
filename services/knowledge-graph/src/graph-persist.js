@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 class GraphPersistence {
   constructor() {
     // Store graph in project root data directory
-    const projectRoot = path.join(__dirname, '../../../..');
+    const projectRoot = path.join(__dirname, '../../..');
     this.dataDir = path.join(projectRoot, 'data', 'graph');
     this.graphFile = path.join(this.dataDir, 'graph.json');
     this.ensureDataDir();

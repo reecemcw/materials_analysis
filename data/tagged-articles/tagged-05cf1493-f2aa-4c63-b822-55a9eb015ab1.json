@@ -1,5 +1,5 @@
 {
-  "id": "8d1b5272-9f29-43a5-9346-0c4e41833b55",
+  "id": "05cf1493-f2aa-4c63-b822-55a9eb015ab1",
   "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
   "title": "Malaysia becomes a lynchpin in US-led effort to break China’s grip on rare earths",
   "author": null,
@@ -10,5 +10,62 @@
   "tags": [
     "EconomyRare earthsMineral and metal resourcesMalaysiaAustraliaChina-US competitionCaixin"
   ],
-  "scrapedAt": "2025-12-09T11:36:54.615Z"
+  "scrapedAt": "2025-12-09T14:20:13.652Z",
+  "labels": {
+    "categories": [
+      "Economics",
+      "International Relations"
+    ],
+    "topics": [
+      "Rare earth elements supply chain",
+      "US-China trade relations",
+      "Malaysia strategic positioning",
+      "Critical minerals security"
+    ],
+    "entities": {
+      "people": [
+        "Xi Jinping",
+        "Donald Trump",
+        "Anthony Albanese",
+        "Lu Yutong"
+      ],
+      "organizations": [
+        "Lynas Rare Earths Ltd.",
+        "Caixin Global",
+        "US government",
+        "Trump administration"
+      ],
+      "locations": [
+        "Malaysia",
+        "China",
+        "United States",
+        "Kuantan",
+        "Australia",
+        "South Korea",
+        "Thailand",
+        "Japan",
+        "Central Asia"
+      ],
+      "products": [
+        "Rare earth elements",
+        "Microchips",
+        "Lithium batteries",
+        "Critical minerals"
+      ]
+    },
+    "keywords": [
+      "rare earths",
+      "supply chain",
+      "China dominance",
+      "US alliance",
+      "Malaysia hub"
+    ],
+    "sentiment": "neutral",
+    "summary": "Malaysia has become a key partner in the US-led effort to establish a rare earth supply chain independent of China's control. The article examines recent diplomatic agreements and trade policies aimed at reducing Chinese dominance in critical minerals, though questions remain about the feasibility of breaking China's grip on this sector.",
+    "readingTime": "4",
+    "complexity": "intermediate",
+    "contentType": "analysis",
+    "labelledAt": "2025-12-09T14:20:21.294Z",
+    "modelUsed": "claude-sonnet-4-20250514"
+  }
 }

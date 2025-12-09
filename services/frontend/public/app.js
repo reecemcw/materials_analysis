@@ -40,7 +40,7 @@ class MaterialRiskApp {
       }
 
       const data = await response.json();
-      this.articles = data.taggedArticles || [];
+      this.articles = data.taggedArticles || data.articles || [];
 
       if (this.articles.length === 0) {
         tbody.innerHTML = `
@@ -203,18 +203,18 @@ class MaterialRiskApp {
     responseContainer.innerHTML = `
       <div class="response-loading">
         <div class="loading-spinner"></div>
-        <span>Analyzing articles and generating response...</span>
+        <span>🔍 Searching knowledge base and generating answer...</span>
       </div>
     `;
 
     try {
-      // Call the frontend API which uses Claude
-      const response = await fetch('http://localhost:3000/api/query', {
+      // Call the RAG API endpoint
+      const response = await fetch('/api/query', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ query })
+        body: JSON.stringify({ query, maxSources: 5 })
       });
 
       if (!response.ok) {
@@ -223,12 +223,16 @@ class MaterialRiskApp {
 
       const data = await response.json();
       
-      this.displayResponse(data.response, data.relevantArticles);
+      if (!data.success) {
+        throw new Error(data.error || 'Query failed');
+      }
+      
+      this.displayRAGResponse(data);
     } catch (error) {
-      console.error('Query error:', error);
+      console.error('RAG query error:', error);
       responseContainer.innerHTML = `
-        <div style="color: #ef4444;">
-          <strong>Error:</strong> ${error.message}
+        <div class="error-message">
+          <strong>⚠️ Error:</strong> ${error.message}
           <p class="text-muted text-small" style="margin-top: 0.5rem;">
             Make sure all services are running and the Anthropic API key is configured.
           </p>
@@ -246,36 +250,72 @@ class MaterialRiskApp {
     }
   }
 
-  displayResponse(responseText, relevantArticles = []) {
+  displayRAGResponse(data) {
     const responseContainer = document.getElementById('query-response');
     
-    // Format the response text
-    const paragraphs = responseText
-      .split('\n\n')
-      .filter(p => p.trim())
-      .map(p => `<p>${p}</p>`)
-      .join('');
-
-    let html = paragraphs;
-
-    // Add relevant articles if provided
-    if (relevantArticles && relevantArticles.length > 0) {
-      html += `
-        <div class="relevant-articles">
-          <h4>Relevant Articles</h4>
-          ${relevantArticles.slice(0, 5).map(article => `
-            <div class="relevant-article-item">
-              <div class="relevant-article-title">${article.title || 'Untitled'}</div>
-              <div class="relevant-article-meta">
-                ${this.extractPublisher(article.url)} • ${this.formatDate(article.scrapedAt)}
+    const { query, answer, sources, metadata } = data;
+    
+    // Format the answer with markdown-like styling
+    const formattedAnswer = answer
+      .replace(/\n\n/g, '</p><p>')
+      .replace(/\n/g, '<br>');
+    
+    // Build sources HTML
+    const sourcesHTML = sources && sources.length > 0 ? `
+      <div class="sources-section">
+        <h4>📚 Sources (${sources.length})</h4>
+        <div class="sources-list">
+          ${sources.map((source, idx) => `
+            <div class="source-item">
+              <div class="source-header">
+                <span class="source-number">${idx + 1}</span>
+                <a href="${source.url}" target="_blank" class="source-title">${source.title}</a>
+                ${source.relevanceScore ? `<span class="relevance-badge">Score: ${source.relevanceScore}</span>` : ''}
+              </div>
+              ${source.summary ? `<p class="source-summary">${source.summary}</p>` : ''}
+              <div class="source-meta">
+                ${source.categories && source.categories.length > 0 ? `
+                  <span class="meta-item">
+                    📁 ${source.categories.join(', ')}
+                  </span>
+                ` : ''}
+                ${source.topics && source.topics.length > 0 ? `
+                  <span class="meta-item">
+                    🏷️ ${source.topics.slice(0, 3).join(', ')}
+                  </span>
+                ` : ''}
               </div>
             </div>
           `).join('')}
         </div>
-      `;
-    }
-
-    responseContainer.innerHTML = html;
+      </div>
+    ` : '<p class="text-muted">No specific sources found for this query.</p>';
+    
+    // Build metadata HTML
+    const metadataHTML = metadata ? `
+      <div class="query-metadata">
+        <span>Searched ${metadata.totalArticlesSearched} articles</span>
+        <span>•</span>
+        <span>Used ${metadata.sourcesUsed} sources</span>
+        <span>•</span>
+        <span>${new Date(metadata.timestamp).toLocaleTimeString()}</span>
+      </div>
+    ` : '';
+    
+    responseContainer.innerHTML = `
+      <div class="rag-response">
+        <div class="answer-section">
+          <h3 class="response-title">💡 Answer</h3>
+          <div class="answer-text">
+            <p>${formattedAnswer}</p>
+          </div>
+        </div>
+        
+        ${sourcesHTML}
+        
+        ${metadataHTML}
+      </div>
+    `;
   }
 }
 
