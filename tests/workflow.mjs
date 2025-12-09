@@ -14,7 +14,8 @@ const LABELLER_URL = 'http://localhost:3002';
 // Test URLs - good for testing
 const TEST_URLS = [
   "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
-  "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/"
+  "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
+  "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths"
 ];
 
 async function checkServices() {

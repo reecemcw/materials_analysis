@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const { v4: uuidv4 } = require('uuid');
-const ArticleScraper = require('./ArticleScraper');
-const ArticleStorage = require('./ArticleStorage');
-const logger = require('./utils/logger');
+import { Router } from 'express';
+const router = Router();
+import { v4 as uuidv4 } from 'uuid';
+import ArticleScraper from './ArticleScraper.js';
+import ArticleStorage from './ArticleStorage.js';
+import logger from './utils/logger.js';
 
 const scraper = new ArticleScraper();
 const storage = new ArticleStorage();
@@ -144,4 +144,4 @@ router.delete('/articles/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

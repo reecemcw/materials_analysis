@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const axios = require('axios');
-const AILabeller = require('./labeller');
-const TaggedArticleStorage = require('./storage');
-const logger = require('./utils/logger');
+import { Router } from 'express';
+const router = Router();
+import axios from 'axios';
+import AILabeller from './labeller.js';
+import TaggedArticleStorage from './storage.js';
+import logger from './utils/logger.js';
 
 const labeller = new AILabeller();
 const storage = new TaggedArticleStorage();
@@ -65,7 +65,7 @@ router.post('/label/batch', async (req, res) => {
     // Fetch all articles
     for (const id of articleIds) {
       try {
-        const response = await axios.get(`${SCRAPER_URL}/api/articles/${id}`);
+        const response = await get(`${SCRAPER_URL}/api/articles/${id}`);
         articles.push(response.data.article);
       } catch (error) {
         logger.warn(`Failed to fetch article ${id}:`, error.message);
@@ -215,4 +215,4 @@ router.get('/tags', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

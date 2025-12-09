@@ -1,12 +1,18 @@
-const fs = require('fs').promises;
-const path = require('path');
-const logger = require('./utils/logger');
+import { promises as fs } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+import logger from './utils/logger.js';
+
+// Create __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 class TaggedArticleStorage {
   constructor() {
     // Find project root (where package.json is located)
-    const projectRoot = path.join(__dirname, '../../../');
-    this.dataDir = path.join(projectRoot, 'data', 'tagged-articles');
+    const projectRoot = join(__dirname, '../../..');
+    this.dataDir = join(projectRoot, 'data', 'tagged-articles');
+    this.ensureDataDir();
     this.ensureDataDir();
   }
 
@@ -19,7 +25,7 @@ class TaggedArticleStorage {
   }
 
   getArticlePath(id) {
-    return path.join(this.dataDir, `tagged-${id}.json`);
+    return join(this.dataDir, `tagged-${id}.json`);
   }
 
   async saveTaggedArticle(article) {
@@ -56,7 +62,7 @@ class TaggedArticleStorage {
       // Sort by modified time (newest first)
       const filesWithStats = await Promise.all(
         articleFiles.map(async (file) => {
-          const filePath = path.join(this.dataDir, file);
+          const filePath = join(this.dataDir, file);
           const stats = await fs.stat(filePath);
           return { file, mtime: stats.mtime };
         })
@@ -72,7 +78,7 @@ class TaggedArticleStorage {
       // Read articles
       const articles = await Promise.all(
         paginatedFiles.map(async (file) => {
-          const filePath = path.join(this.dataDir, file);
+          const filePath = join(this.dataDir, file);
           const data = await fs.readFile(filePath, 'utf8');
           return JSON.parse(data);
         })
@@ -99,4 +105,4 @@ class TaggedArticleStorage {
   }
 }
 
-module.exports = TaggedArticleStorage;
+export default TaggedArticleStorage;
