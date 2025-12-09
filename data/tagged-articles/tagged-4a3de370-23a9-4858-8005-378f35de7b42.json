@@ -1,5 +1,5 @@
 {
-  "id": "cf898606-8fed-474e-8db9-18ab57f67806",
+  "id": "4a3de370-23a9-4858-8005-378f35de7b42",
   "url": "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
   "title": "Securing Defense Supply Chains in a Rare Earth World",
   "author": null,
@@ -12,5 +12,60 @@
     "Aerospace & Defense",
     "Industrial Metals"
   ],
-  "scrapedAt": "2025-12-09T11:03:09.030Z"
+  "scrapedAt": "2025-12-09T14:20:04.604Z",
+  "labels": {
+    "categories": [
+      "Defense & Security",
+      "Supply Chain Management"
+    ],
+    "topics": [
+      "rare earth elements",
+      "defense supply chains",
+      "China trade relations",
+      "military procurement",
+      "strategic materials"
+    ],
+    "entities": {
+      "people": [],
+      "organizations": [
+        "Office of Strategic Capital",
+        "Vulcan Elements",
+        "ReElement Technologies",
+        "Lockheed Martin",
+        "RTX",
+        "Northrop Grumman",
+        "Honeywell",
+        "Raytheon"
+      ],
+      "locations": [
+        "United States",
+        "China",
+        "Japan",
+        "Australia",
+        "Korea",
+        "Malaysia"
+      ],
+      "products": [
+        "F-35",
+        "Arleigh Burke destroyer",
+        "Virginia-class submarine",
+        "Tomahawk missiles",
+        "NdFeB magnets"
+      ]
+    },
+    "keywords": [
+      "rare earth elements",
+      "DFARS 2027 ban",
+      "defense supply chains",
+      "China monopoly",
+      "strategic materials"
+    ],
+    "sentiment": "neutral",
+    "summary": "The article analyzes how the U.S. is reducing dependence on Chinese rare earth materials through the 2027 DFARS ban, over $700 million in strategic investments, and partnerships with allied suppliers. It highlights the critical importance of rare earth elements in defense systems and the vulnerabilities exposed by China's market dominance.",
+    "readingTime": "4",
+    "complexity": "intermediate",
+    "contentType": "analysis",
+    "labelledAt": "2025-12-09T14:20:10.804Z",
+    "modelUsed": "claude-sonnet-4-20250514"
+  }
 }

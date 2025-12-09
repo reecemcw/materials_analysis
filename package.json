@@ -15,7 +15,8 @@
     "dev:frontend": "cd services/frontend && nodemon src/server.js",
     "dev:labeller": "cd services/labeller && nodemon src/server.js",
     "dev:kg": "cd services/knowledge-graph && nodemon src/server.js",
-    "diagnose-frontend": "node scripts/diagnose-frontend.mjs"
+    "diagnose-frontend": "node tests/diagnose-frontend.mjs",
+    "debug-query": "node tests/debug-query.mjs"
   },
   "workspaces": [
     "services/*"
