@@ -8,6 +8,17 @@ const graph = new KnowledgeGraph();
 
 const LABELLER_URL = process.env.LABELLER_URL || 'http://localhost:3002';
 
+// Load graph from disk on startup
+graph.loadFromDisk().then(loaded => {
+  if (loaded) {
+    logger.info('Graph loaded from previous session');
+  } else {
+    logger.info('Starting with empty graph');
+  }
+}).catch(err => {
+  logger.error('Failed to load graph:', err);
+});
+
 // POST /api/graph/add - Add article to graph
 router.post('/graph/add/:id', async (req, res) => {
   try {
@@ -218,6 +229,88 @@ router.get('/graph/nodes', async (req, res) => {
     });
   } catch (error) {
     logger.error('Get nodes error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// POST /api/graph/save - Manually save graph to disk
+router.post('/graph/save', async (req, res) => {
+  try {
+    const success = await graph.saveToDisk();
+    
+    if (success) {
+      const info = await graph.persistence.getGraphInfo();
+      res.json({
+        success: true,
+        message: 'Graph saved to disk',
+        graphInfo: info
+      });
+    } else {
+      res.status(500).json({ error: 'Failed to save graph' });
+    }
+  } catch (error) {
+    logger.error('Save graph error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// POST /api/graph/load - Manually load graph from disk
+router.post('/graph/load', async (req, res) => {
+  try {
+    const loaded = await graph.loadFromDisk();
+    
+    if (loaded) {
+      const stats = graph.getGraphStats();
+      res.json({
+        success: true,
+        message: 'Graph loaded from disk',
+        stats
+      });
+    } else {
+      res.json({
+        success: false,
+        message: 'No saved graph found'
+      });
+    }
+  } catch (error) {
+    logger.error('Load graph error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// GET /api/graph/info - Get saved graph file info
+router.get('/graph/info', async (req, res) => {
+  try {
+    const info = await graph.persistence.getGraphInfo();
+    res.json({
+      success: true,
+      graphInfo: info
+    });
+  } catch (error) {
+    logger.error('Get graph info error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// POST /api/graph/backup - Create backup of current graph
+router.post('/graph/backup', async (req, res) => {
+  try {
+    const result = await graph.persistence.backupGraph();
+    
+    if (result.success) {
+      res.json({
+        success: true,
+        message: 'Graph backed up',
+        backupFile: result.backupFile
+      });
+    } else {
+      res.status(500).json({ 
+        success: false,
+        error: result.message || result.error 
+      });
+    }
+  } catch (error) {
+    logger.error('Backup graph error:', error);
     res.status(500).json({ error: error.message });
   }
 });

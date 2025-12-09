@@ -1,10 +1,35 @@
-import logger from './utils/logger.js';
+import logger from '../utils/logger.js';
+import GraphPersistence from './graph-persist.js';
 
 class KnowledgeGraph {
   constructor() {
     this.nodes = new Map(); // articleId -> node data
     this.edges = new Map(); // edgeId -> edge data
     this.nodeEdges = new Map(); // articleId -> Set of edgeIds
+    this.persistence = new GraphPersistence();
+    this.autoSave = true; // Auto-save after changes
+  }
+
+  /**
+   * Load graph from disk on startup
+   */
+  async loadFromDisk() {
+    const data = await this.persistence.loadGraph();
+    if (data) {
+      this.nodes = data.nodes;
+      this.edges = data.edges;
+      this.nodeEdges = data.nodeEdges;
+      logger.info('Graph restored from disk');
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Save graph to disk
+   */
+  async saveToDisk() {
+    return await this.persistence.saveGraph(this.nodes, this.edges, this.nodeEdges);
   }
 
   addArticleNode(article) {
@@ -24,6 +49,12 @@ class KnowledgeGraph {
       }
 
       logger.info(`Added node: ${article.id}`);
+      
+      // Auto-save after adding node
+      if (this.autoSave) {
+        this.saveToDisk().catch(err => logger.error('Auto-save failed:', err));
+      }
+      
       return nodeData;
     } catch (error) {
       logger.error('Failed to add node:', error);
@@ -54,6 +85,12 @@ class KnowledgeGraph {
       this.nodeEdges.get(toId).add(edgeId);
 
       logger.info(`Added relationship: ${edgeId}`);
+      
+      // Auto-save after adding relationship
+      if (this.autoSave) {
+        this.saveToDisk().catch(err => logger.error('Auto-save failed:', err));
+      }
+      
       return edge;
     } catch (error) {
       logger.error('Failed to add relationship:', error);

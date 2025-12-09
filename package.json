@@ -10,6 +10,7 @@
     "test-pipeline": "cd tests && node test-pipeline.mjs",
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "dev:all": "concurrently \"npm run dev:scraper\" \"npm run dev:frontend\" \"npm run dev:labeller\" \"npm run dev:kg\"",
     "dev:scraper": "cd services/scraper && nodemon server.js",
     "dev:frontend": "cd services/frontend && nodemon src/server.js",
     "dev:labeller": "cd services/labeller && nodemon src/server.js",
