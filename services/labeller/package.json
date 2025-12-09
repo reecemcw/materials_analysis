@@ -1,5 +1,6 @@
 {
   "name": "@article-kb/labeller",
+  "type": "module",
   "version": "1.0.0",
   "description": "AI-powered article labelling and tagging service",
   "main": "src/server.js",

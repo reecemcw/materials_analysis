@@ -1,5 +1,6 @@
 {
   "name": "@article-kb/frontend",
+  "type": "module",
   "version": "1.0.0",
   "description": "Frontend web interface for article knowledge base",
   "main": "src/server.js",

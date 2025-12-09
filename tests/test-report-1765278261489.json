@@ -1,0 +1,107 @@
+{
+  "testDate": "2025-12-09T11:04:21.488Z",
+  "summary": {
+    "total": 9,
+    "scraped": 8,
+    "labelled": 8,
+    "graphed": 8,
+    "failed": 1
+  },
+  "results": [
+    {
+      "url": "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
+      "scraped": true,
+      "labelled": true,
+      "graphed": true,
+      "articleId": "88a9c050-4743-404f-9b78-1a6434b62479",
+      "title": "US releases 2025 list of critical minerals, featuring 10 additions",
+      "categories": "Economics, Government Policy",
+      "topics": "Critical Minerals, Supply Chain Security, Economic Security",
+      "sentiment": "neutral"
+    },
+    {
+      "url": "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
+      "scraped": true,
+      "labelled": true,
+      "graphed": true,
+      "articleId": "cf898606-8fed-474e-8db9-18ab57f67806",
+      "title": "Securing Defense Supply Chains in a Rare Earth World",
+      "categories": "Defense & Security, Supply Chain Management",
+      "topics": "rare earth elements, defense procurement, supply chain security",
+      "sentiment": "neutral"
+    },
+    {
+      "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
+      "scraped": true,
+      "labelled": true,
+      "graphed": true,
+      "articleId": "db3fe6a2-b385-4f07-b77c-d160777dc7fe",
+      "title": "Malaysia becomes a lynchpin in US-led effort to break China’s grip on rare earths",
+      "categories": "Economics, International Relations",
+      "topics": "rare earth elements, supply chain diversification, US-China trade relations",
+      "sentiment": "neutral"
+    },
+    {
+      "url": "https://techcrunch.com",
+      "scraped": true,
+      "labelled": true,
+      "graphed": true,
+      "articleId": "c2256f28-ecc3-4a06-9215-b42e91614b75",
+      "title": "TechCrunch | Startup and Technology News",
+      "categories": "Technology News, Business",
+      "topics": "AI, Venture Capital, Enterprise Technology",
+      "sentiment": "neutral"
+    },
+    {
+      "url": "https://arstechnica.com",
+      "scraped": true,
+      "labelled": true,
+      "graphed": true,
+      "articleId": "97a7666f-2c6f-4ce7-8216-a88aa24f56ad",
+      "title": "Ars Technica",
+      "categories": "Gaming, Technology",
+      "topics": "roguelike games, gaming trends, game reviews",
+      "sentiment": "positive"
+    },
+    {
+      "url": "https://www.bbc.com/news",
+      "scraped": true,
+      "labelled": true,
+      "graphed": true,
+      "articleId": "0283ce37-73ee-4b41-80c4-929a2c001729",
+      "title": "BBC News - Breaking news, video and the latest top stories from the U.S. and around the world",
+      "categories": "News, International Affairs",
+      "topics": "Ukraine-Russia conflict, Health breakthrough, Earthquake in Japan",
+      "sentiment": "neutral"
+    },
+    {
+      "url": "https://www.reuters.com",
+      "scraped": false,
+      "labelled": false,
+      "graphed": false,
+      "error": "Request failed with status code 500"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Lithium",
+      "scraped": true,
+      "labelled": true,
+      "graphed": true,
+      "articleId": "5d7815b3-1ecb-449d-8b6d-f2748769361b",
+      "title": "Lithium - Wikipedia",
+      "categories": "Chemistry, Chemical Elements",
+      "topics": "Lithium element, Periodic table, Chemical properties",
+      "sentiment": "neutral"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Supply_chain",
+      "scraped": true,
+      "labelled": true,
+      "graphed": true,
+      "articleId": "78c21984-94ea-4071-8d55-0dfa04918be8",
+      "title": "Supply chain - Wikipedia",
+      "categories": "Business logistics, Supply chain management",
+      "topics": "Supply chain systems, Distribution methods, Logistics management",
+      "sentiment": "neutral"
+    }
+  ]
+}

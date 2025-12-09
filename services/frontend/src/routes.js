@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const axios = require('axios');
-const Anthropic = require('@anthropic-ai/sdk');
-const logger = require('./utils/logger');
+import { Router } from 'express';
+const router = Router();
+import axios from 'axios';
+import Anthropic from '@anthropic-ai/sdk';
+import logger from './utils/logger.js';
 
 const SCRAPER_URL = process.env.SCRAPER_URL || 'http://localhost:3001';
 const LABELLER_URL = process.env.LABELLER_URL || 'http://localhost:3002';
@@ -190,4 +190,4 @@ router.get('/stats', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

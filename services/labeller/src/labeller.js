@@ -1,5 +1,16 @@
-const Anthropic = require('@anthropic-ai/sdk');
-const logger = require('./utils/logger');
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import Anthropic from '@anthropic-ai/sdk';
+import logger from './utils/logger.js';
+
+// Create __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Load .env from project root
+dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
 class AILabeller {
   constructor() {
@@ -81,7 +92,7 @@ Respond ONLY with valid JSON, no additional text.`;
       return JSON.parse(responseText);
     } catch (error) {
       logger.error('Failed to parse AI response:', error);
-      logger.debug('Response text:', responseText);
+      debug('Response text:', responseText);
       
       // Return default structure if parsing fails
       return {
@@ -168,4 +179,4 @@ Respond ONLY with valid JSON, no additional text.`;
   }
 }
 
-module.exports = AILabeller;
+export default AILabeller;

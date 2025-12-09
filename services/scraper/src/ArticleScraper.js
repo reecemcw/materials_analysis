@@ -1,6 +1,6 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const logger = require('./utils/logger');
+import axios from 'axios';
+import { load } from 'cheerio';
+import logger from './utils/logger.js';
 
 class ArticleScraper {
   constructor(config = {}) {
@@ -29,12 +29,12 @@ class ArticleScraper {
   async checkRobotsTxt(baseUrl) {
     try {
       const robotsUrl = new URL('/robots.txt', baseUrl).href;
-      const response = await axios.get(robotsUrl, {
+      const response = await axios.get(robotsUrl, {  
         timeout: this.config.timeout,
         headers: { 'User-Agent': this.config.userAgent }
       });
       
-      logger.info(`Checked robots.txt for ${baseUrl}`);
+      logger.info(`Checked robots.txt for ${baseUrl}`);  
       return response.data;
     } catch (error) {
       logger.warn(`No robots.txt found for ${baseUrl}`);
@@ -48,7 +48,7 @@ class ArticleScraper {
     try {
       logger.info(`Fetching: ${url}`);
       
-      const response = await axios.get(url, {
+      const response = await axios.get(url, {  
         timeout: this.config.timeout,
         headers: {
           'User-Agent': this.config.userAgent,
@@ -70,7 +70,7 @@ class ArticleScraper {
   }
 
   parseArticle(html, url) {
-    const $ = cheerio.load(html);
+    const $ = load(html);
     
     // Remove unwanted elements
     $('script, style, nav, footer, aside, .advertisement').remove();
@@ -179,7 +179,7 @@ class ArticleScraper {
       const html = await this.fetchUrl(url);
       const article = this.parseArticle(html, url);
       
-      logger.info(`Successfully scraped: ${article.title}`);
+      logger.info(`Successfully scraped: ${article.title}`);  
       return { success: true, article };
     } catch (error) {
       logger.error(`Failed to scrape ${url}:`, error);
@@ -209,4 +209,4 @@ class ArticleScraper {
   }
 }
 
-module.exports = ArticleScraper;
+export default ArticleScraper;
