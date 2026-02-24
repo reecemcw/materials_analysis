@@ -1,318 +1,387 @@
 import axios from 'axios';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { promises as fs } from 'fs';
+import { randomUUID } from 'crypto';
+import connectDB from './src/db/connection.js';
+import PipelineRun from './src/db/models/pipelineRun.js';
 
-// ES modules need __dirname created manually
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const SCRAPER_URL = 'http://localhost:3001';
+const SCRAPER_URL  = 'http://localhost:3001';
 const LABELLER_URL = 'http://localhost:3002';
+const GRAPH_URL    = 'http://localhost:3003';
 
-// Test URLs - good for testing
 const TEST_URLS = [
-  "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
-  "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
-  "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths"
+  'https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/',
+  'https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/',
+  'https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths',
+  'https://www.proactiveinvestors.co.uk/companies/news/1079569/tech-bytes-antimony-the-obscure-metal-that-could-choke-tech-supply-chains-1079569.html',
+  'https://www.theaustralian.com.au/business/stockhead/content/pinnacle-ramps-up-exploration-at-adina-east-as-lithium-prices-rebound/news-story/6ba22c20be01303c23368c4d234bcecc',
+  'https://www.bbc.co.uk/worklife/article/20251104-the-story-behind-the-scramble-for-greenlands-rare-earths',
+  'https://www.juniorminingnetwork.com/junior-miner-news/press-releases/3348-nasdaq/crml/192976-crml-executes-term-sheet-for-50-50-joint-venture-with-eu-and-nato-member-romania-creating-a-fully-integrated-mine-to-processing-supply-chain-for-long-term-security-for-the-european-manufacturing-national-security-sectors.html',
+  'https://www.tradingview.com/news/reuters.com,2025:newsml_L4N3XF0ZI:0-critical-metals-partners-with-romania-s-fpcu-to-set-up-rare-earth-processing-plant/',
+  'https://renewablesnow.com/news/vulcan-breaks-ground-on-german-lithium-geothermal-project-1286352/'
 ];
 
-async function checkServices() {
-  console.log('🔍 Checking services...\n');
-  
-  try {
-    const scraper = await axios.get(`${SCRAPER_URL}/health`);
-    console.log('✅ Scraper service: healthy');
-  } catch (error) {
-    console.error('❌ Scraper service: NOT RUNNING');
-    console.log('   Start with: npm run dev:scraper\n');
-    return false;
+const colors = {
+  reset: '\x1b[0m', bright: '\x1b[1m', green: '\x1b[32m',
+  red: '\x1b[31m', yellow: '\x1b[33m', blue: '\x1b[34m', cyan: '\x1b[36m'
+};
+
+function log(message, color = 'reset') {
+  console.log(`${colors[color]}${message}${colors.reset}`);
+}
+
+// ─── Pipeline Observer ────────────────────────────────────────────────────────
+
+class PipelineObserver {
+  constructor(runId, totalUrls) {
+    this.runId = runId;
+    this.totalUrls = totalUrls;
+    this.startedAt = new Date();
+    this.articleEntries = [];
   }
-  
-  try {
-    const labeller = await axios.get(`${LABELLER_URL}/health`);
-    console.log('✅ Labeller service: healthy');
-    
-    if (!labeller.data.apiKeyConfigured) {
-      console.log('❌ API key not configured!');
-      console.log('   Run: npm run diagnose\n');
+
+  async init() {
+    this.record = await PipelineRun.create({
+      runId:     this.runId,
+      startedAt: this.startedAt,
+      totalUrls: this.totalUrls,
+      summary:   { scraped: 0, labelled: 0, graphed: 0, failed: 0 },
+      articles:  []
+    });
+    log(`\n[MongoDB] Pipeline run initialised: ${this.runId}`, 'blue');
+  }
+
+  async recordArticle(articleEntry) {
+    const successfulStages = articleEntry.stages.filter(s => s.status === 'success').map(s => s.stage);
+    const finalStatus = successfulStages.includes('scrape')
+      ? (successfulStages.includes('label') && successfulStages.includes('graph') ? 'complete' : 'partial')
+      : 'failed';
+
+    await PipelineRun.findOneAndUpdate(
+      { runId: this.runId },
+      {
+        $push: { articles: { ...articleEntry, finalStatus } },
+        $inc: {
+          'summary.scraped':  successfulStages.includes('scrape')  ? 1 : 0,
+          'summary.labelled': successfulStages.includes('label')   ? 1 : 0,
+          'summary.graphed':  successfulStages.includes('graph')   ? 1 : 0,
+          'summary.failed':   finalStatus === 'failed'             ? 1 : 0
+        }
+      }
+    );
+  }
+
+  async finalise() {
+    await PipelineRun.findOneAndUpdate(
+      { runId: this.runId },
+      { completedAt: new Date() }
+    );
+    log(`[MongoDB] Pipeline run finalised: ${this.runId}`, 'blue');
+  }
+}
+
+// ─── Service Checks ───────────────────────────────────────────────────────────
+
+async function checkServices() {
+  log('\n╔════════════════════════════════════════════════════════╗', 'bright');
+  log('║         CHECKING SERVICES                              ║', 'bright');
+  log('╚════════════════════════════════════════════════════════╝\n', 'bright');
+
+  const services = [
+    { name: 'Scraper',         url: SCRAPER_URL,  port: 3001 },
+    { name: 'Labeller',        url: LABELLER_URL, port: 3002 },
+    { name: 'Knowledge Graph', url: GRAPH_URL,    port: 3003 }
+  ];
+
+  for (const service of services) {
+    try {
+      await axios.get(`${service.url}/health`, { timeout: 2000 });
+      log(`✅ ${service.name} (port ${service.port}): RUNNING`, 'green');
+    } catch {
+      log(`❌ ${service.name} (port ${service.port}): NOT RUNNING`, 'red');
+      log(`   Start with: npm run dev:${service.name.toLowerCase().split(' ')[0]}`, 'yellow');
       return false;
     }
-  } catch (error) {
-    console.error('❌ Labeller service: NOT RUNNING');
-    console.log('   Start with: npm run dev:labeller\n');
-    return false;
   }
-  
-  console.log('');
+
+  log('');
   return true;
 }
 
-async function scrapeArticle(url) {
-  console.log(`📰 Scraping article from: ${url}`);
-  console.log('   This may take 3-5 seconds...\n');
-  
-  try {
-    const response = await axios.post(`${SCRAPER_URL}/api/scrape`, {
-      url: url
-    });
-    
-    const article = response.data.article;
-    
-    console.log('✅ Article scraped successfully!');
-    console.log(`   ID: ${article.id}`);
-    console.log(`   Title: ${article.title}`);
-    console.log(`   Author: ${article.author || 'Unknown'}`);
-    console.log(`   Content length: ${article.content?.length || 0} characters`);
-    console.log(`   Scraped at: ${article.scrapedAt}\n`);
-    
-    return article;
-  } catch (error) {
-    console.error('❌ Failed to scrape article:', error.message);
-    if (error.response?.data) {
-      console.error('   Error:', error.response.data.error);
-    }
-    return null;
-  }
-}
+// ─── Pipeline Stages ──────────────────────────────────────────────────────────
 
-async function labelArticle(articleId) {
-  console.log(`🏷️  Labelling article: ${articleId}`);
-  console.log('   Calling Claude API...');
-  console.log('   This may take 5-10 seconds...\n');
-  
+async function scrapeArticle(url, index, total) {
+  log(`\n[${index + 1}/${total}] 📰 Scraping: ${url}`, 'cyan');
+  log('   Please wait 3-5 seconds...', 'yellow');
+
+  const startedAt = new Date();
   const startTime = Date.now();
-  
+
   try {
-    const response = await axios.post(`${LABELLER_URL}/api/label/${articleId}`);
+    const response = await axios.post(`${SCRAPER_URL}/api/scrape`, { url }, { timeout: 30000 });
     const duration = Date.now() - startTime;
-    
-    const tagged = response.data.taggedArticle;
-    const labels = tagged.labels;
-    
-    console.log('✅ Article labelled successfully!');
-    console.log(`   Duration: ${(duration / 1000).toFixed(2)}s`);
-    console.log(`   Model: ${labels.modelUsed}\n`);
-    
-    return tagged;
+    const article  = response.data.article;
+
+    log(`   ✅ Scraped in ${(duration / 1000).toFixed(2)}s`, 'green');
+    log(`      ID: ${article.id}`);
+    log(`      Title: ${article.title || 'No title'}`);
+    log(`      Content: ${article.content?.length || 0} characters`);
+
+    return {
+      success: true,
+      article,
+      stage: { stage: 'scrape', status: 'success', duration, startedAt, completedAt: new Date(), error: null }
+    };
   } catch (error) {
-    console.error('❌ Failed to label article:', error.message);
-    if (error.response?.data) {
-      console.error('   Error:', error.response.data);
+    log(`   ❌ Failed: ${error.message}`, 'red');
+    return {
+      success: false,
+      url,
+      error: error.message,
+      stage: { stage: 'scrape', status: 'failed', duration: Date.now() - startTime, startedAt, completedAt: new Date(), error: error.message }
+    };
+  }
+}
+
+async function labelArticle(articleId, title) {
+  log(`\n   🏷️  Labelling: ${title}`, 'cyan');
+  log('      Calling Claude API (5-10 seconds)...', 'yellow');
+
+  const startedAt = new Date();
+  const startTime = Date.now();
+
+  try {
+    const response = await axios.post(`${LABELLER_URL}/api/label/${articleId}`, {}, { timeout: 30000 });
+    const duration = Date.now() - startTime;
+    const labels   = response.data.taggedArticle.labels;
+
+    log(`      ✅ Labelled in ${(duration / 1000).toFixed(2)}s`, 'green');
+    log(`         Categories: ${labels.categories?.join(', ') || 'none'}`);
+    log(`         Topics: ${labels.topics?.slice(0, 3).join(', ') || 'none'}`);
+    log(`         Sentiment: ${labels.sentiment || 'unknown'}`);
+
+    return {
+      success: true,
+      labels,
+      stage: { stage: 'label', status: 'success', duration, startedAt, completedAt: new Date(), error: null }
+    };
+  } catch (error) {
+    log(`      ❌ Labelling failed: ${error.message}`, 'red');
+    return {
+      success: false,
+      error: error.message,
+      stage: { stage: 'label', status: 'failed', duration: Date.now() - startTime, startedAt, completedAt: new Date(), error: error.message }
+    };
+  }
+}
+
+async function addToGraph(articleId) {
+  const startedAt = new Date();
+  const startTime = Date.now();
+
+  try {
+    const response = await axios.post(`${GRAPH_URL}/api/graph/add/${articleId}`);
+    const duration = Date.now() - startTime;
+
+    log(`      ✅ Added to knowledge graph`, 'green');
+    log(`         Relationships created: ${response.data.relationshipsCreated}`);
+
+    return {
+      success: true,
+      stage: { stage: 'graph', status: 'success', duration, startedAt, completedAt: new Date(), error: null }
+    };
+  } catch (error) {
+    log(`      ⚠️  Graph add failed: ${error.message}`, 'yellow');
+    return {
+      success: false,
+      stage: { stage: 'graph', status: 'failed', duration: Date.now() - startTime, startedAt, completedAt: new Date(), error: error.message }
+    };
+  }
+}
+
+// ─── Reporting ────────────────────────────────────────────────────────────────
+
+async function displayResults(results) {
+  log('\n╔════════════════════════════════════════════════════════╗', 'bright');
+  log('║                 RESULTS SUMMARY                        ║', 'bright');
+  log('╚════════════════════════════════════════════════════════╝\n', 'bright');
+
+  const scraped  = results.filter(r => r.scraped).length;
+  const labelled = results.filter(r => r.labelled).length;
+  const graphed  = results.filter(r => r.graphed).length;
+  const failed   = results.filter(r => !r.scraped).length;
+
+  log(`📊 Statistics:`, 'cyan');
+  log(`   Total URLs: ${results.length}`);
+  log(`   ✅ Scraped:         ${scraped}`);
+  log(`   ✅ Labelled:        ${labelled}`);
+  log(`   ✅ Added to Graph:  ${graphed}`);
+  log(`   ❌ Failed:          ${failed}\n`);
+
+  if (scraped > 0) {
+    log(`📁 Successful Articles:`, 'green');
+    results.filter(r => r.scraped).forEach((r, i) => {
+      log(`   ${i + 1}. ${r.title}`);
+      log(`      ID: ${r.articleId}`);
+      log(`      Categories: ${r.categories || 'none'}`);
+      log(`      Topics: ${r.topics || 'none'}`);
+    });
+  }
+
+  if (failed > 0) {
+    log(`\n❌ Failed URLs:`, 'red');
+    results.filter(r => !r.scraped).forEach((r, i) => {
+      log(`   ${i + 1}. ${r.url}`);
+      log(`      Reason: ${r.error}`);
+    });
+  }
+
+  log('');
+}
+
+async function displayGraphStats() {
+  try {
+    const response = await axios.get(`${GRAPH_URL}/api/graph/stats`);
+    const stats = response.data.stats;
+
+    log('🕸️  Knowledge Graph Statistics:', 'cyan');
+    log(`   Total Nodes: ${stats.totalNodes}`);
+    log(`   Total Edges: ${stats.totalEdges}`);
+
+    if (stats.nodesByCategory && Object.keys(stats.nodesByCategory).length > 0) {
+      log(`\n   Top Categories:`);
+      Object.entries(stats.nodesByCategory)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5)
+        .forEach(([cat, count]) => log(`      ${cat}: ${count}`));
     }
-    return null;
+
+    if (stats.nodesBySentiment && Object.keys(stats.nodesBySentiment).length > 0) {
+      log(`\n   Sentiment Distribution:`);
+      Object.entries(stats.nodesBySentiment)
+        .forEach(([sent, count]) => log(`      ${sent}: ${count}`));
+    }
+
+    log('');
+  } catch {
+    log('⚠️  Could not fetch graph stats', 'yellow');
   }
 }
 
-function displayLabels(labels) {
-  console.log('╔════════════════════════════════════════════════════════╗');
-  console.log('║              EXTRACTED METADATA                        ║');
-  console.log('╚════════════════════════════════════════════════════════╝\n');
-  
-  console.log('📊 CATEGORIES:');
-  if (labels.categories?.length > 0) {
-    labels.categories.forEach(cat => console.log(`   • ${cat}`));
-  } else {
-    console.log('   (none)');
-  }
-  
-  console.log('\n🔖 TOPICS:');
-  if (labels.topics?.length > 0) {
-    labels.topics.forEach(topic => console.log(`   • ${topic}`));
-  } else {
-    console.log('   (none)');
-  }
-  
-  console.log('\n🔑 KEYWORDS:');
-  if (labels.keywords?.length > 0) {
-    console.log(`   ${labels.keywords.join(', ')}`);
-  } else {
-    console.log('   (none)');
-  }
-  
-  console.log('\n👥 NAMED ENTITIES:');
-  
-  if (labels.entities?.people?.length > 0) {
-    console.log(`   People: ${labels.entities.people.join(', ')}`);
-  }
-  
-  if (labels.entities?.organizations?.length > 0) {
-    console.log(`   Organizations: ${labels.entities.organizations.join(', ')}`);
-  }
-  
-  if (labels.entities?.locations?.length > 0) {
-    console.log(`   Locations: ${labels.entities.locations.join(', ')}`);
-  }
-  
-  if (labels.entities?.products?.length > 0) {
-    console.log(`   Products: ${labels.entities.products.join(', ')}`);
-  }
-  
-  console.log('\n📝 ANALYSIS:');
-  console.log(`   Sentiment: ${labels.sentiment || 'unknown'}`);
-  console.log(`   Content Type: ${labels.contentType || 'unknown'}`);
-  console.log(`   Complexity: ${labels.complexity || 'unknown'}`);
-  console.log(`   Reading Time: ${labels.readingTime || 'unknown'}`);
-  
-  if (labels.summary) {
-    console.log('\n📄 SUMMARY:');
-    console.log(`   ${labels.summary}`);
-  }
-  
-  console.log('\n');
+async function saveReport(results, runId) {
+  const report = {
+    runId,
+    testDate: new Date().toISOString(),
+    summary: {
+      total:    results.length,
+      scraped:  results.filter(r => r.scraped).length,
+      labelled: results.filter(r => r.labelled).length,
+      graphed:  results.filter(r => r.graphed).length,
+      failed:   results.filter(r => !r.scraped).length
+    },
+    results
+  };
+
+  const filename = `test-report-${Date.now()}.json`;
+  await fs.writeFile(filename, JSON.stringify(report, null, 2));
+  log(`💾 Full report saved to: ${filename}`, 'green');
 }
 
-function saveToFile(taggedArticle) {
-  const filename = `test-output-${taggedArticle.id}.json`;
-  const filepath = path.join(__dirname, './', 'data/', filename);
-  
-  fs.writeFileSync(filepath, JSON.stringify(taggedArticle, null, 2));
-  console.log(`💾 Full output saved to: ${filename}\n`);
-}
+// ─── Main ─────────────────────────────────────────────────────────────────────
 
-async function testSingleArticle(url) {
-  console.log('╔════════════════════════════════════════════════════════╗');
-  console.log('║         SINGLE ARTICLE LABELLING TEST                  ║');
-  console.log('╚════════════════════════════════════════════════════════╝\n');
-  
-  // Step 1: Check services
+async function main() {
+  log('╔════════════════════════════════════════════════════════╗', 'bright');
+  log('║       FULL PIPELINE TEST - MULTIPLE URLS              ║', 'bright');
+  log('╚════════════════════════════════════════════════════════╝', 'bright');
+
+  await connectDB();
+
+  const urls  = process.argv.slice(2).length > 0 ? process.argv.slice(2) : TEST_URLS;
+  const runId = randomUUID();
+
+  log(`\n📋 Testing ${urls.length} URLs`, 'cyan');
+  log(`🔖 Run ID: ${runId}`, 'blue');
+  log(`⏱️  Estimated time: ${Math.ceil(urls.length * 10 / 60)} minutes\n`, 'yellow');
+
   const servicesOk = await checkServices();
   if (!servicesOk) {
+    log('\n❌ Please start all services first: npm run dev\n', 'red');
     process.exit(1);
   }
-  
-  // Step 2: Scrape article
-  const article = await scrapeArticle(url);
-  if (!article) {
-    process.exit(1);
-  }
-  
-  // Step 3: Label article
-  const tagged = await labelArticle(article.id);
-  if (!tagged) {
-    process.exit(1);
-  }
-  
-  // Step 4: Display results
-  displayLabels(tagged.labels);
-  
-  // Step 5: Save to file
-  saveToFile(tagged);
-  
-  // Step 6: Show file location
-  console.log('📁 Files created:');
-  console.log(`   Scraped: data/articles/article-${article.id}.json`);
-  console.log(`   Tagged: data/tagged-articles/tagged-${article.id}.json`);
-  console.log(`   Test output: test-output-${article.id}.json\n`);
-  
-  console.log('✅ Test complete!\n');
-}
 
-async function testBatchArticles(urls) {
-  console.log('╔════════════════════════════════════════════════════════╗');
-  console.log('║         BATCH ARTICLE LABELLING TEST                   ║');
-  console.log('╚════════════════════════════════════════════════════════╝\n');
-  
-  const servicesOk = await checkServices();
-  if (!servicesOk) {
-    process.exit(1);
-  }
-  
-  const articleIds = [];
-  
-  // Scrape all articles
-  console.log(`📰 Scraping ${urls.length} articles...\n`);
-  for (const url of urls) {
-    const article = await scrapeArticle(url);
-    if (article) {
-      articleIds.push(article.id);
-    }
-    // Small delay between scrapes
-    await new Promise(r => setTimeout(r, 2000));
-  }
-  
-  console.log(`\n✅ Scraped ${articleIds.length} articles\n`);
-  
-  // Label all articles
-  console.log(`🏷️  Labelling ${articleIds.length} articles...`);
-  console.log(`   This will take about ${articleIds.length * 6} seconds...\n`);
-  
-  const tagged = [];
-  let success = 0;
-  let failed = 0;
-  
-  for (let i = 0; i < articleIds.length; i++) {
-    console.log(`   [${i + 1}/${articleIds.length}] Labelling ${articleIds[i]}...`);
-    const result = await labelArticle(articleIds[i]);
-    if (result) {
-      tagged.push(result);
-      success++;
+  const observer = new PipelineObserver(runId, urls.length);
+  await observer.init();
+
+  const results = [];
+
+  for (let i = 0; i < urls.length; i++) {
+    const url    = urls[i];
+    const result = { url, scraped: false, labelled: false, graphed: false };
+    const articleEntry = { url, stages: [] };
+
+    // Stage 1: Scrape
+    const scrapeResult = await scrapeArticle(url, i, urls.length);
+    articleEntry.stages.push(scrapeResult.stage);
+
+    if (scrapeResult.success) {
+      result.scraped    = true;
+      result.articleId  = scrapeResult.article.id;
+      result.title      = scrapeResult.article.title;
+      articleEntry.articleId = scrapeResult.article.id;
+      articleEntry.title     = scrapeResult.article.title;
+
+      // Stage 2: Label
+      const labelResult = await labelArticle(scrapeResult.article.id, scrapeResult.article.title);
+      articleEntry.stages.push(labelResult.stage);
+
+      if (labelResult.success) {
+        result.labelled   = true;
+        result.categories = labelResult.labels.categories?.join(', ');
+        result.topics     = labelResult.labels.topics?.slice(0, 3).join(', ');
+        result.sentiment  = labelResult.labels.sentiment;
+
+        // Stage 3: Graph
+        const graphResult = await addToGraph(scrapeResult.article.id);
+        articleEntry.stages.push(graphResult.stage);
+        result.graphed = graphResult.success;
+      } else {
+        articleEntry.stages.push({ stage: 'graph', status: 'skipped', error: null });
+      }
     } else {
-      failed++;
+      result.error = scrapeResult.error;
+      articleEntry.stages.push(
+        { stage: 'label', status: 'skipped', error: null },
+        { stage: 'graph',  status: 'skipped', error: null }
+      );
+    }
+
+    await observer.recordArticle(articleEntry);
+    results.push(result);
+
+    if (i < urls.length - 1) {
+      await new Promise(r => setTimeout(r, 2000));
     }
   }
-  
-  console.log('\n' + '═'.repeat(60));
-  console.log(`\n✅ Batch labelling complete!`);
-  console.log(`   Success: ${success}`);
-  console.log(`   Failed: ${failed}\n`);
-  
-  // Show summary of all labels
-  console.log('📊 SUMMARY OF LABELS:\n');
-  
-  const allCategories = new Set();
-  const allTopics = new Set();
-  const sentiments = {};
-  const contentTypes = {};
-  
-  tagged.forEach(article => {
-    article.labels.categories?.forEach(c => allCategories.add(c));
-    article.labels.topics?.forEach(t => allTopics.add(t));
-    
-    const sent = article.labels.sentiment;
-    if (sent) sentiments[sent] = (sentiments[sent] || 0) + 1;
-    
-    const type = article.labels.contentType;
-    if (type) contentTypes[type] = (contentTypes[type] || 0) + 1;
-  });
-  
-  console.log(`   Unique Categories: ${allCategories.size}`);
-  console.log(`   Categories: ${Array.from(allCategories).join(', ')}\n`);
-  
-  console.log(`   Unique Topics: ${allTopics.size}`);
-  console.log(`   Sample Topics: ${Array.from(allTopics).slice(0, 10).join(', ')}\n`);
-  
-  console.log('   Sentiments:');
-  Object.entries(sentiments).forEach(([k, v]) => {
-    console.log(`     ${k}: ${v}`);
-  });
-  
-  console.log('\n   Content Types:');
-  Object.entries(contentTypes).forEach(([k, v]) => {
-    console.log(`     ${k}: ${v}`);
-  });
-  
-  console.log('\n✅ Batch test complete!\n');
+
+  await observer.finalise();
+
+  log('\n' + '═'.repeat(60) + '\n');
+  await displayResults(results);
+  await displayGraphStats();
+  await saveReport(results, runId);
+
+  log('╔════════════════════════════════════════════════════════╗', 'bright');
+  log('║                 TEST COMPLETE!                         ║', 'bright');
+  log('╚════════════════════════════════════════════════════════╝\n', 'bright');
+
+  log('💡 Next steps:', 'cyan');
+  log('   • View articles in frontend: http://localhost:3000');
+  log('   • Check graph stats: curl http://localhost:3003/api/graph/stats');
+  log(`   • Query this run in MongoDB: db.pipelineruns.findOne({ runId: "${runId}" })\n`);
+
+  process.exit(0);
 }
 
-// Parse command line arguments
-const args = process.argv.slice(2);
-
-if (args.includes('--help')) {
-  console.log('Labeller Workflow Test\n');
-  console.log('Usage:');
-  console.log('  node scripts/test-labeller-workflow.js [URL]           # Test single article');
-  console.log('  node scripts/test-labeller-workflow.js --batch         # Test 5 articles');
-  console.log('  node scripts/test-labeller-workflow.js --help          # Show help\n');
-  console.log('Examples:');
-  console.log('  node scripts/test-labeller-workflow.js https://bbc.com/news');
-  console.log('  node scripts/test-labeller-workflow.js --batch\n');
-} else if (args.includes('--batch')) {
-  testBatchArticles(TEST_URLS);
-} else if (args.length > 0) {
-  testSingleArticle(args[0]);
-} else {
-  // Default: test single article with default URL
-  testSingleArticle(TEST_URLS[0]);
-}
+main().catch(error => {
+  log(`\n❌ Test failed: ${error.message}\n`, 'red');
+  process.exit(1);
+});

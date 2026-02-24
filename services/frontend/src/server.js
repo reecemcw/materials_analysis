@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 import express from 'express';
 import apiRoutes from './routes.js';
 import logger from './utils/logger.js';
+import { getArticlesDB } from '../../../data/connection.js';
+import { get } from 'http';
 
 // Create __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -58,9 +60,14 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  logger.info(`Frontend service running on port ${PORT}`);
-  logger.info(`Access the application at http://localhost:${PORT}`);
+getArticlesDB().then(() => {
+  app.listen(PORT, () => {
+    logger.info(`Frontend service running on port ${PORT}`);
+    logger.info(`Access the application at http://localhost:${PORT}`);
+  });
+}).catch((error) => {
+  logger.error('Failed to connect to database:', error);
+  process.exit(1);
 });
 
 export default app;

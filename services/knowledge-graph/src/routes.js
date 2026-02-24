@@ -1,7 +1,7 @@
 import express from 'express';
 import axios from 'axios';
 import KnowledgeGraph from './graph.js';
-import logger from './utils/logger.js';
+import logger from '../../../utils/logger.js';
 
 const router = express.Router();
 const graph = new KnowledgeGraph();

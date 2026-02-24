@@ -7,6 +7,8 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import scraperRoutes from './routes.js';
 import logger from './utils/logger.js';
+import { connectAllDatabases } from '../../../data/connection.js';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -48,8 +50,13 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  logger.info(`Scraper service running on port ${PORT}`);
+connectAllDatabases().then(() => {
+  app.listen(PORT, () => {
+    logger.info(`Scraper service running on port ${PORT}`);
+  });
+}).catch((err) => {
+  logger.error('Failed to connect to MongoDB:', err);
+  process.exit(1);
 });
 
 export default app;

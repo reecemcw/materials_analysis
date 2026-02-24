@@ -1,5 +1,5 @@
 {
-  "id": "df10de69-e62e-416b-ba81-bf1cf2581884",
+  "id": "3dbb9876-82a8-4b91-a3c9-a5561d4718ee",
   "url": "https://www.bbc.co.uk/worklife/article/20251104-the-story-behind-the-scramble-for-greenlands-rare-earths",
   "title": "The story behind the scramble for Greenland's rare earths",
   "author": "Adrienne Murray",
@@ -10,64 +10,5 @@
   "tags": [
     "We are depleting the resources elsewhere... So there's this global trend of going into more remote areas – Diogo Rosa"
   ],
-  "scrapedAt": "2025-12-09T14:20:47.230Z",
-  "labels": {
-    "categories": [
-      "Mining & Resources",
-      "Geopolitics"
-    ],
-    "topics": [
-      "rare earth elements",
-      "China trade dominance",
-      "Greenland mining",
-      "US national security",
-      "supply chain diversification"
-    ],
-    "entities": {
-      "people": [
-        "Adrienne Murray",
-        "Tony Sage",
-        "Donald Trump",
-        "Jens-Frederik Nielsen"
-      ],
-      "organizations": [
-        "Critical Metals",
-        "BBC",
-        "EU",
-        "NATO",
-        "US Defense Department"
-      ],
-      "locations": [
-        "Greenland",
-        "China",
-        "United States",
-        "Qaqortoq",
-        "Killlavaat Alannguat mountain",
-        "Tanbreez",
-        "Denmark"
-      ],
-      "products": [
-        "rare earth elements",
-        "smartphones",
-        "electric vehicles",
-        "wind turbines",
-        "F-35 fighter jets",
-        "guided missile systems"
-      ]
-    },
-    "keywords": [
-      "rare earths",
-      "China",
-      "Greenland",
-      "mining",
-      "national security"
-    ],
-    "sentiment": "neutral",
-    "summary": "Western companies are looking to Greenland as a potential new source of rare earth elements to reduce dependence on China's dominance in the market. The Tanbreez mining project in Greenland represents one of the largest rare earth deposits, amid growing geopolitical tensions over access to these materials crucial for technology and defense applications.",
-    "readingTime": "4",
-    "complexity": "intermediate",
-    "contentType": "news",
-    "labelledAt": "2025-12-09T14:20:54.438Z",
-    "modelUsed": "claude-sonnet-4-20250514"
-  }
+  "scrapedAt": "2026-02-23T18:51:37.918Z"
 }

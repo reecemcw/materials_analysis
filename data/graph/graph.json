@@ -1,22 +1,22 @@
 {
   "version": "1.0",
-  "savedAt": "2025-12-09T14:21:21.301Z",
+  "savedAt": "2026-02-24T16:09:30.616Z",
   "nodes": [
     [
-      "546f881f-1335-490f-a52c-b6893262fcb3",
+      "c5de75ee-7ee7-40cf-b00e-47742db001de",
       {
-        "id": "546f881f-1335-490f-a52c-b6893262fcb3",
+        "id": "c5de75ee-7ee7-40cf-b00e-47742db001de",
         "title": "US releases 2025 list of critical minerals, featuring 10 additions",
         "url": "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
         "labels": {
           "categories": [
-            "Government Policy",
-            "Economics"
+            "Economy",
+            "Government Policy"
           ],
           "topics": [
-            "Critical Minerals",
-            "Supply Chain Security",
-            "Economic Disruption"
+            "Critical minerals",
+            "Supply chain security",
+            "Economic security"
           ],
           "entities": {
             "people": [
@@ -33,33 +33,33 @@
               "Indonesia"
             ],
             "products": [
-              "Critical Minerals",
-              "Rare Earths",
+              "Critical minerals",
+              "Rare earth minerals",
               "Nickel"
             ]
           },
           "keywords": [
             "critical minerals",
-            "supply disruption",
+            "supply chain",
+            "economic disruption",
             "rare earths",
-            "economy",
-            "2025"
+            "mineral independence"
           ],
           "sentiment": "neutral",
-          "summary": "The US government has released its 2025 list of critical minerals, identifying 60 essential minerals including rare earths that would cause the highest economic cost if supply chains were disrupted. The list includes 10 new additions as the US continues to pursue critical mineral independence through partnerships and funding initiatives.",
-          "readingTime": "4",
+          "summary": "The US government released its 2025 list of 60 critical minerals, adding 10 new minerals to the previous list. These minerals are considered essential to the US economy and would cause significant economic disruption if supplies were interrupted.",
+          "readingTime": "2",
           "complexity": "intermediate",
           "contentType": "news",
-          "labelledAt": "2025-12-09T14:20:01.428Z",
+          "labelledAt": "2026-02-24T16:08:10.649Z",
           "modelUsed": "claude-sonnet-4-20250514"
         },
-        "addedAt": "2025-12-09T14:20:01.454Z"
+        "addedAt": "2026-02-24T16:08:10.676Z"
       }
     ],
     [
-      "4a3de370-23a9-4858-8005-378f35de7b42",
+      "0b666cbf-5c3c-4291-bcb5-c714a9d5092e",
       {
-        "id": "4a3de370-23a9-4858-8005-378f35de7b42",
+        "id": "0b666cbf-5c3c-4291-bcb5-c714a9d5092e",
         "title": "Securing Defense Supply Chains in a Rare Earth World",
         "url": "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
         "labels": {
@@ -68,74 +68,63 @@
             "Supply Chain Management"
           ],
           "topics": [
-            "rare earth elements",
+            "rare earth minerals",
             "defense supply chains",
             "China trade relations",
             "military procurement",
-            "strategic materials"
+            "recycling technology"
           ],
           "entities": {
-            "people": [],
+            "people": [
+              "Michael Tucker"
+            ],
             "organizations": [
-              "Office of Strategic Capital",
-              "Vulcan Elements",
-              "ReElement Technologies",
-              "Lockheed Martin",
-              "RTX",
-              "Northrop Grumman",
-              "Honeywell",
-              "Raytheon"
+              "HyProMag Recycling",
+              "DFARS",
+              "OSC"
             ],
             "locations": [
               "United States",
-              "China",
-              "Japan",
-              "Australia",
-              "Korea",
-              "Malaysia"
+              "China"
             ],
             "products": [
-              "F-35",
-              "Arleigh Burke destroyer",
-              "Virginia-class submarine",
-              "Tomahawk missiles",
-              "NdFeB magnets"
+              "rare earth minerals"
             ]
           },
           "keywords": [
-            "rare earth elements",
-            "DFARS 2027 ban",
+            "rare earth",
             "defense supply chains",
-            "China monopoly",
-            "strategic materials"
+            "DFARS 2027 ban",
+            "friendshoring",
+            "recycling"
           ],
           "sentiment": "neutral",
-          "summary": "The article analyzes how the U.S. is reducing dependence on Chinese rare earth materials through the 2027 DFARS ban, over $700 million in strategic investments, and partnerships with allied suppliers. It highlights the critical importance of rare earth elements in defense systems and the vulnerabilities exposed by China's market dominance.",
-          "readingTime": "4",
+          "summary": "The article discusses U.S. efforts to reduce dependence on China's rare earth monopoly through regulatory measures and allied partnerships. A comment highlights HyProMag Recycling's efficient rare earth recovery process achieving over 97% recovery rates.",
+          "readingTime": "1",
           "complexity": "intermediate",
           "contentType": "analysis",
-          "labelledAt": "2025-12-09T14:20:10.804Z",
+          "labelledAt": "2026-02-24T16:08:20.854Z",
           "modelUsed": "claude-sonnet-4-20250514"
         },
-        "addedAt": "2025-12-09T14:20:10.819Z"
+        "addedAt": "2026-02-24T16:08:20.868Z"
       }
     ],
     [
-      "05cf1493-f2aa-4c63-b822-55a9eb015ab1",
+      "fb392120-4763-4853-9985-e332c2474784",
       {
-        "id": "05cf1493-f2aa-4c63-b822-55a9eb015ab1",
+        "id": "fb392120-4763-4853-9985-e332c2474784",
         "title": "Malaysia becomes a lynchpin in US-led effort to break China’s grip on rare earths",
         "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
         "labels": {
           "categories": [
-            "Economics",
-            "International Relations"
+            "economy",
+            "geopolitics"
           ],
           "topics": [
-            "Rare earth elements supply chain",
+            "rare earth elements",
             "US-China trade relations",
-            "Malaysia strategic positioning",
-            "Critical minerals security"
+            "supply chain diversification",
+            "critical minerals policy"
           ],
           "entities": {
             "people": [
@@ -148,7 +137,7 @@
               "Lynas Rare Earths Ltd.",
               "Caixin Global",
               "US government",
-              "Trump administration"
+              "White House"
             ],
             "locations": [
               "Malaysia",
@@ -157,15 +146,15 @@
               "Kuantan",
               "Australia",
               "South Korea",
+              "Central Asia",
               "Thailand",
-              "Japan",
-              "Central Asia"
+              "Japan"
             ],
             "products": [
-              "Rare earth elements",
-              "Microchips",
-              "Lithium batteries",
-              "Critical minerals"
+              "rare earth elements",
+              "microchips",
+              "lithium batteries",
+              "critical minerals"
             ]
           },
           "keywords": [
@@ -173,25 +162,27 @@
             "supply chain",
             "China dominance",
             "US alliance",
-            "Malaysia hub"
+            "Malaysia",
+            "trade war",
+            "critical minerals"
           ],
           "sentiment": "neutral",
-          "summary": "Malaysia has become a key partner in the US-led effort to establish a rare earth supply chain independent of China's control. The article examines recent diplomatic agreements and trade policies aimed at reducing Chinese dominance in critical minerals, though questions remain about the feasibility of breaking China's grip on this sector.",
+          "summary": "Malaysia has become a key partner in the US-led effort to establish a rare earth supply chain independent of China's dominance. The US has accelerated policies and agreements with allies including Malaysia to secure critical mineral supplies, though breaking China's grip on this market remains challenging.",
           "readingTime": "4",
           "complexity": "intermediate",
           "contentType": "analysis",
-          "labelledAt": "2025-12-09T14:20:21.294Z",
+          "labelledAt": "2026-02-24T16:08:30.955Z",
           "modelUsed": "claude-sonnet-4-20250514"
         },
-        "addedAt": "2025-12-09T14:20:21.306Z"
+        "addedAt": "2026-02-24T16:08:30.968Z"
       }
     ],
     [
-      "a940ea32-b091-4e6f-be0c-41c749ee0ecb",
+      "9f993154-1716-48be-8cec-640dd400f987",
       {
-        "id": "a940ea32-b091-4e6f-be0c-41c749ee0ecb",
+        "id": "9f993154-1716-48be-8cec-640dd400f987",
         "title": "Tech Bytes: Antimony — the obscure metal that could choke tech supply chains",
-        "url": "https://www.proactiveinvestors.co.uk/companies/news/1079569/tech-bytes-antimony-the-obscure-metal-that-could-choke-tech-supply-chains-1079569.html#:~:text=Why%20antimony%20matters%20for%20tech,becomes%20harder%20—%20and%20more%20expensive.",
+        "url": "https://www.proactiveinvestors.co.uk/companies/news/1079569/tech-bytes-antimony-the-obscure-metal-that-could-choke-tech-supply-chains-1079569.html",
         "labels": {
           "categories": [
             "Mining",
@@ -199,9 +190,9 @@
           ],
           "topics": [
             "antimony supply chains",
-            "tech metal shortages",
+            "tech metals",
             "mining stocks",
-            "Nova Minerals performance"
+            "supply chain disruption"
           ],
           "entities": {
             "people": [
@@ -209,10 +200,7 @@
             ],
             "organizations": [
               "Nova Minerals Ltd",
-              "Proactive Investors",
-              "ASX",
-              "NASDAQ",
-              "OTC"
+              "Proactive Investors"
             ],
             "locations": [
               "Sydney",
@@ -229,38 +217,39 @@
           "keywords": [
             "antimony",
             "supply chains",
-            "tech metals",
             "mining",
-            "Nova Minerals"
+            "tech metals",
+            "Nova Minerals",
+            "ASX",
+            "NASDAQ"
           ],
           "sentiment": "neutral",
-          "summary": "Nova Minerals Ltd shares surged over 20% following developments related to antimony, an obscure but critical metal for technology supply chains. The article discusses the potential impact of antimony supply constraints on tech industries.",
+          "summary": "The article discusses antimony, an obscure metal that could potentially disrupt technology supply chains. Nova Minerals Ltd shares jumped over 20% following developments related to antimony mining operations.",
           "readingTime": "3",
           "complexity": "intermediate",
           "contentType": "news",
-          "labelledAt": "2025-12-09T14:20:29.504Z",
+          "labelledAt": "2026-02-24T16:08:38.358Z",
           "modelUsed": "claude-sonnet-4-20250514"
         },
-        "addedAt": "2025-12-09T14:20:29.515Z"
+        "addedAt": "2026-02-24T16:08:38.365Z"
       }
     ],
     [
-      "df10de69-e62e-416b-ba81-bf1cf2581884",
+      "18c66db3-45e0-475e-b8f1-983f588f899f",
       {
-        "id": "df10de69-e62e-416b-ba81-bf1cf2581884",
+        "id": "18c66db3-45e0-475e-b8f1-983f588f899f",
         "title": "The story behind the scramble for Greenland's rare earths",
         "url": "https://www.bbc.co.uk/worklife/article/20251104-the-story-behind-the-scramble-for-greenlands-rare-earths",
         "labels": {
           "categories": [
-            "Mining & Resources",
+            "Business",
             "Geopolitics"
           ],
           "topics": [
-            "rare earth elements",
+            "rare earth mining",
             "China trade dominance",
-            "Greenland mining",
-            "US national security",
-            "supply chain diversification"
+            "Arctic resources",
+            "supply chain security"
           ],
           "entities": {
             "people": [
@@ -290,50 +279,51 @@
               "smartphones",
               "electric vehicles",
               "wind turbines",
-              "F-35 fighter jets",
-              "guided missile systems"
+              "F-35 fighter jets"
             ]
           },
           "keywords": [
             "rare earths",
+            "mining",
             "China",
             "Greenland",
-            "mining",
-            "national security"
+            "geopolitics"
           ],
           "sentiment": "neutral",
-          "summary": "Western companies are looking to Greenland as a potential new source of rare earth elements to reduce dependence on China's dominance in the market. The Tanbreez mining project in Greenland represents one of the largest rare earth deposits, amid growing geopolitical tensions over access to these materials crucial for technology and defense applications.",
+          "summary": "As Western nations seek to reduce dependence on China's dominance in rare earth element production, mining companies are exploring Greenland's untapped mineral deposits. The Tanbreez project represents one of the largest potential rare earth mining operations in Greenland, amid growing geopolitical tensions over access to these critical materials.",
           "readingTime": "4",
           "complexity": "intermediate",
           "contentType": "news",
-          "labelledAt": "2025-12-09T14:20:54.438Z",
+          "labelledAt": "2026-02-24T16:09:04.647Z",
           "modelUsed": "claude-sonnet-4-20250514"
         },
-        "addedAt": "2025-12-09T14:20:54.448Z"
+        "addedAt": "2026-02-24T16:09:04.658Z"
       }
     ],
     [
-      "af56f78d-eee6-46f3-aa3d-fe6bb55f723e",
+      "666155ff-af62-4fa9-82bf-55dab9614e2c",
       {
-        "id": "af56f78d-eee6-46f3-aa3d-fe6bb55f723e",
+        "id": "666155ff-af62-4fa9-82bf-55dab9614e2c",
         "title": "Critical Metals Executes Term-Sheet for 50/50 Joint Venture With EU and NATO Member, Romania, Creating a Fully Integrated Mine-to-Processing Supply Chain for Long-Term Security for the European Manufacturing & National Security Sectors",
         "url": "https://www.juniorminingnetwork.com/junior-miner-news/press-releases/3348-nasdaq/crml/192976-crml-executes-term-sheet-for-50-50-joint-venture-with-eu-and-nato-member-romania-creating-a-fully-integrated-mine-to-processing-supply-chain-for-long-term-security-for-the-european-manufacturing-national-security-sectors.html",
         "labels": {
           "categories": [
-            "Mining & Resources",
-            "International Business"
+            "Business",
+            "Mining"
           ],
           "topics": [
-            "Joint Venture Agreement",
-            "Critical Minerals Supply Chain",
-            "European Defense Strategy"
+            "Joint Venture",
+            "Rare Earth Elements",
+            "Critical Minerals",
+            "Supply Chain Security",
+            "European Manufacturing"
           ],
           "entities": {
             "people": [
               "Tony Sage"
             ],
             "organizations": [
-              "Critical Metals Corp.",
+              "Critical Metals Corp",
               "CRML",
               "Fabrica de Prelucrare a Concentratelor de Uraniu S.R.L.",
               "FPCU",
@@ -344,35 +334,35 @@
             "locations": [
               "Romania",
               "New York",
-              "European Union"
+              "Europe"
             ],
             "products": [
-              "Rare Earth Elements",
-              "Tanbreez concentrate"
+              "Tanbreez concentrate",
+              "rare earth elements"
             ]
           },
           "keywords": [
             "joint venture",
-            "rare earth elements",
+            "rare earth processing",
             "critical minerals",
             "supply chain",
             "European manufacturing"
           ],
           "sentiment": "positive",
-          "summary": "Critical Metals Corp. has executed a term sheet for a 50/50 joint venture with Romania's state-owned FPCU to develop a rare earth processing facility. The partnership aims to create the first fully integrated mine-to-processing supply chain in the Western world for critical minerals, supporting European manufacturing and defense sectors.",
+          "summary": "Critical Metals Corp. has executed a term sheet for a 50/50 joint venture with Romania's state-owned FPCU to develop a rare earth processing facility. This partnership aims to create the first fully integrated mine-to-processing supply chain in the Western world for critical minerals, providing long-term security for European manufacturing and defense sectors.",
           "readingTime": "2",
           "complexity": "intermediate",
           "contentType": "news",
-          "labelledAt": "2025-12-09T14:21:04.159Z",
+          "labelledAt": "2026-02-24T16:09:15.089Z",
           "modelUsed": "claude-sonnet-4-20250514"
         },
-        "addedAt": "2025-12-09T14:21:04.169Z"
+        "addedAt": "2026-02-24T16:09:15.100Z"
       }
     ],
     [
-      "621d7169-76de-4946-ade6-b7e2097ab65d",
+      "f45ba9dc-7a46-4b44-a8de-97828783977c",
       {
-        "id": "621d7169-76de-4946-ade6-b7e2097ab65d",
+        "id": "f45ba9dc-7a46-4b44-a8de-97828783977c",
         "title": "Critical Metals partners with Romania's FPCU to set up rare earth processing plant",
         "url": "https://www.tradingview.com/news/reuters.com,2025:newsml_L4N3XF0ZI:0-critical-metals-partners-with-romania-s-fpcu-to-set-up-rare-earth-processing-plant/",
         "labels": {
@@ -381,72 +371,61 @@
             "Mining & Resources"
           ],
           "topics": [
-            "rare earth minerals",
-            "joint ventures",
-            "supply chain diversification",
-            "China dependency reduction",
-            "renewable energy materials"
+            "rare earth processing",
+            "joint venture",
+            "mining operations"
           ],
           "entities": {
-            "people": [
-              "Tony Sage"
-            ],
+            "people": [],
             "organizations": [
               "Critical Metals",
               "FPCU",
+              "NASDAQ",
               "Reuters",
-              "Refinitiv",
-              "NASDAQ"
+              "Thomson Reuters"
             ],
             "locations": [
               "Romania",
-              "United States",
-              "Greenland",
-              "China",
-              "Europe"
+              "United States"
             ],
             "products": [
-              "rare earth concentrates",
-              "aerospace magnets",
-              "military-grade magnets",
-              "electric vehicles",
-              "wind turbines"
+              "rare earth minerals",
+              "Tanbreez mine"
             ]
           },
           "keywords": [
-            "rare earth processing",
+            "rare earth",
+            "processing plant",
             "joint venture",
-            "Tanbreez mine",
-            "supply chain",
-            "China reliance"
+            "Critical Metals",
+            "Romania"
           ],
           "sentiment": "positive",
-          "summary": "Critical Metals announced a joint venture with Romania's FPCU to establish a rare earth processing facility that will process minerals from their Greenland-based Tanbreez mine. The partnership aims to create a European supply chain for rare earths and reduce dependence on China, which currently dominates over 80% of global processing.",
-          "readingTime": "2",
+          "summary": "Critical Metals announced a joint venture with Romania's FPCU to establish a rare earth processing facility in Romania for minerals from their Tanbreez mine. The company's shares rose 4% in premarket trading following the announcement.",
+          "readingTime": "1",
           "complexity": "intermediate",
           "contentType": "news",
-          "labelledAt": "2025-12-09T14:21:13.328Z",
+          "labelledAt": "2026-02-24T16:09:23.592Z",
           "modelUsed": "claude-sonnet-4-20250514"
         },
-        "addedAt": "2025-12-09T14:21:13.340Z"
+        "addedAt": "2026-02-24T16:09:23.602Z"
       }
     ],
     [
-      "89062ee1-3441-4f37-98b5-6c303a23af67",
+      "7914b6db-feba-482b-b3d7-63819b6524a6",
       {
-        "id": "89062ee1-3441-4f37-98b5-6c303a23af67",
+        "id": "7914b6db-feba-482b-b3d7-63819b6524a6",
         "title": "Vulcan breaks ground on German lithium, geothermal project",
         "url": "https://renewablesnow.com/news/vulcan-breaks-ground-on-german-lithium-geothermal-project-1286352/",
         "labels": {
           "categories": [
             "Renewable Energy",
-            "Mining & Extraction"
+            "Mining"
           ],
           "topics": [
-            "lithium extraction",
             "geothermal energy",
-            "industrial development",
-            "renewable energy projects"
+            "lithium extraction",
+            "groundbreaking ceremony"
           ],
           "entities": {
             "people": [
@@ -463,139 +442,199 @@
             ],
             "products": [
               "G-LEP",
-              "lithium",
-              "geothermal plant"
+              "geothermal and lithium extraction plant"
             ]
           },
           "keywords": [
+            "vulcan",
             "lithium",
             "geothermal",
-            "extraction",
-            "Germany",
-            "groundbreaking"
+            "germany",
+            "extraction"
           ],
           "sentiment": "positive",
-          "summary": "Vulcan Energy Resources has commenced construction on the first phase of its geothermal and lithium extraction plant in Germany's Upper Rhine Valley. This represents a significant milestone in the company's integrated approach to lithium production and renewable energy generation.",
+          "summary": "Vulcan Energy Resources Ltd has begun construction on the first phase of its geothermal and lithium extraction plant in Germany's Upper Rhine Valley. This marks a significant milestone for the company's major G-LEP project combining renewable energy generation with lithium production.",
           "readingTime": "2",
           "complexity": "intermediate",
           "contentType": "news",
-          "labelledAt": "2025-12-09T14:21:21.292Z",
+          "labelledAt": "2026-02-24T16:09:30.604Z",
           "modelUsed": "claude-sonnet-4-20250514"
         },
-        "addedAt": "2025-12-09T14:21:21.301Z"
+        "addedAt": "2026-02-24T16:09:30.616Z"
       }
     ]
   ],
   "edges": [
     [
-      "05cf1493-f2aa-4c63-b822-55a9eb015ab1-RELATES_TO-546f881f-1335-490f-a52c-b6893262fcb3",
+      "fb392120-4763-4853-9985-e332c2474784-RELATES_TO-c5de75ee-7ee7-40cf-b00e-47742db001de",
       {
-        "id": "05cf1493-f2aa-4c63-b822-55a9eb015ab1-RELATES_TO-546f881f-1335-490f-a52c-b6893262fcb3",
-        "from": "05cf1493-f2aa-4c63-b822-55a9eb015ab1",
-        "to": "546f881f-1335-490f-a52c-b6893262fcb3",
+        "id": "fb392120-4763-4853-9985-e332c2474784-RELATES_TO-c5de75ee-7ee7-40cf-b00e-47742db001de",
+        "from": "fb392120-4763-4853-9985-e332c2474784",
+        "to": "c5de75ee-7ee7-40cf-b00e-47742db001de",
+        "type": "RELATES_TO",
+        "strength": 8,
+        "sharedTopics": [],
+        "sharedKeywords": [
+          "critical minerals",
+          "supply chain",
+          "rare earths"
+        ],
+        "createdAt": "2026-02-24T16:08:30.969Z"
+      }
+    ],
+    [
+      "18c66db3-45e0-475e-b8f1-983f588f899f-RELATES_TO-fb392120-4763-4853-9985-e332c2474784",
+      {
+        "id": "18c66db3-45e0-475e-b8f1-983f588f899f-RELATES_TO-fb392120-4763-4853-9985-e332c2474784",
+        "from": "18c66db3-45e0-475e-b8f1-983f588f899f",
+        "to": "fb392120-4763-4853-9985-e332c2474784",
         "type": "RELATES_TO",
         "strength": 6,
         "sharedTopics": [],
         "sharedKeywords": [
           "rare earths"
         ],
-        "createdAt": "2025-12-09T14:20:21.307Z"
+        "createdAt": "2026-02-24T16:09:04.659Z"
       }
     ],
     [
-      "af56f78d-eee6-46f3-aa3d-fe6bb55f723e-RELATES_TO-df10de69-e62e-416b-ba81-bf1cf2581884",
+      "666155ff-af62-4fa9-82bf-55dab9614e2c-RELATES_TO-18c66db3-45e0-475e-b8f1-983f588f899f",
       {
-        "id": "af56f78d-eee6-46f3-aa3d-fe6bb55f723e-RELATES_TO-df10de69-e62e-416b-ba81-bf1cf2581884",
-        "from": "af56f78d-eee6-46f3-aa3d-fe6bb55f723e",
-        "to": "df10de69-e62e-416b-ba81-bf1cf2581884",
-        "type": "RELATES_TO",
-        "strength": 7,
-        "sharedTopics": [],
-        "sharedKeywords": [],
-        "createdAt": "2025-12-09T14:21:04.170Z"
-      }
-    ],
-    [
-      "621d7169-76de-4946-ade6-b7e2097ab65d-RELATES_TO-af56f78d-eee6-46f3-aa3d-fe6bb55f723e",
-      {
-        "id": "621d7169-76de-4946-ade6-b7e2097ab65d-RELATES_TO-af56f78d-eee6-46f3-aa3d-fe6bb55f723e",
-        "from": "621d7169-76de-4946-ade6-b7e2097ab65d",
-        "to": "af56f78d-eee6-46f3-aa3d-fe6bb55f723e",
-        "type": "RELATES_TO",
-        "strength": 11,
-        "sharedTopics": [],
-        "sharedKeywords": [
-          "joint venture",
-          "supply chain"
-        ],
-        "createdAt": "2025-12-09T14:21:13.340Z"
-      }
-    ],
-    [
-      "621d7169-76de-4946-ade6-b7e2097ab65d-RELATES_TO-df10de69-e62e-416b-ba81-bf1cf2581884",
-      {
-        "id": "621d7169-76de-4946-ade6-b7e2097ab65d-RELATES_TO-df10de69-e62e-416b-ba81-bf1cf2581884",
-        "from": "621d7169-76de-4946-ade6-b7e2097ab65d",
-        "to": "df10de69-e62e-416b-ba81-bf1cf2581884",
+        "id": "666155ff-af62-4fa9-82bf-55dab9614e2c-RELATES_TO-18c66db3-45e0-475e-b8f1-983f588f899f",
+        "from": "666155ff-af62-4fa9-82bf-55dab9614e2c",
+        "to": "18c66db3-45e0-475e-b8f1-983f588f899f",
         "type": "RELATES_TO",
         "strength": 9,
         "sharedTopics": [
-          "supply chain diversification"
+          "supply chain security"
         ],
         "sharedKeywords": [],
-        "createdAt": "2025-12-09T14:21:13.340Z"
+        "createdAt": "2026-02-24T16:09:15.100Z"
+      }
+    ],
+    [
+      "666155ff-af62-4fa9-82bf-55dab9614e2c-RELATES_TO-c5de75ee-7ee7-40cf-b00e-47742db001de",
+      {
+        "id": "666155ff-af62-4fa9-82bf-55dab9614e2c-RELATES_TO-c5de75ee-7ee7-40cf-b00e-47742db001de",
+        "from": "666155ff-af62-4fa9-82bf-55dab9614e2c",
+        "to": "c5de75ee-7ee7-40cf-b00e-47742db001de",
+        "type": "RELATES_TO",
+        "strength": 6,
+        "sharedTopics": [
+          "Critical minerals",
+          "Supply chain security"
+        ],
+        "sharedKeywords": [
+          "critical minerals",
+          "supply chain"
+        ],
+        "createdAt": "2026-02-24T16:09:15.101Z"
+      }
+    ],
+    [
+      "666155ff-af62-4fa9-82bf-55dab9614e2c-RELATES_TO-fb392120-4763-4853-9985-e332c2474784",
+      {
+        "id": "666155ff-af62-4fa9-82bf-55dab9614e2c-RELATES_TO-fb392120-4763-4853-9985-e332c2474784",
+        "from": "666155ff-af62-4fa9-82bf-55dab9614e2c",
+        "to": "fb392120-4763-4853-9985-e332c2474784",
+        "type": "RELATES_TO",
+        "strength": 4,
+        "sharedTopics": [
+          "rare earth elements"
+        ],
+        "sharedKeywords": [
+          "supply chain",
+          "critical minerals"
+        ],
+        "createdAt": "2026-02-24T16:09:15.101Z"
+      }
+    ],
+    [
+      "f45ba9dc-7a46-4b44-a8de-97828783977c-RELATES_TO-666155ff-af62-4fa9-82bf-55dab9614e2c",
+      {
+        "id": "f45ba9dc-7a46-4b44-a8de-97828783977c-RELATES_TO-666155ff-af62-4fa9-82bf-55dab9614e2c",
+        "from": "f45ba9dc-7a46-4b44-a8de-97828783977c",
+        "to": "666155ff-af62-4fa9-82bf-55dab9614e2c",
+        "type": "RELATES_TO",
+        "strength": 10,
+        "sharedTopics": [
+          "Joint Venture"
+        ],
+        "sharedKeywords": [
+          "joint venture"
+        ],
+        "createdAt": "2026-02-24T16:09:23.602Z"
+      }
+    ],
+    [
+      "f45ba9dc-7a46-4b44-a8de-97828783977c-RELATES_TO-18c66db3-45e0-475e-b8f1-983f588f899f",
+      {
+        "id": "f45ba9dc-7a46-4b44-a8de-97828783977c-RELATES_TO-18c66db3-45e0-475e-b8f1-983f588f899f",
+        "from": "f45ba9dc-7a46-4b44-a8de-97828783977c",
+        "to": "18c66db3-45e0-475e-b8f1-983f588f899f",
+        "type": "RELATES_TO",
+        "strength": 5,
+        "sharedTopics": [],
+        "sharedKeywords": [],
+        "createdAt": "2026-02-24T16:09:23.603Z"
       }
     ]
   ],
   "nodeEdges": [
     [
-      "546f881f-1335-490f-a52c-b6893262fcb3",
+      "c5de75ee-7ee7-40cf-b00e-47742db001de",
       [
-        "05cf1493-f2aa-4c63-b822-55a9eb015ab1-RELATES_TO-546f881f-1335-490f-a52c-b6893262fcb3"
+        "fb392120-4763-4853-9985-e332c2474784-RELATES_TO-c5de75ee-7ee7-40cf-b00e-47742db001de",
+        "666155ff-af62-4fa9-82bf-55dab9614e2c-RELATES_TO-c5de75ee-7ee7-40cf-b00e-47742db001de"
       ]
     ],
     [
-      "4a3de370-23a9-4858-8005-378f35de7b42",
+      "0b666cbf-5c3c-4291-bcb5-c714a9d5092e",
       []
     ],
     [
-      "05cf1493-f2aa-4c63-b822-55a9eb015ab1",
+      "fb392120-4763-4853-9985-e332c2474784",
       [
-        "05cf1493-f2aa-4c63-b822-55a9eb015ab1-RELATES_TO-546f881f-1335-490f-a52c-b6893262fcb3"
+        "fb392120-4763-4853-9985-e332c2474784-RELATES_TO-c5de75ee-7ee7-40cf-b00e-47742db001de",
+        "18c66db3-45e0-475e-b8f1-983f588f899f-RELATES_TO-fb392120-4763-4853-9985-e332c2474784",
+        "666155ff-af62-4fa9-82bf-55dab9614e2c-RELATES_TO-fb392120-4763-4853-9985-e332c2474784"
       ]
     ],
     [
-      "a940ea32-b091-4e6f-be0c-41c749ee0ecb",
+      "9f993154-1716-48be-8cec-640dd400f987",
       []
     ],
     [
-      "df10de69-e62e-416b-ba81-bf1cf2581884",
+      "18c66db3-45e0-475e-b8f1-983f588f899f",
       [
-        "af56f78d-eee6-46f3-aa3d-fe6bb55f723e-RELATES_TO-df10de69-e62e-416b-ba81-bf1cf2581884",
-        "621d7169-76de-4946-ade6-b7e2097ab65d-RELATES_TO-df10de69-e62e-416b-ba81-bf1cf2581884"
+        "18c66db3-45e0-475e-b8f1-983f588f899f-RELATES_TO-fb392120-4763-4853-9985-e332c2474784",
+        "666155ff-af62-4fa9-82bf-55dab9614e2c-RELATES_TO-18c66db3-45e0-475e-b8f1-983f588f899f",
+        "f45ba9dc-7a46-4b44-a8de-97828783977c-RELATES_TO-18c66db3-45e0-475e-b8f1-983f588f899f"
       ]
     ],
     [
-      "af56f78d-eee6-46f3-aa3d-fe6bb55f723e",
+      "666155ff-af62-4fa9-82bf-55dab9614e2c",
       [
-        "af56f78d-eee6-46f3-aa3d-fe6bb55f723e-RELATES_TO-df10de69-e62e-416b-ba81-bf1cf2581884",
-        "621d7169-76de-4946-ade6-b7e2097ab65d-RELATES_TO-af56f78d-eee6-46f3-aa3d-fe6bb55f723e"
+        "666155ff-af62-4fa9-82bf-55dab9614e2c-RELATES_TO-18c66db3-45e0-475e-b8f1-983f588f899f",
+        "666155ff-af62-4fa9-82bf-55dab9614e2c-RELATES_TO-c5de75ee-7ee7-40cf-b00e-47742db001de",
+        "666155ff-af62-4fa9-82bf-55dab9614e2c-RELATES_TO-fb392120-4763-4853-9985-e332c2474784",
+        "f45ba9dc-7a46-4b44-a8de-97828783977c-RELATES_TO-666155ff-af62-4fa9-82bf-55dab9614e2c"
       ]
     ],
     [
-      "621d7169-76de-4946-ade6-b7e2097ab65d",
+      "f45ba9dc-7a46-4b44-a8de-97828783977c",
       [
-        "621d7169-76de-4946-ade6-b7e2097ab65d-RELATES_TO-af56f78d-eee6-46f3-aa3d-fe6bb55f723e",
-        "621d7169-76de-4946-ade6-b7e2097ab65d-RELATES_TO-df10de69-e62e-416b-ba81-bf1cf2581884"
+        "f45ba9dc-7a46-4b44-a8de-97828783977c-RELATES_TO-666155ff-af62-4fa9-82bf-55dab9614e2c",
+        "f45ba9dc-7a46-4b44-a8de-97828783977c-RELATES_TO-18c66db3-45e0-475e-b8f1-983f588f899f"
       ]
     ],
     [
-      "89062ee1-3441-4f37-98b5-6c303a23af67",
+      "7914b6db-feba-482b-b3d7-63819b6524a6",
       []
     ]
   ],
   "stats": {
     "nodeCount": 8,
-    "edgeCount": 4
+    "edgeCount": 7
   }
 }

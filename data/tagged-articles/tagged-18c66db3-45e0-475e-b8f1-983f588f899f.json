@@ -1,5 +1,5 @@
 {
-  "id": "df10de69-e62e-416b-ba81-bf1cf2581884",
+  "id": "18c66db3-45e0-475e-b8f1-983f588f899f",
   "url": "https://www.bbc.co.uk/worklife/article/20251104-the-story-behind-the-scramble-for-greenlands-rare-earths",
   "title": "The story behind the scramble for Greenland's rare earths",
   "author": "Adrienne Murray",
@@ -10,5 +10,62 @@
   "tags": [
     "We are depleting the resources elsewhere... So there's this global trend of going into more remote areas – Diogo Rosa"
   ],
-  "scrapedAt": "2025-12-09T14:20:47.230Z"
+  "scrapedAt": "2026-02-24T16:08:56.446Z",
+  "labels": {
+    "categories": [
+      "Business",
+      "Geopolitics"
+    ],
+    "topics": [
+      "rare earth mining",
+      "China trade dominance",
+      "Arctic resources",
+      "supply chain security"
+    ],
+    "entities": {
+      "people": [
+        "Adrienne Murray",
+        "Tony Sage",
+        "Donald Trump",
+        "Jens-Frederik Nielsen"
+      ],
+      "organizations": [
+        "Critical Metals",
+        "BBC",
+        "EU",
+        "NATO",
+        "US Defense Department"
+      ],
+      "locations": [
+        "Greenland",
+        "China",
+        "United States",
+        "Qaqortoq",
+        "Killlavaat Alannguat mountain",
+        "Tanbreez",
+        "Denmark"
+      ],
+      "products": [
+        "rare earth elements",
+        "smartphones",
+        "electric vehicles",
+        "wind turbines",
+        "F-35 fighter jets"
+      ]
+    },
+    "keywords": [
+      "rare earths",
+      "mining",
+      "China",
+      "Greenland",
+      "geopolitics"
+    ],
+    "sentiment": "neutral",
+    "summary": "As Western nations seek to reduce dependence on China's dominance in rare earth element production, mining companies are exploring Greenland's untapped mineral deposits. The Tanbreez project represents one of the largest potential rare earth mining operations in Greenland, amid growing geopolitical tensions over access to these critical materials.",
+    "readingTime": "4",
+    "complexity": "intermediate",
+    "contentType": "news",
+    "labelledAt": "2026-02-24T16:09:04.647Z",
+    "modelUsed": "claude-sonnet-4-20250514"
+  }
 }
