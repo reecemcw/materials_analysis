@@ -38,8 +38,13 @@ export const getPipelineRunsDB = () => {
   return createConnection('pipelineruns', uri.replace(/\/?$/, '/pipelineruns'));
 };
 
+export const getGraphDB = () => {
+  const uri = process.env.MONGODB_URI_GRAPH || process.env.MONGODB_URI;
+  if (!uri) throw new Error('MONGODB_URI is not defined — check your .env path');
+  return createConnection('graph', uri.replace(/\/?$/, '/graph'));
+};
 
 export const connectAllDatabases = async () => {
-  await Promise.all([getArticlesDB(), getPipelineRunsDB()]);
+  await Promise.all([getArticlesDB(), getPipelineRunsDB(), getGraphDB()]);
   logger.info('[MongoDB] All database connections established');
 };

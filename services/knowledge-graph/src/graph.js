@@ -3,64 +3,80 @@ import GraphPersistence from './graph_persist.js';
 
 class KnowledgeGraph {
   constructor() {
-    this.nodes = new Map(); // articleId -> node data
-    this.edges = new Map(); // edgeId -> edge data
-    this.nodeEdges = new Map(); // articleId -> Set of edgeIds
+    this.nodes       = new Map();
+    this.edges       = new Map();
+    this.nodeEdges   = new Map();
     this.persistence = new GraphPersistence();
-    this.autoSave = true; // Auto-save after changes
+    this.autoSave    = true;
+
+    // Version tracking
+    this.currentVersion   = 0;
+    this.nodesSinceSnapshot = 0;
+    this.SNAPSHOT_INTERVAL  = 10; // auto-snapshot every N nodes added
   }
 
-  /**
-   * Load graph from disk on startup
-   */
+  // ─── Persistence ─────────────────────────────────────────────────────────────
+
   async loadFromDisk() {
-    const data = await this.persistence.loadGraph();
-    if (data) {
-      this.nodes = data.nodes;
-      this.edges = data.edges;
-      this.nodeEdges = data.nodeEdges;
-      logger.info('Graph restored from disk');
+    const graph = await this.persistence.loadGraph();
+    if (graph) {
+      this.nodes     = graph.nodes;
+      this.edges     = graph.edges;
+      this.nodeEdges = graph.nodeEdges;
+      this.currentVersion = await this.persistence._getLocalVersion();
+      logger.info(`Graph restored — v${this.currentVersion}, ${this.nodes.size} nodes, ${this.edges.size} edges`);
       return true;
     }
     return false;
   }
 
-  /**
-   * Save graph to disk
-   */
-  async saveToDisk() {
-    return await this.persistence.saveGraph(this.nodes, this.edges, this.nodeEdges);
+  async saveToDisk(options = {}) {
+    const result = await this.persistence.saveGraph(
+      this.nodes,
+      this.edges,
+      this.nodeEdges,
+      options
+    );
+    this.currentVersion     = result.version;
+    this.nodesSinceSnapshot = 0;
+    return result;
   }
+
+  // ─── Nodes ───────────────────────────────────────────────────────────────────
 
   addArticleNode(article) {
     try {
       const nodeData = {
-        id: article.id,
-        title: article.title,
-        url: article.url,
-        labels: article.labels || {},
-        addedAt: new Date().toISOString()
+        id:      article.id,
+        title:   article.title,
+        url:     article.url,
+        labels:  article.labels || {},
+        addedAt: new Date().toISOString(),
       };
 
       this.nodes.set(article.id, nodeData);
-      
+
       if (!this.nodeEdges.has(article.id)) {
         this.nodeEdges.set(article.id, new Set());
       }
 
-      logger.info(`Added node: ${article.id}`);
-      
-      // Auto-save after adding node
-      if (this.autoSave) {
-        this.saveToDisk().catch(err => logger.error('Auto-save failed:', err));
+      this.nodesSinceSnapshot++;
+      logger.info(`Added node: ${article.id} (${this.nodesSinceSnapshot} since last snapshot)`);
+
+      // Auto-snapshot at interval
+      if (this.autoSave && this.nodesSinceSnapshot >= this.SNAPSHOT_INTERVAL) {
+        this.saveToDisk({ triggerReason: 'scheduled' })
+          .catch(err => logger.error('Auto-snapshot failed:', err));
       }
-      
+
       return nodeData;
     } catch (error) {
       logger.error('Failed to add node:', error);
       throw error;
     }
   }
+
+  // ─── Edges ───────────────────────────────────────────────────────────────────
 
   addRelationship(fromId, toId, relationshipType, metadata = {}) {
     try {
@@ -69,34 +85,32 @@ class KnowledgeGraph {
       }
 
       const edgeId = `${fromId}-${relationshipType}-${toId}`;
-      
+
+      // Idempotent — don't duplicate existing edges
+      if (this.edges.has(edgeId)) return this.edges.get(edgeId);
+
       const edge = {
-        id: edgeId,
+        id:   edgeId,
         from: fromId,
-        to: toId,
+        to:   toId,
         type: relationshipType,
         ...metadata,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       };
 
       this.edges.set(edgeId, edge);
-      
       this.nodeEdges.get(fromId).add(edgeId);
       this.nodeEdges.get(toId).add(edgeId);
 
       logger.info(`Added relationship: ${edgeId}`);
-      
-      // Auto-save after adding relationship
-      if (this.autoSave) {
-        this.saveToDisk().catch(err => logger.error('Auto-save failed:', err));
-      }
-      
       return edge;
     } catch (error) {
       logger.error('Failed to add relationship:', error);
       throw error;
     }
   }
+
+  // ─── Queries ─────────────────────────────────────────────────────────────────
 
   getNode(articleId) {
     return this.nodes.get(articleId);
@@ -108,7 +122,7 @@ class KnowledgeGraph {
 
   getRelationships(articleId, relationshipType = null) {
     const edgeIds = this.nodeEdges.get(articleId) || new Set();
-    let relationships = [];
+    const relationships = [];
 
     for (const edgeId of edgeIds) {
       const edge = this.edges.get(edgeId);
@@ -130,7 +144,7 @@ class KnowledgeGraph {
       if (id === articleId) continue;
 
       const similarity = this.calculateSimilarity(sourceNode, node);
-      
+
       if (similarity > 0) {
         similarities.push({
           articleId: id,
@@ -143,7 +157,7 @@ class KnowledgeGraph {
           sharedKeywords: this.findSharedItems(
             sourceNode.labels.keywords || [],
             node.labels.keywords || []
-          )
+          ),
         });
       }
     }
@@ -156,40 +170,18 @@ class KnowledgeGraph {
   calculateSimilarity(node1, node2) {
     let score = 0;
 
-    // Check shared categories (weight: 3)
-    const sharedCategories = this.findSharedItems(
-      node1.labels.categories || [],
-      node2.labels.categories || []
-    );
+    const sharedCategories = this.findSharedItems(node1.labels.categories || [], node2.labels.categories || []);
     score += sharedCategories.length * 3;
 
-    // Check shared topics (weight: 2)
-    const sharedTopics = this.findSharedItems(
-      node1.labels.topics || [],
-      node2.labels.topics || []
-    );
+    const sharedTopics = this.findSharedItems(node1.labels.topics || [], node2.labels.topics || []);
     score += sharedTopics.length * 2;
 
-    // Check shared keywords (weight: 1)
-    const sharedKeywords = this.findSharedItems(
-      node1.labels.keywords || [],
-      node2.labels.keywords || []
-    );
+    const sharedKeywords = this.findSharedItems(node1.labels.keywords || [], node2.labels.keywords || []);
     score += sharedKeywords.length * 1;
 
-    // Check shared entities
     if (node1.labels.entities && node2.labels.entities) {
-      const sharedPeople = this.findSharedItems(
-        node1.labels.entities.people || [],
-        node2.labels.entities.people || []
-      );
-      score += sharedPeople.length * 2;
-
-      const sharedOrgs = this.findSharedItems(
-        node1.labels.entities.organizations || [],
-        node2.labels.entities.organizations || []
-      );
-      score += sharedOrgs.length * 2;
+      score += this.findSharedItems(node1.labels.entities.people || [], node2.labels.entities.people || []).length * 2;
+      score += this.findSharedItems(node1.labels.entities.organizations || [], node2.labels.entities.organizations || []).length * 2;
     }
 
     return score;
@@ -201,72 +193,63 @@ class KnowledgeGraph {
   }
 
   queryByTopic(topic, limit = 10) {
-    const results = [];
     const topicLower = topic.toLowerCase();
+    const results    = [];
 
     for (const node of this.nodes.values()) {
-      const topics = node.labels.topics || [];
+      const topics     = node.labels.topics     || [];
       const categories = node.labels.categories || [];
-      
-      const hasMatchingTopic = topics.some(t => 
-        t.toLowerCase().includes(topicLower)
-      );
-      const hasMatchingCategory = categories.some(c => 
-        c.toLowerCase().includes(topicLower)
-      );
+
+      const hasMatchingTopic    = topics.some(t => t.toLowerCase().includes(topicLower));
+      const hasMatchingCategory = categories.some(c => c.toLowerCase().includes(topicLower));
 
       if (hasMatchingTopic || hasMatchingCategory) {
         results.push({
-          articleId: node.id,
-          title: node.title,
-          url: node.url,
-          relevance: hasMatchingTopic ? 2 : 1,
-          matchedTopics: topics.filter(t => 
-            t.toLowerCase().includes(topicLower)
-          )
+          articleId:     node.id,
+          title:         node.title,
+          url:           node.url,
+          relevance:     hasMatchingTopic ? 2 : 1,
+          matchedTopics: topics.filter(t => t.toLowerCase().includes(topicLower)),
         });
       }
     }
 
-    return results
-      .sort((a, b) => b.relevance - a.relevance)
-      .slice(0, limit);
+    return results.sort((a, b) => b.relevance - a.relevance).slice(0, limit);
   }
 
   queryByKeyword(keyword, limit = 10) {
-    const results = [];
     const keywordLower = keyword.toLowerCase();
+    const results      = [];
 
     for (const node of this.nodes.values()) {
-      const keywords = node.labels.keywords || [];
-      
-      const matchingKeywords = keywords.filter(k => 
-        k.toLowerCase().includes(keywordLower)
-      );
+      const keywords        = node.labels.keywords || [];
+      const matchingKeywords = keywords.filter(k => k.toLowerCase().includes(keywordLower));
 
       if (matchingKeywords.length > 0) {
         results.push({
-          articleId: node.id,
-          title: node.title,
-          url: node.url,
-          matchCount: matchingKeywords.length,
-          matchedKeywords: matchingKeywords
+          articleId:       node.id,
+          title:           node.title,
+          url:             node.url,
+          matchCount:      matchingKeywords.length,
+          matchedKeywords: matchingKeywords,
         });
       }
     }
 
-    return results
-      .sort((a, b) => b.matchCount - a.matchCount)
-      .slice(0, limit);
+    return results.sort((a, b) => b.matchCount - a.matchCount).slice(0, limit);
   }
+
+  // ─── Stats ───────────────────────────────────────────────────────────────────
 
   getGraphStats() {
     return {
-      totalNodes: this.nodes.size,
-      totalEdges: this.edges.size,
+      totalNodes:        this.nodes.size,
+      totalEdges:        this.edges.size,
+      currentVersion:    this.currentVersion,
+      nodesSinceSnapshot: this.nodesSinceSnapshot,
       relationshipTypes: this.getRelationshipTypes(),
-      nodesByCategory: this.aggregateByField('categories'),
-      nodesBySentiment: this.aggregateByField('sentiment')
+      nodesByCategory:   this.aggregateByField('categories'),
+      nodesBySentiment:  this.aggregateByField('sentiment'),
     };
   }
 
@@ -280,21 +263,16 @@ class KnowledgeGraph {
 
   aggregateByField(field) {
     const aggregation = {};
-    
     for (const node of this.nodes.values()) {
       if (field === 'categories') {
-        const categories = node.labels.categories || [];
-        categories.forEach(cat => {
+        (node.labels.categories || []).forEach(cat => {
           aggregation[cat] = (aggregation[cat] || 0) + 1;
         });
       } else if (field === 'sentiment') {
         const sentiment = node.labels.sentiment;
-        if (sentiment) {
-          aggregation[sentiment] = (aggregation[sentiment] || 0) + 1;
-        }
+        if (sentiment) aggregation[sentiment] = (aggregation[sentiment] || 0) + 1;
       }
     }
-
     return aggregation;
   }
 
@@ -302,6 +280,8 @@ class KnowledgeGraph {
     this.nodes.clear();
     this.edges.clear();
     this.nodeEdges.clear();
+    this.currentVersion     = 0;
+    this.nodesSinceSnapshot = 0;
     logger.info('Graph cleared');
   }
 }

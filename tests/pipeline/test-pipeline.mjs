@@ -263,6 +263,7 @@ async function displayGraphStats() {
     const stats = response.data.stats;
 
     log('🕸️  Knowledge Graph Statistics:', 'cyan');
+    log(`   Version:     v${stats.currentVersion}`);
     log(`   Total Nodes: ${stats.totalNodes}`);
     log(`   Total Edges: ${stats.totalEdges}`);
 
@@ -394,8 +395,13 @@ async function main() {
   // Final sync — picks up anything that failed to graph individually
   log('\n🔄 Running final graph sync...', 'cyan');
   try {
-    const syncResponse = await axios.post(`${GRAPH_URL}/api/graph/sync`, {}, { timeout: 30000 });
+    const syncResponse = await axios.post(
+      `${GRAPH_URL}/api/graph/sync`,
+      { runId },  // ← add this
+      { timeout: 30000 }
+    );
     log(`   ✅ Sync complete — ${syncResponse.data.nodesAdded} nodes, ${syncResponse.data.relationshipsCreated} relationships`, 'green');
+    log(`   📸 Graph snapshot: v${syncResponse.data.snapshot.version} (checksum: ${syncResponse.data.snapshot.checksum.slice(0, 8)}...)`, 'green');
   } catch (err) {
     log(`   ⚠️  Final sync failed: ${err.message}`, 'yellow');
   }

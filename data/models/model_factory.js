@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
-import { getArticlesDB, getPipelineRunsDB } from '../connection.js';
+import { getArticlesDB, getPipelineRunsDB, getGraphDB } from '../connection.js';
 import dotenv from 'dotenv';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import crypto from 'crypto';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = dirname(__filename);
@@ -96,6 +97,48 @@ const pipelineRunSchema = new mongoose.Schema({
   }]
 }, { timestamps: true });
 
+
+// ─── Graph Snapshot Schema ────────────────────────────────────────────────────
+
+const graphSnapshotSchema = new mongoose.Schema({
+  version: {
+    type:     Number,
+    required: true,
+    unique:   true,
+  },
+  triggerReason: {
+    type: String,
+    enum: ['pipeline_run', 'manual', 'scheduled', 'startup_recovery'],
+    required: true,
+  },
+  runId: {
+    type:    String,
+    default: null,   // links back to pipelineRun.runId when triggered by a pipeline
+  },
+  stats: {
+    nodeCount: { type: Number, required: true },
+    edgeCount: { type: Number, required: true },
+  },
+  graph: {
+    nodes:     { type: mongoose.Schema.Types.Mixed, required: true }, // serialised Map entries
+    edges:     { type: mongoose.Schema.Types.Mixed, required: true },
+    nodeEdges: { type: mongoose.Schema.Types.Mixed, required: true },
+  },
+  checksum: {
+    type:     String,
+    required: true,   // SHA-256 of JSON.stringify(graph)
+  },
+  localPath: {
+    type:    String,
+    default: null,    // absolute path of the local graph.json at time of snapshot
+  },
+}, { timestamps: true });
+
+graphSnapshotSchema.index({ version: -1 });
+graphSnapshotSchema.index({ triggerReason: 1 });
+graphSnapshotSchema.index({ createdAt: -1 });
+
+
 // ─── Model Factory ────────────────────────────────────────────────────────────
 
 const ENV = process.env.NODE_ENV || 'test'; // 'test' | 'stage' | 'prod'
@@ -123,4 +166,16 @@ export const getLabelledArticleModel = async () => {
 export const getPipelineRunModel = async () => {
   const conn = await getPipelineRunsDB();
   return getModel(conn, 'PipelineRun', pipelineRunSchema, ENV); // collection = test | stage | prod
+};
+
+export const getGraphSnapshotModel = async () => {
+  const conn = await getGraphDB();   // see connection.js addition below
+  return getModel(conn, 'GraphSnapshot', graphSnapshotSchema, 'snapshots');
+};
+
+export const computeChecksum = (graphData) => {
+  return crypto
+    .createHash('sha256')
+    .update(JSON.stringify(graphData))
+    .digest('hex');
 };

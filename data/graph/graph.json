@@ -1,241 +1,647 @@
 {
-  "version": "1.0",
-  "savedAt": "2026-02-26T04:11:07.975Z",
-  "nodes": [
-    [
-      "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
-      {
-        "id": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
-        "title": "US releases 2025 list of critical minerals, featuring 10 additions",
-        "url": "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
-        "labels": {
-          "categories": [
-            "Economics",
-            "Government Policy"
-          ],
-          "topics": [
+  "version": 1,
+  "savedAt": "2026-02-26T12:28:52.725Z",
+  "checksum": "4eeee92d62f7a47025cd15e2d903ad5c74145933bf789cd9bff2fdbab7b034b2",
+  "stats": {
+    "nodeCount": 6,
+    "edgeCount": 12
+  },
+  "graph": {
+    "nodes": [
+      [
+        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        {
+          "id": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "title": "US releases 2025 list of critical minerals, featuring 10 additions",
+          "url": "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
+          "labels": {
+            "categories": [
+              "Economics",
+              "Government Policy"
+            ],
+            "topics": [
+              "critical minerals",
+              "supply chain security",
+              "economic disruption",
+              "rare earth elements"
+            ],
+            "entities": {
+              "people": [
+                "Antone Gonsalves"
+              ],
+              "organizations": [
+                "US Government",
+                "PT Vale Indonesia"
+              ],
+              "locations": [
+                "United States",
+                "Sorowako",
+                "South Sulawesi",
+                "Indonesia"
+              ],
+              "products": [
+                "critical minerals",
+                "rare earths",
+                "nickel"
+              ]
+            },
+            "keywords": [
+              "critical minerals",
+              "supply disruption",
+              "US economy",
+              "rare earths",
+              "mineral independence"
+            ],
+            "sentiment": "neutral",
+            "summary": "The US government has released its 2025 list of critical minerals, adding 10 new minerals to bring the total to 60 essential minerals including rare earths. The list identifies minerals that would impose the highest economic costs if their supplies were disrupted.",
+            "readingTime": "2",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-02-26T04:10:50.060Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T12:28:52.664Z"
+        }
+      ],
+      [
+        "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+        {
+          "id": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "title": "Securing Defense Supply Chains in a Rare Earth World",
+          "url": "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
+          "labels": {
+            "categories": [
+              "Defense & Security",
+              "Supply Chain Management"
+            ],
+            "topics": [
+              "rare earth elements",
+              "defense supply chains",
+              "DFARS regulations",
+              "friendshoring",
+              "recycling technology"
+            ],
+            "entities": {
+              "people": [
+                "Michael Tucker"
+              ],
+              "organizations": [
+                "HyProMag Recycling",
+                "OSC"
+              ],
+              "locations": [
+                "United States",
+                "China"
+              ],
+              "products": [
+                "rare earth elements"
+              ]
+            },
+            "keywords": [
+              "rare earth",
+              "defense supply chains",
+              "DFARS 2027",
+              "China monopoly",
+              "recycling"
+            ],
+            "sentiment": "neutral",
+            "summary": "The article discusses U.S. efforts to reduce dependence on China's rare earth monopoly through regulatory measures and allied partnerships. A comment highlights HyProMag Recycling's patented process that recovers over 97% of rare earths from feedstock.",
+            "readingTime": "1",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "labelledAt": "2026-02-26T04:10:59.718Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T12:28:52.664Z"
+        }
+      ],
+      [
+        "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "title": "Malaysia becomes a lynchpin in US-led effort to break China’s grip on rare earths",
+          "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
+          "labels": {
+            "categories": [
+              "economy",
+              "geopolitics"
+            ],
+            "topics": [
+              "rare earth elements",
+              "supply chain diversification",
+              "US-China trade relations",
+              "critical minerals"
+            ],
+            "entities": {
+              "people": [
+                "Xi Jinping",
+                "Donald Trump",
+                "Anthony Albanese",
+                "Lu Yutong"
+              ],
+              "organizations": [
+                "Caixin Global",
+                "Lynas Rare Earths Ltd.",
+                "US government departments"
+              ],
+              "locations": [
+                "Malaysia",
+                "China",
+                "United States",
+                "Australia",
+                "Kuantan",
+                "South Korea",
+                "Thailand",
+                "Japan",
+                "Central Asia"
+              ],
+              "products": [
+                "rare earth elements",
+                "microchips",
+                "lithium batteries"
+              ]
+            },
+            "keywords": [
+              "rare earths",
+              "supply chain",
+              "US-China trade",
+              "Malaysia",
+              "critical minerals"
+            ],
+            "sentiment": "neutral",
+            "summary": "Malaysia has become a key partner in the US-led effort to reduce dependence on China's dominance in rare earth elements processing and manufacturing. The US has signed multiple agreements worth billions to establish alternative supply chains, though China's market control remains challenging to break.",
+            "readingTime": "4",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "labelledAt": "2026-02-26T04:11:07.832Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T12:28:52.664Z"
+        }
+      ],
+      [
+        "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+        {
+          "id": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "title": "US releases 2025 list of critical minerals, featuring 10 additions",
+          "url": "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
+          "labels": {
+            "categories": [
+              "Economics",
+              "Government Policy"
+            ],
+            "topics": [
+              "Critical Minerals",
+              "Supply Chain Security",
+              "Economic Security"
+            ],
+            "entities": {
+              "people": [
+                "Antone Gonsalves"
+              ],
+              "organizations": [
+                "US Government",
+                "PT Vale Indonesia"
+              ],
+              "locations": [
+                "United States",
+                "Sorowako",
+                "South Sulawesi",
+                "Indonesia"
+              ],
+              "products": [
+                "Critical Minerals",
+                "Rare Earth Elements",
+                "Nickel"
+              ]
+            },
+            "keywords": [
+              "critical minerals",
+              "supply disruption",
+              "economic security",
+              "rare earths",
+              "mineral independence"
+            ],
+            "sentiment": "neutral",
+            "summary": "The US government has released its 2025 list of critical minerals, adding 10 new minerals to bring the total to 60 essential minerals including rare earths. The list identifies minerals that would impose the highest economic costs if supply chains were disrupted.",
+            "readingTime": "2",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-02-26T12:28:33.086Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T12:28:52.664Z"
+        }
+      ],
+      [
+        "a043b947-8ea6-40ef-98d0-5d907d410031",
+        {
+          "id": "a043b947-8ea6-40ef-98d0-5d907d410031",
+          "title": "Securing Defense Supply Chains in a Rare Earth World",
+          "url": "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
+          "labels": {
+            "categories": [
+              "Defense & Security",
+              "Supply Chain Management"
+            ],
+            "topics": [
+              "rare earth elements",
+              "defense supply chains",
+              "China trade relations",
+              "military procurement",
+              "recycling technology"
+            ],
+            "entities": {
+              "people": [
+                "Michael Tucker"
+              ],
+              "organizations": [
+                "HyProMag Recycling",
+                "DFARS",
+                "OSC"
+              ],
+              "locations": [
+                "United States",
+                "China"
+              ],
+              "products": [
+                "rare earth elements"
+              ]
+            },
+            "keywords": [
+              "rare earth",
+              "defense supply chains",
+              "DFARS 2027",
+              "China monopoly",
+              "friendshoring"
+            ],
+            "sentiment": "neutral",
+            "summary": "The article discusses U.S. efforts to reduce dependence on China's rare earth monopoly through regulatory measures and strategic partnerships. A comment highlights HyProMag Recycling's technology that recovers over 97% of rare earths through their patented processing system.",
+            "readingTime": "1",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "labelledAt": "2026-02-26T12:28:43.442Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T12:28:52.664Z"
+        }
+      ],
+      [
+        "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+        {
+          "id": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "title": "Malaysia becomes a lynchpin in US-led effort to break China’s grip on rare earths",
+          "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
+          "labels": {
+            "categories": [
+              "Economy",
+              "International Relations"
+            ],
+            "topics": [
+              "rare earth elements",
+              "supply chain diversification",
+              "US-China trade relations",
+              "critical minerals strategy"
+            ],
+            "entities": {
+              "people": [
+                "Xi Jinping",
+                "Donald Trump",
+                "Anthony Albanese",
+                "Lu Yutong"
+              ],
+              "organizations": [
+                "Lynas Rare Earths Ltd.",
+                "Caixin Global",
+                "US government",
+                "Trump administration"
+              ],
+              "locations": [
+                "Malaysia",
+                "China",
+                "United States",
+                "Kuantan",
+                "Australia",
+                "South Korea",
+                "Thailand",
+                "Japan",
+                "Central Asia"
+              ],
+              "products": [
+                "rare earth elements",
+                "microchips",
+                "lithium batteries",
+                "critical minerals"
+              ]
+            },
+            "keywords": [
+              "rare earths",
+              "supply chain",
+              "China dominance",
+              "Malaysia",
+              "US alliance"
+            ],
+            "sentiment": "neutral",
+            "summary": "Malaysia has become a key partner in the US-led effort to reduce dependence on China's rare earth supply chain, serving as a crucial processing hub. The US has accelerated efforts to build alternative supply chains through agreements with allies, though China's market dominance remains significant.",
+            "readingTime": "4",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "labelledAt": "2026-02-26T12:28:52.534Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T12:28:52.664Z"
+        }
+      ]
+    ],
+    "edges": [
+      [
+        "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        {
+          "id": "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "from": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "to": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
             "critical minerals",
-            "supply chain security",
-            "economic disruption",
             "rare earth elements"
           ],
-          "entities": {
-            "people": [
-              "Antone Gonsalves"
-            ],
-            "organizations": [
-              "US Government",
-              "PT Vale Indonesia"
-            ],
-            "locations": [
-              "United States",
-              "Sorowako",
-              "South Sulawesi",
-              "Indonesia"
-            ],
-            "products": [
-              "critical minerals",
-              "rare earths",
-              "nickel"
-            ]
-          },
-          "keywords": [
+          "sharedKeywords": [
+            "critical minerals",
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T04:11:07.975Z"
+        }
+      ],
+      [
+        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "from": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "rare earth elements",
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "rare earths",
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T04:11:07.975Z"
+        }
+      ],
+      [
+        "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        {
+          "id": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "from": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "to": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "type": "RELATES_TO",
+          "strength": 20,
+          "sharedTopics": [
+            "critical minerals",
+            "supply chain security"
+          ],
+          "sharedKeywords": [
             "critical minerals",
             "supply disruption",
-            "US economy",
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T12:28:33.397Z"
+        }
+      ],
+      [
+        "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "from": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "type": "RELATES_TO",
+          "strength": 4,
+          "sharedTopics": [
+            "critical minerals"
+          ],
+          "sharedKeywords": [
             "rare earths",
-            "mineral independence"
+            "critical minerals"
           ],
-          "sentiment": "neutral",
-          "summary": "The US government has released its 2025 list of critical minerals, adding 10 new minerals to bring the total to 60 essential minerals including rare earths. The list identifies minerals that would impose the highest economic costs if their supplies were disrupted.",
-          "readingTime": "2",
-          "complexity": "intermediate",
-          "contentType": "news",
-          "labelledAt": "2026-02-26T04:10:50.060Z",
-          "modelUsed": "claude-sonnet-4-20250514"
-        },
-        "addedAt": "2026-02-26T04:11:07.975Z"
-      }
-    ],
-    [
-      "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
-      {
-        "id": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
-        "title": "Securing Defense Supply Chains in a Rare Earth World",
-        "url": "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
-        "labels": {
-          "categories": [
-            "Defense & Security",
-            "Supply Chain Management"
-          ],
-          "topics": [
+          "createdAt": "2026-02-26T12:28:33.397Z"
+        }
+      ],
+      [
+        "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+        {
+          "id": "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "from": "a043b947-8ea6-40ef-98d0-5d907d410031",
+          "to": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "type": "RELATES_TO",
+          "strength": 22,
+          "sharedTopics": [
             "rare earth elements",
             "defense supply chains",
-            "DFARS regulations",
-            "friendshoring",
             "recycling technology"
           ],
-          "entities": {
-            "people": [
-              "Michael Tucker"
-            ],
-            "organizations": [
-              "HyProMag Recycling",
-              "OSC"
-            ],
-            "locations": [
-              "United States",
-              "China"
-            ],
-            "products": [
-              "rare earth elements"
-            ]
-          },
-          "keywords": [
+          "sharedKeywords": [
             "rare earth",
             "defense supply chains",
-            "DFARS 2027",
-            "China monopoly",
-            "recycling"
+            "DFARS 2027"
           ],
-          "sentiment": "neutral",
-          "summary": "The article discusses U.S. efforts to reduce dependence on China's rare earth monopoly through regulatory measures and allied partnerships. A comment highlights HyProMag Recycling's patented process that recovers over 97% of rare earths from feedstock.",
-          "readingTime": "1",
-          "complexity": "intermediate",
-          "contentType": "analysis",
-          "labelledAt": "2026-02-26T04:10:59.718Z",
-          "modelUsed": "claude-sonnet-4-20250514"
-        },
-        "addedAt": "2026-02-26T04:11:07.975Z"
-      }
-    ],
-    [
-      "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
-      {
-        "id": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
-        "title": "Malaysia becomes a lynchpin in US-led effort to break China’s grip on rare earths",
-        "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
-        "labels": {
-          "categories": [
-            "economy",
-            "geopolitics"
-          ],
-          "topics": [
+          "createdAt": "2026-02-26T12:28:43.486Z"
+        }
+      ],
+      [
+        "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "from": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "type": "RELATES_TO",
+          "strength": 24,
+          "sharedTopics": [
             "rare earth elements",
             "supply chain diversification",
-            "US-China trade relations",
-            "critical minerals"
+            "US-China trade relations"
           ],
-          "entities": {
-            "people": [
-              "Xi Jinping",
-              "Donald Trump",
-              "Anthony Albanese",
-              "Lu Yutong"
-            ],
-            "organizations": [
-              "Caixin Global",
-              "Lynas Rare Earths Ltd.",
-              "US government departments"
-            ],
-            "locations": [
-              "Malaysia",
-              "China",
-              "United States",
-              "Australia",
-              "Kuantan",
-              "South Korea",
-              "Thailand",
-              "Japan",
-              "Central Asia"
-            ],
-            "products": [
-              "rare earth elements",
-              "microchips",
-              "lithium batteries"
-            ]
-          },
-          "keywords": [
+          "sharedKeywords": [
             "rare earths",
             "supply chain",
-            "US-China trade",
-            "Malaysia",
-            "critical minerals"
+            "Malaysia"
           ],
-          "sentiment": "neutral",
-          "summary": "Malaysia has become a key partner in the US-led effort to reduce dependence on China's dominance in rare earth elements processing and manufacturing. The US has signed multiple agreements worth billions to establish alternative supply chains, though China's market control remains challenging to break.",
-          "readingTime": "4",
-          "complexity": "intermediate",
-          "contentType": "analysis",
-          "labelledAt": "2026-02-26T04:11:07.832Z",
-          "modelUsed": "claude-sonnet-4-20250514"
-        },
-        "addedAt": "2026-02-26T04:11:07.974Z"
-      }
-    ]
-  ],
-  "edges": [
-    [
-      "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
-      {
-        "id": "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
-        "from": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
-        "to": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
-        "type": "RELATES_TO",
-        "strength": 6,
-        "sharedTopics": [
-          "critical minerals",
-          "rare earth elements"
-        ],
-        "sharedKeywords": [
-          "critical minerals",
-          "rare earths"
-        ],
-        "createdAt": "2026-02-26T04:11:07.975Z"
-      }
-    ],
-    [
-      "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
-      {
-        "id": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
-        "from": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
-        "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
-        "type": "RELATES_TO",
-        "strength": 6,
-        "sharedTopics": [
-          "rare earth elements",
-          "critical minerals"
-        ],
-        "sharedKeywords": [
-          "rare earths",
-          "critical minerals"
-        ],
-        "createdAt": "2026-02-26T04:11:07.975Z"
-      }
-    ]
-  ],
-  "nodeEdges": [
-    [
-      "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "createdAt": "2026-02-26T12:28:52.587Z"
+        }
+      ],
       [
-        "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
-        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f"
+        "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        {
+          "id": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "from": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "to": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T12:28:52.587Z"
+        }
+      ],
+      [
+        "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+        {
+          "id": "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "from": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "to": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "type": "RELATES_TO",
+          "strength": 24,
+          "sharedTopics": [
+            "rare earth elements",
+            "supply chain diversification",
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earths",
+            "supply chain",
+            "Malaysia"
+          ],
+          "createdAt": "2026-02-26T12:28:52.665Z"
+        }
+      ],
+      [
+        "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+        {
+          "id": "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "from": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "to": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "type": "RELATES_TO",
+          "strength": 4,
+          "sharedTopics": [
+            "Critical Minerals"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T12:28:52.665Z"
+        }
+      ],
+      [
+        "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+        {
+          "id": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "from": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "to": "a043b947-8ea6-40ef-98d0-5d907d410031",
+          "type": "RELATES_TO",
+          "strength": 22,
+          "sharedTopics": [
+            "rare earth elements",
+            "defense supply chains",
+            "recycling technology"
+          ],
+          "sharedKeywords": [
+            "rare earth",
+            "defense supply chains",
+            "DFARS 2027"
+          ],
+          "createdAt": "2026-02-26T12:28:52.665Z"
+        }
+      ],
+      [
+        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+        {
+          "id": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "from": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "to": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "type": "RELATES_TO",
+          "strength": 20,
+          "sharedTopics": [
+            "Critical Minerals",
+            "Supply Chain Security"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "supply disruption",
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T12:28:52.665Z"
+        }
+      ],
+      [
+        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+        {
+          "id": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "from": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "to": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T12:28:52.665Z"
+        }
       ]
     ],
-    [
-      "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
-      []
-    ],
-    [
-      "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+    "nodeEdges": [
       [
-        "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
-        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f"
+        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        [
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a"
+        ]
+      ],
+      [
+        "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+        [
+          "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031"
+        ]
+      ],
+      [
+        "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        [
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7"
+        ]
+      ],
+      [
+        "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+        [
+          "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7"
+        ]
+      ],
+      [
+        "a043b947-8ea6-40ef-98d0-5d907d410031",
+        [
+          "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031"
+        ]
+      ],
+      [
+        "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+        [
+          "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a"
+        ]
       ]
     ]
-  ],
-  "stats": {
-    "nodeCount": 3,
-    "edgeCount": 2
   }
 }

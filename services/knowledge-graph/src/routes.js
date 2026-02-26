@@ -7,84 +7,74 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-// Load environment variables (needed for ESM where imports are hoisted)
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname  = dirname(__filename);
 dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
-const router = express.Router();
-const graph = new KnowledgeGraph();
-
+const router      = express.Router();
+const graph       = new KnowledgeGraph();
 const LABELLER_URL = process.env.LABELLER_URL || 'http://localhost:3002';
 
-// Load graph from disk on startup
+// ─── Startup: parity check then load ─────────────────────────────────────────
+
 graph.loadFromDisk().then(loaded => {
   if (loaded) {
-    logger.info('Graph loaded from previous session');
+    logger.info(`Graph loaded — v${graph.currentVersion}, ${graph.nodes.size} nodes`);
   } else {
     logger.info('Starting with empty graph');
   }
-}).catch(err => {
-  logger.error('Failed to load graph:', err);
-});
+}).catch(err => logger.error('Failed to load graph:', err));
 
-// POST /api/graph/add - Add article to graph
+// ─── Article Management ───────────────────────────────────────────────────────
+
 router.post('/graph/add/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
-    logger.info(`Adding article ${id} to graph`);
-    
-    // Fetch tagged article from labeller service
     const response = await axios.get(`${LABELLER_URL}/api/tagged/${id}`);
-    const article = response.data.taggedArticle;
+    const article  = response.data.taggedArticle;
 
-    // Add node to graph
-    const node = graph.addArticleNode(article);
-
-    // Find and create relationships with similar articles
+    const node            = graph.addArticleNode(article);
     const similarArticles = graph.findSimilarArticles(id);
-    
+
     for (const similar of similarArticles) {
-      if (similar.similarity > 3) { // Threshold for relationship
+      if (similar.similarity > 3) {
         graph.addRelationship(id, similar.articleId, 'RELATES_TO', {
-          strength: similar.similarity,
-          sharedTopics: similar.sharedTopics,
-          sharedKeywords: similar.sharedKeywords.slice(0, 3)
+          strength:       similar.similarity,
+          sharedTopics:   similar.sharedTopics,
+          sharedKeywords: similar.sharedKeywords.slice(0, 3),
         });
       }
     }
 
     res.json({
-      success: true,
+      success:              true,
       node,
       relationshipsCreated: similarArticles.filter(s => s.similarity > 3).length,
-      message: 'Article added to knowledge graph'
+      graphVersion:         graph.currentVersion,
+      message:              'Article added to knowledge graph',
     });
   } catch (error) {
     logger.error('Add to graph error:', error);
-    
     if (error.response?.status === 404) {
       return res.status(404).json({ error: 'Tagged article not found' });
     }
-    
     res.status(500).json({ error: error.message });
   }
 });
 
-// POST /api/graph/sync - Sync all tagged articles to graph
 router.post('/graph/sync', async (req, res) => {
   try {
+    const { runId = null } = req.body;
+
     logger.info('Syncing all articles to graph');
-    
-    // Fetch all tagged articles
+
     const response = await axios.get(`${LABELLER_URL}/api/tagged?limit=1000`);
     const articles = response.data.taggedArticles;
 
-    let nodesAdded = 0;
+    let nodesAdded           = 0;
     let relationshipsCreated = 0;
 
-    // Add all nodes first
     for (const article of articles) {
       try {
         graph.addArticleNode(article);
@@ -94,31 +84,37 @@ router.post('/graph/sync', async (req, res) => {
       }
     }
 
-    // Then create relationships
     for (const article of articles) {
       const similarArticles = graph.findSimilarArticles(article.id);
-      
       for (const similar of similarArticles) {
         if (similar.similarity > 3) {
           try {
             graph.addRelationship(article.id, similar.articleId, 'RELATES_TO', {
-              strength: similar.similarity,
-              sharedTopics: similar.sharedTopics,
-              sharedKeywords: similar.sharedKeywords.slice(0, 3)
+              strength:       similar.similarity,
+              sharedTopics:   similar.sharedTopics,
+              sharedKeywords: similar.sharedKeywords.slice(0, 3),
             });
             relationshipsCreated++;
-          } catch (error) {
-            // Relationship might already exist, ignore
+          } catch {
+            // edge already exists — idempotent
           }
         }
       }
     }
 
+    // Snapshot after sync
+    const snapshot = await graph.saveToDisk({ triggerReason: 'pipeline_run', runId });
+
     res.json({
       success: true,
       nodesAdded,
       relationshipsCreated,
-      message: 'Graph synchronized'
+      snapshot: {
+        version:  snapshot.version,
+        checksum: snapshot.checksum,
+        stats:    snapshot.stats,
+      },
+      message: 'Graph synchronised and snapshotted',
     });
   } catch (error) {
     logger.error('Sync error:', error);
@@ -126,215 +122,219 @@ router.post('/graph/sync', async (req, res) => {
   }
 });
 
-// GET /api/graph/similar/:id - Find similar articles
+// ─── Querying ─────────────────────────────────────────────────────────────────
+
 router.get('/graph/similar/:id', async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id }       = req.params;
     const { limit = 5 } = req.query;
 
-    const similarArticles = graph.findSimilarArticles(id, parseInt(limit));
-
     res.json({
-      success: true,
+      success:   true,
       articleId: id,
-      similar: similarArticles
+      similar:   graph.findSimilarArticles(id, parseInt(limit)),
     });
   } catch (error) {
-    logger.error('Find similar error:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-// GET /api/graph/relationships/:id - Get article relationships
 router.get('/graph/relationships/:id', async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id }   = req.params;
     const { type } = req.query;
-
     const relationships = graph.getRelationships(id, type || null);
 
     res.json({
-      success: true,
-      articleId: id,
+      success:           true,
+      articleId:         id,
       relationshipCount: relationships.length,
-      relationships
+      relationships,
     });
   } catch (error) {
-    logger.error('Get relationships error:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-// GET /api/graph/query/topic - Query by topic
 router.get('/graph/query/topic', async (req, res) => {
   try {
     const { q, limit = 10 } = req.query;
-
-    if (!q) {
-      return res.status(400).json({ error: 'Query parameter "q" is required' });
-    }
-
-    const results = graph.queryByTopic(q, parseInt(limit));
+    if (!q) return res.status(400).json({ error: 'Query parameter "q" is required' });
 
     res.json({
-      success: true,
-      query: q,
-      resultCount: results.length,
-      results
+      success:     true,
+      query:       q,
+      resultCount: graph.queryByTopic(q, parseInt(limit)).length,
+      results:     graph.queryByTopic(q, parseInt(limit)),
     });
   } catch (error) {
-    logger.error('Query by topic error:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-// GET /api/graph/query/keyword - Query by keyword
 router.get('/graph/query/keyword', async (req, res) => {
   try {
     const { q, limit = 10 } = req.query;
-
-    if (!q) {
-      return res.status(400).json({ error: 'Query parameter "q" is required' });
-    }
-
-    const results = graph.queryByKeyword(q, parseInt(limit));
+    if (!q) return res.status(400).json({ error: 'Query parameter "q" is required' });
 
     res.json({
-      success: true,
-      query: q,
-      resultCount: results.length,
-      results
+      success:     true,
+      query:       q,
+      resultCount: graph.queryByKeyword(q, parseInt(limit)).length,
+      results:     graph.queryByKeyword(q, parseInt(limit)),
     });
   } catch (error) {
-    logger.error('Query by keyword error:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-// GET /api/graph/stats - Get graph statistics
-router.get('/graph/stats', async (req, res) => {
-  try {
-    const stats = graph.getGraphStats();
-
-    res.json({
-      success: true,
-      stats
-    });
-  } catch (error) {
-    logger.error('Get stats error:', error);
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// GET /api/graph/nodes - Get all nodes
 router.get('/graph/nodes', async (req, res) => {
   try {
     const nodes = graph.getAllNodes();
+    res.json({ success: true, nodeCount: nodes.length, nodes });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.get('/graph/stats', async (req, res) => {
+  try {
+    res.json({ success: true, stats: graph.getGraphStats() });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// ─── Version & Snapshot Management ───────────────────────────────────────────
+
+// GET /api/graph/versions - list snapshot history
+router.get('/graph/versions', async (req, res) => {
+  try {
+    const { limit = 20 } = req.query;
+    const history = await graph.persistence.getVersionHistory(parseInt(limit));
+
+    res.json({
+      success:        true,
+      currentVersion: graph.currentVersion,
+      history,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// GET /api/graph/parity - check local vs MongoDB parity
+router.get('/graph/parity', async (req, res) => {
+  try {
+    const parity = await graph.persistence.checkParity();
+    res.json({ success: true, parity });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// POST /api/graph/snapshot - manually trigger a snapshot
+router.post('/graph/snapshot', async (req, res) => {
+  try {
+    const { reason = 'manual' } = req.body;
+
+    const result = await graph.saveToDisk({ triggerReason: reason });
+
+    res.json({
+      success:  true,
+      version:  result.version,
+      checksum: result.checksum,
+      stats:    result.stats,
+      message:  `Snapshot v${result.version} saved`,
+    });
+  } catch (error) {
+    logger.error('Snapshot error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// POST /api/graph/rollback/:version - roll back to a previous version
+router.post('/graph/rollback/:version', async (req, res) => {
+  try {
+    const version = parseInt(req.params.version);
+
+    if (isNaN(version) || version < 1) {
+      return res.status(400).json({ error: 'Invalid version number' });
+    }
+
+    const restoredGraph = await graph.persistence.rollbackToVersion(version);
+
+    // Apply restored graph to in-memory state
+    graph.nodes     = restoredGraph.nodes;
+    graph.edges     = restoredGraph.edges;
+    graph.nodeEdges = restoredGraph.nodeEdges;
+    graph.currentVersion     = version;
+    graph.nodesSinceSnapshot = 0;
 
     res.json({
       success: true,
-      nodeCount: nodes.length,
-      nodes
+      version,
+      stats: graph.getGraphStats(),
+      message: `Rolled back to v${version}`,
     });
   } catch (error) {
-    logger.error('Get nodes error:', error);
+    logger.error('Rollback error:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-// POST /api/graph/save - Manually save graph to disk
-router.post('/graph/save', async (req, res) => {
-  try {
-    const success = await graph.saveToDisk();
-    
-    if (success) {
-      const info = await graph.persistence.getGraphInfo();
-      res.json({
-        success: true,
-        message: 'Graph saved to disk',
-        graphInfo: info
-      });
-    } else {
-      res.status(500).json({ error: 'Failed to save graph' });
-    }
-  } catch (error) {
-    logger.error('Save graph error:', error);
-    res.status(500).json({ error: error.message });
-  }
-});
+// ─── Maintenance ──────────────────────────────────────────────────────────────
 
-// POST /api/graph/load - Manually load graph from disk
-router.post('/graph/load', async (req, res) => {
-  try {
-    const loaded = await graph.loadFromDisk();
-    
-    if (loaded) {
-      const stats = graph.getGraphStats();
-      res.json({
-        success: true,
-        message: 'Graph loaded from disk',
-        stats
-      });
-    } else {
-      res.json({
-        success: false,
-        message: 'No saved graph found'
-      });
-    }
-  } catch (error) {
-    logger.error('Load graph error:', error);
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// GET /api/graph/info - Get saved graph file info
 router.get('/graph/info', async (req, res) => {
   try {
-    const info = await graph.persistence.getGraphInfo();
-    res.json({
-      success: true,
-      graphInfo: info
-    });
+    res.json({ success: true, graphInfo: await graph.persistence.getGraphInfo() });
   } catch (error) {
-    logger.error('Get graph info error:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-// POST /api/graph/backup - Create backup of current graph
 router.post('/graph/backup', async (req, res) => {
   try {
     const result = await graph.persistence.backupGraph();
-    
     if (result.success) {
-      res.json({
-        success: true,
-        message: 'Graph backed up',
-        backupFile: result.backupFile
-      });
+      res.json({ success: true, message: 'Graph backed up', backupFile: result.backupFile });
     } else {
-      res.status(500).json({ 
-        success: false,
-        error: result.message || result.error 
-      });
+      res.status(500).json({ success: false, error: result.message || result.error });
     }
   } catch (error) {
-    logger.error('Backup graph error:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-// DELETE /api/graph/clear - Clear entire graph
+// Keep /graph/save as alias for /graph/snapshot for backwards compatibility
+router.post('/graph/save', async (req, res) => {
+  try {
+    const result = await graph.saveToDisk({ triggerReason: 'manual' });
+    const info   = await graph.persistence.getGraphInfo();
+    res.json({ success: true, message: 'Graph saved', version: result.version, graphInfo: info });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.post('/graph/load', async (req, res) => {
+  try {
+    const loaded = await graph.loadFromDisk();
+    if (loaded) {
+      res.json({ success: true, message: 'Graph loaded', stats: graph.getGraphStats() });
+    } else {
+      res.json({ success: false, message: 'No saved graph found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 router.delete('/graph/clear', async (req, res) => {
   try {
     graph.clear();
-
-    res.json({
-      success: true,
-      message: 'Graph cleared'
-    });
+    res.json({ success: true, message: 'Graph cleared' });
   } catch (error) {
-    logger.error('Clear graph error:', error);
     res.status(500).json({ error: error.message });
   }
 });
