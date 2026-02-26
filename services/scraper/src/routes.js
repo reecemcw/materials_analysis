@@ -28,7 +28,7 @@ router.post('/scrape', async (req, res) => {
         ...result.article
       };
 
-      await storage.saveArticle(article);
+      await storage.saveRawArticle(article);
 
       res.json({
         success: true,
@@ -69,7 +69,7 @@ router.post('/scrape/batch', async (req, res) => {
           id: articleId,
           ...result.article
         };
-        await storage.saveArticle(article);
+        await storage.saveRawArticle(article);
         savedArticles.push(article);
       }
     }

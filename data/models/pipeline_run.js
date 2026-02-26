@@ -1,4 +1,3 @@
-// src/db/models/pipelineRun.js
 import mongoose from 'mongoose';
 
 const stageSchema = new mongoose.Schema({

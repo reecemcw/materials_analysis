@@ -4,10 +4,20 @@ import axios from 'axios';
 import AILabeller from './labeller.js';
 import Storage from '../../../utils/storage.js';
 import logger from '../../../utils/logger.js';
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// Load environment variables (needed for ESM where imports are hoisted)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
 const labeller = new AILabeller();
 const storage = new Storage();
 
+const LABELLER_PORT = process.env.LABELLER_PORT || 3002;
 const SCRAPER_URL = process.env.SCRAPER_URL || 'http://localhost:3001';
 
 // POST /api/label/:id - Label a single article
@@ -30,8 +40,8 @@ router.post('/label/:id', async (req, res) => {
       labels
     };
 
-    // Save tagged article
-    await storage.saveTaggedArticle(taggedArticle);
+    // Save labelled article
+    await storage.saveLabelledArticle(taggedArticle);
 
     res.json({
       success: true,
@@ -84,7 +94,7 @@ router.post('/label/batch', async (req, res) => {
           ...article,
           labels: result.labels
         };
-        await storage.saveTaggedArticle(taggedArticle);
+        await storage.saveLabelledArticle(taggedArticle);
         savedArticles.push(taggedArticle);
       }
     }

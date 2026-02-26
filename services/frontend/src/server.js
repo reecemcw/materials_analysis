@@ -17,6 +17,7 @@ dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
 const app = express();
 const PORT = process.env.FRONTEND_PORT || 3000;
+console.log('PORT resolving to:', process.env.FRONTEND_PORT, '| .env path:', path.join(__dirname, '../../../.env'));
 
 // Middleware
 app.use(express.json());

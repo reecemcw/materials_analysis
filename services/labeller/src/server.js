@@ -6,7 +6,7 @@ import express, { json } from 'express';
 import cors from 'cors';
 import labellerRoutes from './routes.js';
 import logger from '../../../utils/logger.js';
-import { connectAllDatabases } from '../../../data/connection.js';
+import { getArticlesDB } from '../../../data/connection.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -16,6 +16,7 @@ dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
 const app = express();
 const PORT = process.env.LABELLER_PORT || 3002;
+console.log('PORT resolving to:', process.env.LABELLER_PORT, '| .env path:', path.join(__dirname, '../../../.env'));
 
 // Middleware
 app.use(cors());
@@ -49,7 +50,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-connectAllDatabases().then(() => {
+getArticlesDB().then(() => {
   app.listen(PORT, () => {
     logger.info(`Labeller service running on port ${PORT}`);
     if (!process.env.ANTHROPIC_API_KEY) {

@@ -1,5 +1,5 @@
 {
-  "id": "3724bd86-a6bd-47a1-bd22-b57d57b4f26c",
+  "id": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
   "url": "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
   "title": "US releases 2025 list of critical minerals, featuring 10 additions",
   "author": "Antone GonsalvesAntone GonsalvesAntone Gonsalves",
@@ -8,50 +8,5 @@
   "excerpt": "The report lists 60 essential minerals, including rare earths, that would impose the highest cost to the U.S. economy if supplies were disrupted.",
   "imageUrl": "https://imgproxy.divecdn.com/czWwpm8a2dRvKb08hq41ZDmpofYZMO3KkbS8wZvG1wY/g:ce/rs:fit:770:435/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9HZXR0eUltYWdlcy0xNTk1NzQxMTc2LmpwZw==.webp",
   "tags": [],
-  "scrapedAt": "2026-02-26T02:05:20.073Z",
-  "labels": {
-    "categories": [
-      "Economics",
-      "Government Policy"
-    ],
-    "topics": [
-      "Critical Minerals",
-      "Supply Chain Security",
-      "National Security",
-      "Trade Policy"
-    ],
-    "entities": {
-      "people": [
-        "Antone Gonsalves"
-      ],
-      "organizations": [
-        "PT Vale Indonesia"
-      ],
-      "locations": [
-        "United States",
-        "Sorowako",
-        "South Sulawesi",
-        "Indonesia"
-      ],
-      "products": [
-        "Critical Minerals",
-        "Rare Earth Elements",
-        "Nickel"
-      ]
-    },
-    "keywords": [
-      "critical minerals",
-      "supply chain",
-      "rare earths",
-      "economic security",
-      "mineral independence"
-    ],
-    "sentiment": "neutral",
-    "summary": "The US government has released its 2025 list of critical minerals, adding 10 new minerals to bring the total to 60 essential minerals. These minerals, including rare earths, are considered crucial because their supply disruption would impose the highest economic costs to the US economy.",
-    "readingTime": "2",
-    "complexity": "intermediate",
-    "contentType": "news",
-    "labelledAt": "2026-02-26T02:05:25.792Z",
-    "modelUsed": "claude-sonnet-4-20250514"
-  }
+  "scrapedAt": "2026-02-26T03:35:39.514Z"
 }

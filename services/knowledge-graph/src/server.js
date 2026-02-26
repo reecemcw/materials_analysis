@@ -14,7 +14,8 @@ const __dirname = dirname(__filename);
 dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
 const app = express();
-const PORT = process.env.GRAPH_PORT || 3003;
+const PORT = process.env.KG_PORT || 3003;
+console.log('PORT resolving to:', process.env.KG_PORT, '| .env path:', path.join(__dirname, '../../../.env'));
 
 // Middleware
 app.use(cors());

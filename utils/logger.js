@@ -7,7 +7,7 @@ const logger = winston.createLogger({
     winston.format.errors({ stack: true }),
     winston.format.json()
   ),
-  defaultMeta: { service: 'knowledge-graph' },
+  defaultMeta: { service: process.env.SERVICE_NAME || 'unknown' },
   transports: [
     new winston.transports.Console({
       format: winston.format.combine(

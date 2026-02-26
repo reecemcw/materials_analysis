@@ -2,6 +2,15 @@ import express from 'express';
 import axios from 'axios';
 import KnowledgeGraph from './graph.js';
 import logger from '../../../utils/logger.js';
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// Load environment variables (needed for ESM where imports are hoisted)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
 const router = express.Router();
 const graph = new KnowledgeGraph();

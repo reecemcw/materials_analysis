@@ -1,5 +1,5 @@
 {
-  "id": "b2bae56b-52d9-4c30-977a-c997e106daca",
+  "id": "090cd307-4f75-4e2d-9ce9-55161357e45b",
   "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
   "title": "Malaysia becomes a lynchpin in US-led effort to break China’s grip on rare earths",
   "author": null,
@@ -10,60 +10,5 @@
   "tags": [
     "EconomyRare earthsMineral and metal resourcesMalaysiaAustraliaChina-US competitionCaixin"
   ],
-  "scrapedAt": "2026-02-26T01:56:19.939Z",
-  "labels": {
-    "categories": [
-      "Economics",
-      "International Relations"
-    ],
-    "topics": [
-      "Rare earth elements",
-      "US-China trade relations",
-      "Supply chain diversification",
-      "Critical minerals strategy"
-    ],
-    "entities": {
-      "people": [
-        "Xi Jinping",
-        "Donald Trump",
-        "Anthony Albanese",
-        "Lu Yutong"
-      ],
-      "organizations": [
-        "Lynas Rare Earths Ltd.",
-        "Caixin Global",
-        "US government"
-      ],
-      "locations": [
-        "Malaysia",
-        "China",
-        "United States",
-        "Kuantan",
-        "Australia",
-        "South Korea",
-        "Thailand",
-        "Japan",
-        "Central Asia"
-      ],
-      "products": [
-        "Rare earth elements",
-        "Lithium batteries",
-        "Microchips"
-      ]
-    },
-    "keywords": [
-      "rare earths",
-      "supply chain",
-      "trade war",
-      "critical minerals",
-      "Malaysia"
-    ],
-    "sentiment": "neutral",
-    "summary": "Malaysia has become a key player in the US-led initiative to reduce dependence on China's dominance in rare earth element processing and manufacturing. The US has been accelerating efforts to build alternative supply chains through strategic partnerships with allies, though China's market control remains formidable.",
-    "readingTime": "4",
-    "complexity": "intermediate",
-    "contentType": "news",
-    "labelledAt": "2026-02-26T01:56:25.645Z",
-    "modelUsed": "claude-sonnet-4-20250514"
-  }
+  "scrapedAt": "2026-02-26T03:35:57.077Z"
 }

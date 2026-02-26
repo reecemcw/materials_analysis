@@ -45,21 +45,21 @@ class Storage {
 
   // ─── Raw Articles ─────────────────────────────────────────────────────────
 
-  async saveArticle(article) {
+  async saveRawArticle(article) {
     const [fileResult, mongoResult] = await Promise.allSettled([
-      this._saveToFile('raw', article),
-      this._saveRawToMongo(article),
+        this._saveRawToFile(article),
+        this._saveRawToMongo(article),
     ]);
 
     if (fileResult.status  === 'rejected') logger.error('[Raw] File write failed:', article.id, fileResult.reason);
     if (mongoResult.status === 'rejected') logger.error('[Raw] MongoDB write failed:', article.id, mongoResult.reason);
 
     if (fileResult.status === 'rejected' && mongoResult.status === 'rejected') {
-      throw new Error(`Failed to save article ${article.id} to any storage layer`);
+        throw new Error(`Failed to save raw article ${article.id} to any storage layer`);
     }
 
     return article;
-  }
+    }
 
   async getArticle(id) {
     try {
@@ -96,11 +96,23 @@ class Storage {
     }
   }
 
-  // ─── Tagged Articles ──────────────────────────────────────────────────────
+  // ─── Labelled Articles ──────────────────────────────────────────────────────
 
-  async saveTaggedArticle(article) {
-    return this._saveToFile('tagged', article);
-  }
+	async saveLabelledArticle(article) {
+		const [fileResult, mongoResult] = await Promise.allSettled([
+			this._saveLabelledToFile(article),
+			this._saveLabelledToMongo(article),
+		]);
+
+		if (fileResult.status  === 'rejected') logger.error('[Labelled] File write failed:', article.id, fileResult.reason);
+		if (mongoResult.status === 'rejected') logger.error('[Labelled] MongoDB write failed:', article.id, mongoResult.reason);
+
+		if (fileResult.status === 'rejected' && mongoResult.status === 'rejected') {
+			throw new Error(`Failed to save labelled article ${article.id} to any storage layer`);
+		}
+
+		return article;
+	}
 
   async getTaggedArticle(id) {
     return this._readFromFile('tagged', id).catch(err => {
@@ -125,14 +137,21 @@ class Storage {
 
   // ─── Shared File Helpers ──────────────────────────────────────────────────
 
-  async _saveToFile(type, article) {
-    const filePath = this._getFilePath(type, article.id);
-    await fs.writeFile(filePath, JSON.stringify(article, null, 2), 'utf8');
-    logger.info(`[File][${type}] Saved article: ${article.id}`);
-    return article;
-  }
+	async _saveRawToFile(article) {
+		const filePath = this._getFilePath('raw', article.id);
+		await fs.writeFile(filePath, JSON.stringify(article, null, 2), 'utf8');
+		logger.info(`[File][raw] Saved article: ${article.id}`);
+		return article;
+	}
 
-  async _readFromFile(type, id) {
+	async _saveLabelledToFile(article) {
+		const filePath = this._getFilePath('labelled', article.id);
+		await fs.writeFile(filePath, JSON.stringify(article, null, 2), 'utf8');
+		logger.info(`[File][labelled] Saved article: ${article.id}`);
+		return article;
+	}
+
+	async _readFromFile(type, id) {
     const filePath = this._getFilePath(type, id);
     const data = await fs.readFile(filePath, 'utf8');
     return JSON.parse(data);
@@ -246,6 +265,53 @@ class Storage {
       logger.info(`[MongoDB] Deleted article: ${id}`);
     }
   }
+
+  // ─── MongoDB Helpers (Labelled only) ───────────────────────────────────────────
+
+  async _saveLabelledToMongo(article) {
+    try {
+        const LabelledArticle = await getLabelledArticleModel();
+
+        const doc = {
+        sourceId:     article.id,
+        rawRef:       article.rawRef ?? undefined,
+        enrichedData: {
+            categories: article.labels?.categories    ?? [],
+            topics:     article.labels?.topics        ?? [],
+            entities: {
+            people:        article.labels?.entities?.people        ?? [],
+            organizations: article.labels?.entities?.organizations ?? [],
+            locations:     article.labels?.entities?.locations     ?? [],
+            products:      article.labels?.entities?.products      ?? [],
+            },
+            keywords:    article.labels?.keywords    ?? [],
+            sentiment:   article.labels?.sentiment   ?? 'neutral',
+            summary:     article.labels?.summary     ?? 'Failed to generate summary',
+            readingTime: article.labels?.readingTime ?? 'Unknown',
+            complexity:  article.labels?.complexity  ?? 'unknown',
+            contentType: article.labels?.contentType ?? 'unknown',
+            parseError:  article.labels?.parseError  ?? true,
+        },
+        modelVersion:    article.modelVersion    ?? undefined,
+        promptHash:      article.promptHash      ?? undefined,
+        pipelineVersion: article.pipelineVersion ?? undefined,
+        processedAt:     article.labels?.labelledAt ?? new Date(),
+        };
+
+        const result = await LabelledArticle.findOneAndUpdate(
+        { sourceId: doc.sourceId },
+        { $set: doc },
+        { upsert: true, new: true }
+        );
+
+        logger.info(`[MongoDB][labelled] Saved article: ${article.id}`);
+        return result;
+
+    } catch (err) {
+        logger.error(`[MongoDB][labelled] Failed to save article: ${article.id} — ${err.message}`);
+        throw err;
+    }
+	}
 }
 
 export default Storage;
