@@ -1,0 +1,155 @@
+{
+  "_comment": "URL Registry for the materials analysis scraper scheduler.",
+  "_frequencies": {
+    "daily": "Scraped once per day",
+    "weekly": "Scraped once per week",
+    "monthly": "Scraped once per month"
+  },
+  "urls": [
+    {
+      "url": "https://rareearthexchanges.com",
+      "label": "Rare Earth Exchanges",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:15:52.280Z",
+      "notes": "Specialist rare earth market news"
+    },
+    {
+      "url": "https://renewablesnow.com/news/",
+      "label": "Renewables Now",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:16:48.254Z",
+      "notes": "Renewable energy materials demand"
+    },
+    {
+      "url": "https://www.thinkchina.sg/economy/",
+      "label": "Think China — Economy",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:52:25.827Z",
+      "notes": "China supply chain context — disabled by default, enable when needed"
+    },
+    {
+      "url": "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
+      "label": "USGS 2025 Essential Minerals List",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:16:56.958Z",
+      "notes": "Official USGS list of essential minerals for national security"
+    },
+    {
+      "url": "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
+      "label": "Rare Earth Exchanges — Defense Supply Chains",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:17:06.800Z",
+      "notes": "Focus on defense supply chain issues"
+    },
+    {
+      "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
+      "label": "Think China — Malaysia Rare Earths",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:52:35.731Z",
+      "notes": "Malaysia's role in rare earth supply chains — disabled by default, enable when needed"
+    },
+    {
+      "url": "https://www.proactiveinvestors.co.uk/companies/news/1079569/tech-bytes-antimony-the-obscure-metal-that-could-choke-tech-supply-chains-1079569.html",
+      "label": "Proactive Investors — Antimony",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:52:43.931Z",
+      "notes": "Focus on antimony supply chain issues — disabled by default, enable when needed"
+    },
+    {
+      "url": "https://www.theaustralian.com.au/business/stockhead/content/pinnacle-ramps-up-exploration-at-adina-east-as-lithium-prices-rebound/news-story/6ba22c20be01303c23368c4d234bcecc",
+      "label": "The Australian — Lithium Exploration",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": null,
+      "notes": "Focus on lithium exploration news — disabled by default, enable when needed"
+    },
+    {
+      "url": "https://www.bbc.co.uk/worklife/article/20251104-the-story-behind-the-scramble-for-greenlands-rare-earths",
+      "label": "BBC Worklife — Greenland Rare Earths",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:53:07.731Z",
+      "notes": "Focus on Greenland's rare earth potential — disabled by default, enable when needed"
+    },
+    {
+      "url": "https://www.juniorminingnetwork.com/junior-miner-news/press-releases/3348-nasdaq/crml/192976-crml-executes-term-sheet-for-50-50-joint-venture-with-eu-and-nato-member-romania-creating-a-fully-integrated-mine-to-processing-supply-chain-for-long-term-security-for-the-european-manufacturing-national-security-sectors.html",
+      "label": "Junior Mining Network — Romania JV",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:53:17.988Z",
+      "notes": "Focus on Romania rare earth joint venture news — disabled by default, enable when needed"
+    },
+    {
+      "url": "https://www.tradingview.com/news/reuters.com,2025:newsml_L4N3XF0ZI:newsml_L4N3XF0ZI:0-critical-metals-partners-with-romania-s-fpcu-to-set-up-rare-earth-processing-plant/",
+      "label": "TradingView — Romania Processing Plant",
+      "frequency": "daily",
+      "active": false,
+      "lastScraped": null,
+      "notes": "Focus on Romania rare earth processing plant news — disabled by default, enable when needed"
+    },
+    {
+      "url": "https://renewablesnow.com/news/vulcan-breaks-ground-on-german-lithium-geothermal-project-1286352/",
+      "label": "Renewables Now — Vulcan Lithium Geothermal",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:53:25.218Z",
+      "notes": "Focus on Vulcan's German lithium geothermal project news — disabled by default, enable when needed"
+    },
+    {
+      "url": "https://www.jpmorgan.com/insights/global-research/commodities/critical-minerals",
+      "label": "JPMorgan — Critical Minerals Research",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:53:32.650Z",
+      "notes": "Focus on JPMorgan's critical minerals research and insights — disabled by default, enable when needed"
+    },
+    {
+      "url": "https://www.war.gov/News/News-Stories/Article/Article/4413490/securing-rare-earth-elements-a-national-security-imperative-official-says/",
+      "label": "US War Department — Rare Earths",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": null,
+      "notes": "Focus on US War Department statements on rare earths"
+    },
+    {
+      "url": "https://www.wionews.com/world/chinese-chokehold-on-rarest-of-rare-earths-is-squeezing-us-defence-and-semiconductor-industries-here-is-how-1772098411922/amp",
+      "label": "WION — Chinese Chokehold on Rare Earths",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:53:55.173Z",
+      "notes": "Focus on Chinese dominance of rare earths and impact on US defense"
+    },
+    {
+      "url": "https://www.globalbankingandfinance.com/exclusive-rare-earth-shortages-worsen-us-aerospace-chips/",
+      "label": "Global Banking & Finance — Rare Earth Shortages",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:54:03.403Z",
+      "notes": "Focus on rare earth shortages impacting US aerospace and semiconductor industries"
+    },
+    {
+      "url": "https://rareearthexchanges.com/news/the-new-african-scramble-contracts-not-colonies/",
+      "label": "Rare Earth Exchanges — New African Scramble",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:54:14.958Z",
+      "notes": "Focus on new African rare earth exploration and development contracts"
+    },
+    {
+      "url": "https://rareearthexchanges.com/news/chile-unveils-national-critical-minerals-strategy-signals-broader-play-beyond-copper/",
+      "label": "Rare Earth Exchanges — Chile Critical Minerals Strategy",
+      "frequency": "daily",
+      "active": true,
+      "lastScraped": "2026-02-26T13:54:24.507Z",
+      "notes": "Focus on Chile's new national critical minerals strategy and implications for rare earths"
+    }
+  ],
+  "archivedUrls": []
+}

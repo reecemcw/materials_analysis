@@ -148,15 +148,21 @@ class GraphPersistence {
   async _saveToMongo(snapshot, triggerReason, runId) {
     const GraphSnapshot = await getGraphSnapshotModel();
 
-    await GraphSnapshot.create({
-      version:       snapshot.version,
-      triggerReason,
-      runId,
-      stats:         snapshot.stats,
-      graph:         snapshot.graph,
-      checksum:      snapshot.checksum,
-      localPath:     this.graphFile,
-    });
+    await GraphSnapshot.findOneAndUpdate(
+      { version: snapshot.version },
+      {
+        $setOnInsert: {
+          version:       snapshot.version,
+          triggerReason,
+          runId,
+          stats:         snapshot.stats,
+          graph:         snapshot.graph,
+          checksum:      snapshot.checksum,
+          localPath:     this.graphFile,
+        }
+      },
+      { upsert: true, new: true }
+    );
 
     logger.info(`[GraphPersistence] Snapshot v${snapshot.version} written to MongoDB`);
   }

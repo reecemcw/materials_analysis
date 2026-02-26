@@ -1,10 +1,10 @@
 {
-  "version": 1,
-  "savedAt": "2026-02-26T12:28:52.725Z",
-  "checksum": "4eeee92d62f7a47025cd15e2d903ad5c74145933bf789cd9bff2fdbab7b034b2",
+  "version": 10,
+  "savedAt": "2026-02-26T13:54:26.697Z",
+  "checksum": "15211bfc08c5ec4d926df1814c9fae2add542548f279df2d22de95ea2d948dbc",
   "stats": {
-    "nodeCount": 6,
-    "edgeCount": 12
+    "nodeCount": 25,
+    "edgeCount": 102
   },
   "graph": {
     "nodes": [
@@ -57,10 +57,9 @@
             "readingTime": "2",
             "complexity": "intermediate",
             "contentType": "news",
-            "labelledAt": "2026-02-26T04:10:50.060Z",
-            "modelUsed": "claude-sonnet-4-20250514"
+            "parseError": true
           },
-          "addedAt": "2026-02-26T12:28:52.664Z"
+          "addedAt": "2026-02-26T13:48:55.483Z"
         }
       ],
       [
@@ -109,10 +108,9 @@
             "readingTime": "1",
             "complexity": "intermediate",
             "contentType": "analysis",
-            "labelledAt": "2026-02-26T04:10:59.718Z",
-            "modelUsed": "claude-sonnet-4-20250514"
+            "parseError": true
           },
-          "addedAt": "2026-02-26T12:28:52.664Z"
+          "addedAt": "2026-02-26T13:48:55.483Z"
         }
       ],
       [
@@ -173,10 +171,9 @@
             "readingTime": "4",
             "complexity": "intermediate",
             "contentType": "analysis",
-            "labelledAt": "2026-02-26T04:11:07.832Z",
-            "modelUsed": "claude-sonnet-4-20250514"
+            "parseError": true
           },
-          "addedAt": "2026-02-26T12:28:52.664Z"
+          "addedAt": "2026-02-26T13:48:55.483Z"
         }
       ],
       [
@@ -227,10 +224,9 @@
             "readingTime": "2",
             "complexity": "intermediate",
             "contentType": "news",
-            "labelledAt": "2026-02-26T12:28:33.086Z",
-            "modelUsed": "claude-sonnet-4-20250514"
+            "parseError": true
           },
-          "addedAt": "2026-02-26T12:28:52.664Z"
+          "addedAt": "2026-02-26T13:48:55.482Z"
         }
       ],
       [
@@ -280,10 +276,9 @@
             "readingTime": "1",
             "complexity": "intermediate",
             "contentType": "analysis",
-            "labelledAt": "2026-02-26T12:28:43.442Z",
-            "modelUsed": "claude-sonnet-4-20250514"
+            "parseError": true
           },
-          "addedAt": "2026-02-26T12:28:52.664Z"
+          "addedAt": "2026-02-26T13:48:55.482Z"
         }
       ],
       [
@@ -346,10 +341,1145 @@
             "readingTime": "4",
             "complexity": "intermediate",
             "contentType": "analysis",
-            "labelledAt": "2026-02-26T12:28:52.534Z",
+            "parseError": true
+          },
+          "addedAt": "2026-02-26T13:48:55.482Z"
+        }
+      ],
+      [
+        "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+        {
+          "id": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "title": "Home - Rare Earth Exchanges",
+          "url": "https://rareearthexchanges.com",
+          "labels": {
+            "categories": [
+              "Supply Chain",
+              "Mining & Resources"
+            ],
+            "topics": [
+              "rare earth elements",
+              "supply chain transparency",
+              "China trade relations",
+              "critical minerals",
+              "industrial metals"
+            ],
+            "entities": {
+              "people": [
+                "Xi"
+              ],
+              "organizations": [
+                "REEx",
+                "Airbus",
+                "Pratt & Whitney"
+              ],
+              "locations": [
+                "China",
+                "United States",
+                "Venezuela",
+                "Wyoming",
+                "Brazil",
+                "Botswana",
+                "Europe"
+              ],
+              "products": [
+                "rare earth metals",
+                "critical metals",
+                "industrial metals"
+              ]
+            },
+            "keywords": [
+              "rare earth",
+              "supply chain",
+              "transparency",
+              "China",
+              "critical minerals"
+            ],
+            "sentiment": "neutral",
+            "summary": "REEx (Rare Earth Exchanges) is a platform focused on providing transparency and data insights for the rare earth supply chain as companies seek alternatives to China-dependent sourcing. The site features news, analysis, and membership services covering developments in rare earth mining, geopolitical impacts, and strategic supply chain decisions.",
+            "readingTime": "5",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "parseError": true
+          },
+          "addedAt": "2026-02-26T13:48:55.482Z"
+        }
+      ],
+      [
+        "8ebcf1b2-0247-44e9-80c9-996aacca2967",
+        {
+          "id": "8ebcf1b2-0247-44e9-80c9-996aacca2967",
+          "title": "Latest Renewable Energy News | Renewables Now",
+          "url": "https://renewablesnow.com/news/",
+          "labels": {
+            "categories": [
+              "Renewable Energy",
+              "Industry News"
+            ],
+            "topics": [
+              "offshore wind",
+              "solar power",
+              "onshore wind",
+              "energy storage",
+              "green hydrogen",
+              "renewable energy capacity",
+              "power purchase agreements",
+              "clean energy investments"
+            ],
+            "entities": {
+              "people": [],
+              "organizations": [
+                "Northland Power",
+                "Iberdrola",
+                "Scatec",
+                "RWE",
+                "GRS",
+                "Zelestra",
+                "Suzlon",
+                "Greenvolt",
+                "Avangrid",
+                "Xcel Energy",
+                "EDF",
+                "OX2",
+                "Luxcara",
+                "SKion",
+                "BMZ",
+                "Sinergy Flow",
+                "Salzgitter",
+                "Nel",
+                "Gas Networks Ireland",
+                "Endesa",
+                "First Solar",
+                "Google"
+              ],
+              "locations": [
+                "Poland",
+                "Europe",
+                "Egypt",
+                "Italy",
+                "Spain",
+                "Germany",
+                "Romania",
+                "South Africa",
+                "Finland",
+                "Ireland",
+                "Cordoba",
+                "Minnesota"
+              ],
+              "products": [
+                "wind turbines",
+                "solar panels",
+                "battery energy storage systems",
+                "electrolysers",
+                "flow batteries"
+              ]
+            },
+            "keywords": [
+              "renewable energy",
+              "wind power",
+              "solar energy",
+              "energy storage",
+              "green hydrogen",
+              "offshore wind",
+              "capacity additions",
+              "clean energy"
+            ],
+            "sentiment": "neutral",
+            "summary": "This is a renewable energy news aggregation page featuring recent developments across multiple sectors including wind, solar, energy storage, and hydrogen. The content covers various corporate announcements, capacity additions, financing deals, and regulatory updates from companies and projects across Europe, Africa, and North America.",
+            "readingTime": "5",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "parseError": true
+          },
+          "addedAt": "2026-02-26T13:48:55.482Z"
+        }
+      ],
+      [
+        "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+        {
+          "id": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "title": "US releases 2025 list of critical minerals, featuring 10 additions",
+          "url": "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
+          "labels": {
+            "categories": [
+              "Government Policy",
+              "Mining & Resources"
+            ],
+            "topics": [
+              "critical minerals",
+              "supply chain security",
+              "economic disruption",
+              "rare earth elements"
+            ],
+            "entities": {
+              "people": [
+                "Antone Gonsalves"
+              ],
+              "organizations": [
+                "US Government",
+                "PT Vale Indonesia"
+              ],
+              "locations": [
+                "United States",
+                "Sorowako",
+                "South Sulawesi",
+                "Indonesia"
+              ],
+              "products": [
+                "critical minerals",
+                "rare earths",
+                "nickel"
+              ]
+            },
+            "keywords": [
+              "critical minerals",
+              "supply disruption",
+              "U.S. economy",
+              "rare earths",
+              "mineral independence"
+            ],
+            "sentiment": "neutral",
+            "summary": "The U.S. government has released its 2025 list of critical minerals, identifying 60 essential minerals including rare earths that would impose the highest economic costs if supply chains were disrupted. The list includes 10 new additions as the U.S. continues to pursue mineral independence through strategic partnerships and funding initiatives.",
+            "readingTime": "2",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "parseError": true
+          },
+          "addedAt": "2026-02-26T13:48:55.482Z"
+        }
+      ],
+      [
+        "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+        {
+          "id": "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "title": "Securing Defense Supply Chains in a Rare Earth World",
+          "url": "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
+          "labels": {
+            "categories": [
+              "Defense & Security",
+              "International Trade"
+            ],
+            "topics": [
+              "Rare earth minerals",
+              "Supply chain security",
+              "Defense procurement",
+              "China trade policy"
+            ],
+            "entities": {
+              "people": [
+                "Michael Tucker"
+              ],
+              "organizations": [
+                "HyProMag Recycling",
+                "DFARS",
+                "OSC"
+              ],
+              "locations": [
+                "United States",
+                "China"
+              ],
+              "products": [
+                "Rare earth elements"
+              ]
+            },
+            "keywords": [
+              "rare earth",
+              "defense supply chains",
+              "DFARS 2027 ban",
+              "friendshoring",
+              "recycling"
+            ],
+            "sentiment": "neutral",
+            "summary": "The article discusses U.S. efforts to reduce dependence on Chinese rare earth minerals through regulatory measures and allied partnerships. A comment highlights HyProMag Recycling's efficient rare earth recovery process achieving 97% recovery rates.",
+            "readingTime": "1",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "parseError": true
+          },
+          "addedAt": "2026-02-26T13:48:55.482Z"
+        }
+      ],
+      [
+        "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+        {
+          "id": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "title": "US releases 2025 list of critical minerals, featuring 10 additions",
+          "url": "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
+          "labels": {
+            "categories": [
+              "Economics",
+              "Government Policy"
+            ],
+            "topics": [
+              "Critical Minerals",
+              "Supply Chain Security",
+              "Economic Policy"
+            ],
+            "entities": {
+              "people": [
+                "Antone Gonsalves"
+              ],
+              "organizations": [
+                "US Government",
+                "PT Vale Indonesia"
+              ],
+              "locations": [
+                "United States",
+                "Sorowako",
+                "South Sulawesi",
+                "Indonesia"
+              ],
+              "products": [
+                "Critical Minerals",
+                "Rare Earth Elements",
+                "Nickel"
+              ]
+            },
+            "keywords": [
+              "critical minerals",
+              "supply chain",
+              "economic disruption",
+              "rare earths",
+              "mineral independence"
+            ],
+            "sentiment": "neutral",
+            "summary": "The US government has released its 2025 list of critical minerals, expanding the list to 60 essential minerals including rare earths. These minerals are identified as those that would impose the highest economic cost if supply chains were disrupted.",
+            "readingTime": "2",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "parseError": true
+          },
+          "addedAt": "2026-02-26T13:48:55.483Z"
+        }
+      ],
+      [
+        "090cd307-4f75-4e2d-9ce9-55161357e45b",
+        {
+          "id": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "title": "Malaysia becomes a lynchpin in US-led effort to break China’s grip on rare earths",
+          "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
+          "labels": {
+            "categories": [
+              "Economics",
+              "International Relations"
+            ],
+            "topics": [
+              "rare earth elements",
+              "supply chain diversification",
+              "US-China trade relations",
+              "critical minerals",
+              "geopolitical competition"
+            ],
+            "entities": {
+              "people": [
+                "Xi Jinping",
+                "Donald Trump",
+                "Anthony Albanese",
+                "Lu Yutong"
+              ],
+              "organizations": [
+                "Lynas Rare Earths Ltd.",
+                "Caixin Global",
+                "US government",
+                "White House"
+              ],
+              "locations": [
+                "Malaysia",
+                "China",
+                "United States",
+                "Kuantan",
+                "Australia",
+                "South Korea",
+                "Thailand",
+                "Japan",
+                "Central Asia"
+              ],
+              "products": [
+                "rare earth elements",
+                "lithium batteries",
+                "microchips",
+                "critical minerals"
+              ]
+            },
+            "keywords": [
+              "rare earth",
+              "supply chain",
+              "China dominance",
+              "Malaysia",
+              "processing hub"
+            ],
+            "sentiment": "neutral",
+            "summary": "Malaysia has become a key player in the US-led effort to establish a rare earth supply chain independent of China's dominance. The US has signed multiple agreements with allies including Malaysia to diversify critical mineral supplies, though it remains uncertain whether China's control over rare earth elements can be effectively challenged.",
+            "readingTime": "4",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "parseError": true
+          },
+          "addedAt": "2026-02-26T13:48:55.484Z"
+        }
+      ],
+      [
+        "db514e6b-388a-4191-ba11-2f6d82c5be60",
+        {
+          "id": "db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "title": "Securing Defense Supply Chains in a Rare Earth World",
+          "url": "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
+          "labels": {
+            "categories": [
+              "Defense & Security",
+              "Supply Chain Management"
+            ],
+            "topics": [
+              "rare earth elements",
+              "defense supply chains",
+              "China trade relations",
+              "military procurement",
+              "strategic materials"
+            ],
+            "entities": {
+              "people": [
+                "Michael Tucker"
+              ],
+              "organizations": [
+                "HyProMag Recycling",
+                "DFARS"
+              ],
+              "locations": [
+                "United States",
+                "China"
+              ],
+              "products": [
+                "rare earth elements"
+              ]
+            },
+            "keywords": [
+              "rare earth",
+              "defense supply chains",
+              "DFARS 2027",
+              "China monopoly",
+              "friendshoring"
+            ],
+            "sentiment": "neutral",
+            "summary": "The article discusses U.S. efforts to reduce dependence on China's rare earth monopoly for defense applications through regulatory measures and allied partnerships. A comment highlights HyProMag Recycling's efficient rare earth recovery process with 97% recovery rates.",
+            "readingTime": "1",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "parseError": true
+          },
+          "addedAt": "2026-02-26T13:48:55.485Z"
+        }
+      ],
+      [
+        "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+        {
+          "id": "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "title": "Home - Rare Earth Exchanges",
+          "url": "https://rareearthexchanges.com",
+          "labels": {
+            "categories": [
+              "Supply Chain Management",
+              "Mining & Resources"
+            ],
+            "topics": [
+              "rare earth elements",
+              "supply chain transparency",
+              "China trade relations",
+              "critical minerals",
+              "industrial metals"
+            ],
+            "entities": {
+              "people": [
+                "Xi"
+              ],
+              "organizations": [
+                "REEx",
+                "Airbus",
+                "Pratt & Whitney",
+                "NioCorp"
+              ],
+              "locations": [
+                "China",
+                "United States",
+                "Brazil",
+                "Venezuela",
+                "Wyoming",
+                "Europe"
+              ],
+              "products": [
+                "rare earth elements",
+                "critical metals",
+                "industrial metals"
+              ]
+            },
+            "keywords": [
+              "rare earth",
+              "supply chain",
+              "China",
+              "transparency",
+              "critical minerals"
+            ],
+            "sentiment": "neutral",
+            "summary": "REEx (Rare Earth Exchanges) provides data and insights to help companies navigate the rare earth supply chain as it shifts away from Chinese dominance. The platform offers membership services, analysis, and transparency tools to help investors and businesses make informed decisions about rare earth partnerships and investments.",
+            "readingTime": "3",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "parseError": true
+          },
+          "addedAt": "2026-02-26T13:48:55.485Z"
+        }
+      ],
+      [
+        "3cdcb9dd-28b9-42c4-af45-396ad87e9d8b",
+        {
+          "id": "3cdcb9dd-28b9-42c4-af45-396ad87e9d8b",
+          "title": "Latest China Economy News & Headlines, Top Economy News - ThinkChina",
+          "url": "https://www.thinkchina.sg/economy/",
+          "labels": {
+            "categories": [
+              "Economy",
+              "News"
+            ],
+            "topics": [
+              "China Economy",
+              "Economic Headlines",
+              "Greater China Economic News"
+            ],
+            "entities": {
+              "people": [],
+              "organizations": [
+                "ThinkChina"
+              ],
+              "locations": [
+                "China",
+                "Greater China"
+              ],
+              "products": []
+            },
+            "keywords": [
+              "economy",
+              "China",
+              "news",
+              "headlines",
+              "Greater China",
+              "economic stories"
+            ],
+            "sentiment": "neutral",
+            "summary": "This appears to be a news portal page for ThinkChina focusing on economic news and headlines from China and Greater China region. The content shows navigation elements and category structure rather than a specific article.",
+            "readingTime": "1",
+            "complexity": "beginner",
+            "contentType": "news",
+            "labelledAt": "2026-02-26T13:52:25.753Z",
             "modelUsed": "claude-sonnet-4-20250514"
           },
-          "addedAt": "2026-02-26T12:28:52.664Z"
+          "addedAt": "2026-02-26T13:52:25.826Z"
+        }
+      ],
+      [
+        "0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+        {
+          "id": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "title": "Malaysia becomes a lynchpin in US-led effort to break China’s grip on rare earths",
+          "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
+          "labels": {
+            "categories": [
+              "Economics",
+              "International Relations"
+            ],
+            "topics": [
+              "Rare earth supply chains",
+              "US-China trade relations",
+              "Strategic minerals",
+              "Malaysia manufacturing hub"
+            ],
+            "entities": {
+              "people": [
+                "Xi Jinping",
+                "Donald Trump",
+                "Anthony Albanese",
+                "Lu Yutong"
+              ],
+              "organizations": [
+                "Caixin Global",
+                "Lynas Rare Earths Ltd.",
+                "US government",
+                "White House"
+              ],
+              "locations": [
+                "Malaysia",
+                "China",
+                "United States",
+                "Australia",
+                "Kuantan",
+                "South Korea",
+                "Thailand",
+                "Japan",
+                "Central Asia"
+              ],
+              "products": [
+                "rare earth elements",
+                "microchips",
+                "lithium batteries",
+                "critical minerals"
+              ]
+            },
+            "keywords": [
+              "rare earths",
+              "supply chain",
+              "China dominance",
+              "Malaysia processing",
+              "trade war"
+            ],
+            "sentiment": "neutral",
+            "summary": "Malaysia has become a key player in the US-led effort to establish rare earth supply chains outside of China's control, serving as a crucial processing and manufacturing hub. The article examines the strategic importance of this shift following recent US-China trade discussions and various international agreements on critical minerals.",
+            "readingTime": "4",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "labelledAt": "2026-02-26T13:52:35.540Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T13:54:26.522Z"
+        }
+      ],
+      [
+        "816c107d-4416-4934-a36c-2d5a76cf324c",
+        {
+          "id": "816c107d-4416-4934-a36c-2d5a76cf324c",
+          "title": "Tech Bytes: Antimony — the obscure metal that could choke tech supply chains",
+          "url": "https://www.proactiveinvestors.co.uk/companies/news/1079569/tech-bytes-antimony-the-obscure-metal-that-could-choke-tech-supply-chains-1079569.html",
+          "labels": {
+            "categories": [
+              "Mining",
+              "Technology"
+            ],
+            "topics": [
+              "antimony supply chains",
+              "tech metals",
+              "mining stocks",
+              "supply chain disruption"
+            ],
+            "entities": {
+              "people": [
+                "Lisa Uhlman"
+              ],
+              "organizations": [
+                "Nova Minerals Ltd",
+                "Proactive Investors"
+              ],
+              "locations": [
+                "Sydney",
+                "London",
+                "New York",
+                "Toronto",
+                "Vancouver",
+                "Perth"
+              ],
+              "products": [
+                "antimony"
+              ]
+            },
+            "keywords": [
+              "antimony",
+              "supply chains",
+              "mining",
+              "tech metals",
+              "Nova Minerals"
+            ],
+            "sentiment": "neutral",
+            "summary": "The article discusses antimony, an obscure metal that could potentially disrupt technology supply chains. Nova Minerals Ltd saw significant stock price increases following developments related to this critical material.",
+            "readingTime": "3",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-02-26T13:52:43.883Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T13:54:26.521Z"
+        }
+      ],
+      [
+        "e0f61467-ae58-40e5-9997-3d3f76f792f3",
+        {
+          "id": "e0f61467-ae58-40e5-9997-3d3f76f792f3",
+          "title": "The story behind the scramble for Greenland's rare earths",
+          "url": "https://www.bbc.co.uk/worklife/article/20251104-the-story-behind-the-scramble-for-greenlands-rare-earths",
+          "labels": {
+            "categories": [
+              "Mining & Resources",
+              "Geopolitics"
+            ],
+            "topics": [
+              "rare earth elements",
+              "China trade dominance",
+              "Greenland mining",
+              "supply chain security",
+              "Arctic resources"
+            ],
+            "entities": {
+              "people": [
+                "Adrienne Murray",
+                "Tony Sage",
+                "Donald Trump",
+                "Jens-Frederik Nielsen"
+              ],
+              "organizations": [
+                "Critical Metals",
+                "EU",
+                "NATO",
+                "US Defense Department",
+                "BBC"
+              ],
+              "locations": [
+                "Greenland",
+                "China",
+                "United States",
+                "Qaqortoq",
+                "Killlavaat Alannguat mountain",
+                "Tanbreez",
+                "Denmark"
+              ],
+              "products": [
+                "smartphones",
+                "electric vehicles",
+                "wind turbines",
+                "F-35 fighter jets",
+                "guided missile systems"
+              ]
+            },
+            "keywords": [
+              "rare earths",
+              "mining",
+              "Greenland",
+              "China",
+              "geopolitics"
+            ],
+            "sentiment": "neutral",
+            "summary": "As Western nations seek to reduce dependence on China's dominance in rare earth element production, mining companies are exploring Greenland's untapped mineral deposits as a potential alternative source. The Tanbreez project represents one of the largest rare earth deposits in Greenland, though operating in the remote Arctic region presents significant challenges.",
+            "readingTime": "4",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-02-26T13:53:07.675Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T13:54:26.521Z"
+        }
+      ],
+      [
+        "0b0f8d30-57d1-4000-a662-b6bec3347b9c",
+        {
+          "id": "0b0f8d30-57d1-4000-a662-b6bec3347b9c",
+          "title": "Critical Metals Executes Term-Sheet for 50/50 Joint Venture With EU and NATO Member, Romania, Creating a Fully Integrated Mine-to-Processing Supply Chain for Long-Term Security for the European Manufacturing & National Security Sectors",
+          "url": "https://www.juniorminingnetwork.com/junior-miner-news/press-releases/3348-nasdaq/crml/192976-crml-executes-term-sheet-for-50-50-joint-venture-with-eu-and-nato-member-romania-creating-a-fully-integrated-mine-to-processing-supply-chain-for-long-term-security-for-the-european-manufacturing-national-security-sectors.html",
+          "labels": {
+            "categories": [
+              "Mining & Natural Resources",
+              "International Business"
+            ],
+            "topics": [
+              "Joint Venture Agreement",
+              "Critical Minerals Supply Chain",
+              "European Union Strategic Partnerships",
+              "Rare Earth Elements Processing",
+              "National Security Resources"
+            ],
+            "entities": {
+              "people": [
+                "Tony Sage"
+              ],
+              "organizations": [
+                "Critical Metals Corp",
+                "CRML",
+                "Fabrica de Prelucrare a Concentratelor de Uraniu S.R.L.",
+                "FPCU",
+                "European Union",
+                "NATO",
+                "NASDAQ"
+              ],
+              "locations": [
+                "Romania",
+                "New York",
+                "European Union",
+                "Western world",
+                "China"
+              ],
+              "products": [
+                "Tanbreez concentrate",
+                "rare earth elements",
+                "critical minerals"
+              ]
+            },
+            "keywords": [
+              "joint venture",
+              "rare earth elements",
+              "critical minerals",
+              "supply chain",
+              "European Union",
+              "NATO",
+              "Romania",
+              "processing facility",
+              "national security",
+              "mining"
+            ],
+            "sentiment": "positive",
+            "summary": "Critical Metals Corp announced execution of a term-sheet for a 50/50 joint venture with Romania's state-owned FPCU to develop a rare earth processing facility. The partnership aims to create the first fully integrated mine-to-processing supply chain in the Western world for critical minerals, securing long-term access for European manufacturing and defense sectors.",
+            "readingTime": "2",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-02-26T13:53:17.938Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T13:54:26.521Z"
+        }
+      ],
+      [
+        "2d5e973e-c89f-41d6-a8cc-18130e4e1a44",
+        {
+          "id": "2d5e973e-c89f-41d6-a8cc-18130e4e1a44",
+          "title": "Vulcan breaks ground on German lithium, geothermal project",
+          "url": "https://renewablesnow.com/news/vulcan-breaks-ground-on-german-lithium-geothermal-project-1286352/",
+          "labels": {
+            "categories": [
+              "Energy",
+              "Mining"
+            ],
+            "topics": [
+              "geothermal energy",
+              "lithium extraction",
+              "renewable energy projects",
+              "groundbreaking ceremony"
+            ],
+            "entities": {
+              "people": [
+                "Martina Markosyan"
+              ],
+              "organizations": [
+                "Vulcan Energy Resources Ltd",
+                "ASX"
+              ],
+              "locations": [
+                "Germany",
+                "Upper Rhine Valley",
+                "Europe"
+              ],
+              "products": [
+                "lithium",
+                "geothermal energy",
+                "G-LEP plant"
+              ]
+            },
+            "keywords": [
+              "Vulcan Energy",
+              "lithium extraction",
+              "geothermal",
+              "Germany",
+              "Upper Rhine Valley"
+            ],
+            "sentiment": "positive",
+            "summary": "Vulcan Energy Resources has begun construction on the first phase of its geothermal and lithium extraction plant in Germany's Upper Rhine Valley. This represents a major milestone for the company's integrated renewable energy and lithium production project.",
+            "readingTime": "2",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-02-26T13:53:25.173Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T13:54:26.521Z"
+        }
+      ],
+      [
+        "2de5db65-3d62-493b-b1c9-bf93f57b0f0c",
+        {
+          "id": "2de5db65-3d62-493b-b1c9-bf93f57b0f0c",
+          "title": "The Growing Demand for Critical Minerals ",
+          "url": "https://www.jpmorgan.com/insights/global-research/commodities/critical-minerals",
+          "labels": {
+            "categories": [
+              "Economics",
+              "Energy"
+            ],
+            "topics": [
+              "critical minerals",
+              "rare earth elements",
+              "energy transition",
+              "defense spending"
+            ],
+            "entities": {
+              "people": [],
+              "organizations": [
+                "J.P. Morgan"
+              ],
+              "locations": [],
+              "products": [
+                "critical minerals",
+                "rare earth elements"
+              ]
+            },
+            "keywords": [
+              "critical minerals",
+              "rare earth elements",
+              "energy transition",
+              "defense spending",
+              "global demand"
+            ],
+            "sentiment": "neutral",
+            "summary": "The article discusses the increasing global demand for critical minerals and rare earth elements driven by the energy transition and rising defense expenditures. The content appears to be part of a financial services website navigation structure.",
+            "readingTime": "1",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "labelledAt": "2026-02-26T13:53:32.602Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T13:54:26.521Z"
+        }
+      ],
+      [
+        "0e04b217-7fec-402b-993a-a29252b379fb",
+        {
+          "id": "0e04b217-7fec-402b-993a-a29252b379fb",
+          "title": "Chinese chokehold on rarest of rare earths is squeezing US defence and semiconductor industries. Here is how",
+          "url": "https://www.wionews.com/world/chinese-chokehold-on-rarest-of-rare-earths-is-squeezing-us-defence-and-semiconductor-industries-here-is-how-1772098411922/amp",
+          "labels": {
+            "categories": [
+              "Business",
+              "International Relations"
+            ],
+            "topics": [
+              "Rare earth minerals",
+              "US-China trade relations",
+              "Supply chain disruptions",
+              "Semiconductor industry",
+              "Defense industry"
+            ],
+            "entities": {
+              "people": [
+                "Xi Jinping",
+                "Vinod Janardhanan"
+              ],
+              "organizations": [
+                "Reuters"
+              ],
+              "locations": [
+                "China",
+                "United States"
+              ],
+              "products": [
+                "yttrium",
+                "scandium",
+                "dysprosium",
+                "terbium",
+                "5G chips"
+              ]
+            },
+            "keywords": [
+              "rare earths",
+              "export controls",
+              "supply shortages",
+              "semiconductor",
+              "aerospace",
+              "China dominance"
+            ],
+            "sentiment": "negative",
+            "summary": "China's export restrictions on critical rare earth elements like yttrium and scandium are creating severe supply shortages for US aerospace and semiconductor industries. The US industries' heavy reliance on Chinese mining and processing of these materials has become a significant strategic liability with no immediate solution in sight.",
+            "readingTime": "3",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-02-26T13:53:55.117Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T13:54:26.521Z"
+        }
+      ],
+      [
+        "aad87cd8-e5d3-4f23-91d4-14a4415bf67a",
+        {
+          "id": "aad87cd8-e5d3-4f23-91d4-14a4415bf67a",
+          "title": "Exclusive-Rare earth shortages worsen in US aerospace, chips despite trade truce, sources say",
+          "url": "https://www.globalbankingandfinance.com/exclusive-rare-earth-shortages-worsen-us-aerospace-chips/",
+          "labels": {
+            "categories": [
+              "Trade & Economics",
+              "Technology"
+            ],
+            "topics": [
+              "rare earth shortages",
+              "US-China trade relations",
+              "aerospace industry",
+              "semiconductor supply chain"
+            ],
+            "entities": {
+              "people": [
+                "Donald Trump",
+                "Xi Jinping",
+                "Allison Lampert",
+                "Laurie Chen",
+                "Lewis Jackson",
+                "Michael Martina"
+              ],
+              "organizations": [
+                "Reuters",
+                "Global Banking & Finance Review"
+              ],
+              "locations": [
+                "United States",
+                "China",
+                "Beijing",
+                "Montreal",
+                "Washington"
+              ],
+              "products": [
+                "yttrium",
+                "scandium",
+                "rare earth elements"
+              ]
+            },
+            "keywords": [
+              "rare earth shortages",
+              "yttrium",
+              "scandium",
+              "US aerospace",
+              "semiconductors",
+              "China export curbs",
+              "trade truce"
+            ],
+            "sentiment": "negative",
+            "summary": "US aerospace and semiconductor suppliers are facing severe shortages of rare earth elements like yttrium and scandium due to China's export restrictions, despite recent trade improvements. Yttrium prices have surged 69 times higher than a year ago, forcing some manufacturers to ration materials and pause production.",
+            "readingTime": "5",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-02-26T13:54:03.348Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T13:54:26.521Z"
+        }
+      ],
+      [
+        "85fa7bb0-1a35-4c43-b21d-662bf1b4dce3",
+        {
+          "id": "85fa7bb0-1a35-4c43-b21d-662bf1b4dce3",
+          "title": "The New African Scramble: Contracts, Not Colonies",
+          "url": "https://rareearthexchanges.com/news/the-new-african-scramble-contracts-not-colonies/",
+          "labels": {
+            "categories": [
+              "Critical Minerals",
+              "Supply Chain"
+            ],
+            "topics": [
+              "African mineral resources",
+              "Battery supply chains",
+              "Resource diplomacy",
+              "Supply chain contracts"
+            ],
+            "entities": {
+              "people": [],
+              "organizations": [
+                "SADC",
+                "ECOWAS",
+                "AfCFTA",
+                "Baogang Group",
+                "BYD",
+                "China Northern Rare Earth Group",
+                "Lynas Rare Earths",
+                "MP Materials",
+                "USA Rare Earths"
+              ],
+              "locations": [
+                "Africa",
+                "DRC",
+                "Zimbabwe",
+                "South Africa",
+                "China",
+                "Kinshasa",
+                "Accra",
+                "Inner Mongolia"
+              ],
+              "products": [
+                "lithium",
+                "cobalt",
+                "platinum",
+                "rare earths",
+                "EVs",
+                "batteries"
+              ]
+            },
+            "keywords": [
+              "critical minerals",
+              "supply chain",
+              "Africa",
+              "cobalt",
+              "lithium",
+              "platinum",
+              "contracts",
+              "scramble"
+            ],
+            "sentiment": "neutral",
+            "summary": "A new scramble for Africa is occurring through supply chain contracts and offtake agreements rather than military colonization, targeting critical minerals like lithium, cobalt, and platinum. While Africa dominates upstream production, it lacks midstream processing capacity, with most refining concentrated in China, creating raw export dependency.",
+            "readingTime": "3",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "labelledAt": "2026-02-26T13:54:14.902Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T13:54:26.521Z"
+        }
+      ],
+      [
+        "c541e647-378c-4f71-a0ad-b280e546b92b",
+        {
+          "id": "c541e647-378c-4f71-a0ad-b280e546b92b",
+          "title": "Chile Unveils National Critical Minerals Strategy, Signals Broader Play Beyond Copper",
+          "url": "https://rareearthexchanges.com/news/chile-unveils-national-critical-minerals-strategy-signals-broader-play-beyond-copper/",
+          "labels": {
+            "categories": [
+              "Mining & Resources",
+              "Government Policy"
+            ],
+            "topics": [
+              "Critical Minerals Strategy",
+              "Supply Chain Diversification",
+              "Energy Transition",
+              "AI Technology Demand"
+            ],
+            "entities": {
+              "people": [],
+              "organizations": [
+                "Chile Ministry of Mining",
+                "China Northern Rare Earth Group",
+                "BYD",
+                "MP Materials",
+                "Lynas Rare Earths"
+              ],
+              "locations": [
+                "Chile",
+                "China",
+                "Inner Mongolia",
+                "Western Australia"
+              ],
+              "products": [
+                "Copper",
+                "Lithium",
+                "Molybdenum",
+                "Rhenium",
+                "Rare Earths"
+              ]
+            },
+            "keywords": [
+              "critical minerals",
+              "copper",
+              "lithium",
+              "supply chain",
+              "energy transition",
+              "artificial intelligence",
+              "battery technology",
+              "clean energy",
+              "political stability",
+              "mining strategy"
+            ],
+            "sentiment": "positive",
+            "summary": "Chile has unveiled a National Critical Minerals Strategy targeting 14 strategic materials including copper, lithium, and rare earths to position itself as a reliable global supplier for AI and clean energy technologies. The strategy aims to diversify Chile's mining sector beyond copper dependence and offer a politically stable alternative to China-dominated supply chains.",
+            "readingTime": "3",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-02-26T13:54:24.452Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-02-26T13:54:26.521Z"
         }
       ]
     ],
@@ -585,6 +1715,1571 @@
           ],
           "createdAt": "2026-02-26T12:28:52.665Z"
         }
+      ],
+      [
+        "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "from": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "rare earth elements",
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "supply chain",
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:15:52.278Z"
+        }
+      ],
+      [
+        "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        {
+          "id": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "from": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "to": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "critical minerals",
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:15:52.278Z"
+        }
+      ],
+      [
+        "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+        {
+          "id": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "from": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "to": "a043b947-8ea6-40ef-98d0-5d907d410031",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "rare earth elements",
+            "China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earth"
+          ],
+          "createdAt": "2026-02-26T13:15:52.278Z"
+        }
+      ],
+      [
+        "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        {
+          "id": "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "from": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "to": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "type": "RELATES_TO",
+          "strength": 21,
+          "sharedTopics": [
+            "critical minerals",
+            "supply chain security",
+            "economic disruption",
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "supply disruption",
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:16:56.957Z"
+        }
+      ],
+      [
+        "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+        {
+          "id": "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "from": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "to": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "type": "RELATES_TO",
+          "strength": 17,
+          "sharedTopics": [
+            "Critical Minerals",
+            "Supply Chain Security"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "supply disruption",
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:16:56.957Z"
+        }
+      ],
+      [
+        "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+        {
+          "id": "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "from": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "to": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "rare earth elements",
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:16:56.957Z"
+        }
+      ],
+      [
+        "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "from": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "rare earth elements",
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "rare earths",
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:16:56.957Z"
+        }
+      ],
+      [
+        "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+        {
+          "id": "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "from": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "to": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:16:56.957Z"
+        }
+      ],
+      [
+        "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+        {
+          "id": "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "from": "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "to": "a043b947-8ea6-40ef-98d0-5d907d410031",
+          "type": "RELATES_TO",
+          "strength": 14,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "rare earth",
+            "defense supply chains",
+            "friendshoring"
+          ],
+          "createdAt": "2026-02-26T13:17:06.799Z"
+        }
+      ],
+      [
+        "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+        {
+          "id": "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "from": "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "to": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "type": "RELATES_TO",
+          "strength": 12,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "rare earth",
+            "defense supply chains",
+            "recycling"
+          ],
+          "createdAt": "2026-02-26T13:17:06.799Z"
+        }
+      ],
+      [
+        "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+        {
+          "id": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "from": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "to": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "critical minerals",
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:26:31.678Z"
+        }
+      ],
+      [
+        "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+        {
+          "id": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "from": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "to": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "type": "RELATES_TO",
+          "strength": 17,
+          "sharedTopics": [
+            "critical minerals",
+            "supply chain security"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "supply disruption",
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:26:31.678Z"
+        }
+      ],
+      [
+        "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+        {
+          "id": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "from": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "to": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:26:31.678Z"
+        }
+      ],
+      [
+        "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+        {
+          "id": "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "from": "a043b947-8ea6-40ef-98d0-5d907d410031",
+          "to": "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "type": "RELATES_TO",
+          "strength": 14,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "rare earth",
+            "defense supply chains",
+            "friendshoring"
+          ],
+          "createdAt": "2026-02-26T13:26:31.679Z"
+        }
+      ],
+      [
+        "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+        {
+          "id": "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "from": "a043b947-8ea6-40ef-98d0-5d907d410031",
+          "to": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "rare earth elements",
+            "China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earth"
+          ],
+          "createdAt": "2026-02-26T13:26:31.679Z"
+        }
+      ],
+      [
+        "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+        {
+          "id": "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "from": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "to": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "rare earth elements",
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "supply chain",
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:26:31.679Z"
+        }
+      ],
+      [
+        "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+        {
+          "id": "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "from": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "to": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "critical minerals",
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:26:31.679Z"
+        }
+      ],
+      [
+        "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+        {
+          "id": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "from": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "to": "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "type": "RELATES_TO",
+          "strength": 12,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "rare earth",
+            "defense supply chains",
+            "recycling"
+          ],
+          "createdAt": "2026-02-26T13:26:31.679Z"
+        }
+      ],
+      [
+        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+        {
+          "id": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "from": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "to": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "type": "RELATES_TO",
+          "strength": 21,
+          "sharedTopics": [
+            "critical minerals",
+            "supply chain security",
+            "economic disruption",
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "supply disruption",
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:26:31.679Z"
+        }
+      ],
+      [
+        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+        {
+          "id": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "from": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "to": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "rare earth elements",
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:26:31.679Z"
+        }
+      ],
+      [
+        "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+        {
+          "id": "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "from": "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "to": "db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "type": "RELATES_TO",
+          "strength": 12,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "rare earth",
+            "defense supply chains",
+            "friendshoring"
+          ],
+          "createdAt": "2026-02-26T13:48:55.486Z"
+        }
+      ],
+      [
+        "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+        {
+          "id": "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "from": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "to": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "type": "RELATES_TO",
+          "strength": 16,
+          "sharedTopics": [
+            "Critical Minerals",
+            "Supply Chain Security"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "rare earths",
+            "mineral independence"
+          ],
+          "createdAt": "2026-02-26T13:48:55.486Z"
+        }
+      ],
+      [
+        "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+        {
+          "id": "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "from": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "to": "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "rare earth elements",
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:48:55.486Z"
+        }
+      ],
+      [
+        "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+        {
+          "id": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "from": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "to": "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "type": "RELATES_TO",
+          "strength": 26,
+          "sharedTopics": [
+            "rare earth elements",
+            "supply chain transparency",
+            "China trade relations",
+            "critical minerals",
+            "industrial metals"
+          ],
+          "sharedKeywords": [
+            "rare earth",
+            "supply chain",
+            "China"
+          ],
+          "createdAt": "2026-02-26T13:48:55.486Z"
+        }
+      ],
+      [
+        "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+        {
+          "id": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "from": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "to": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "rare earth elements",
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "rare earth",
+            "supply chain"
+          ],
+          "createdAt": "2026-02-26T13:48:55.486Z"
+        }
+      ],
+      [
+        "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+        {
+          "id": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "from": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "to": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "type": "RELATES_TO",
+          "strength": 26,
+          "sharedTopics": [
+            "rare earth elements",
+            "supply chain diversification",
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [
+            "supply chain",
+            "China dominance",
+            "Malaysia"
+          ],
+          "createdAt": "2026-02-26T13:48:55.487Z"
+        }
+      ],
+      [
+        "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+        {
+          "id": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "from": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "to": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "type": "RELATES_TO",
+          "strength": 4,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "supply chain",
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:48:55.487Z"
+        }
+      ],
+      [
+        "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+        {
+          "id": "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "from": "a043b947-8ea6-40ef-98d0-5d907d410031",
+          "to": "db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "type": "RELATES_TO",
+          "strength": 25,
+          "sharedTopics": [
+            "rare earth elements",
+            "defense supply chains",
+            "China trade relations",
+            "military procurement"
+          ],
+          "sharedKeywords": [
+            "rare earth",
+            "defense supply chains",
+            "DFARS 2027"
+          ],
+          "createdAt": "2026-02-26T13:48:55.487Z"
+        }
+      ],
+      [
+        "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+        {
+          "id": "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "from": "a043b947-8ea6-40ef-98d0-5d907d410031",
+          "to": "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "rare earth elements",
+            "China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earth"
+          ],
+          "createdAt": "2026-02-26T13:48:55.487Z"
+        }
+      ],
+      [
+        "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+        {
+          "id": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "from": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "to": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "type": "RELATES_TO",
+          "strength": 19,
+          "sharedTopics": [
+            "Critical Minerals",
+            "Supply Chain Security"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "rare earths",
+            "mineral independence"
+          ],
+          "createdAt": "2026-02-26T13:48:55.487Z"
+        }
+      ],
+      [
+        "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+        {
+          "id": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "from": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "to": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "type": "RELATES_TO",
+          "strength": 7,
+          "sharedTopics": [
+            "critical minerals"
+          ],
+          "sharedKeywords": [],
+          "createdAt": "2026-02-26T13:48:55.487Z"
+        }
+      ],
+      [
+        "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+        {
+          "id": "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "from": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "to": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "type": "RELATES_TO",
+          "strength": 22,
+          "sharedTopics": [
+            "rare earth elements",
+            "supply chain diversification",
+            "US-China trade relations",
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "supply chain",
+            "Malaysia"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+        {
+          "id": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "from": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "to": "db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "type": "RELATES_TO",
+          "strength": 18,
+          "sharedTopics": [
+            "rare earth elements",
+            "defense supply chains"
+          ],
+          "sharedKeywords": [
+            "rare earth",
+            "defense supply chains",
+            "DFARS 2027"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+        {
+          "id": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "from": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "to": "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "rare earth"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+        {
+          "id": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "from": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "to": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "type": "RELATES_TO",
+          "strength": 19,
+          "sharedTopics": [
+            "Critical Minerals",
+            "Supply Chain Security"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "rare earths",
+            "mineral independence"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+        {
+          "id": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "from": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "to": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "type": "RELATES_TO",
+          "strength": 9,
+          "sharedTopics": [
+            "rare earth elements",
+            "critical minerals"
+          ],
+          "sharedKeywords": [],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        {
+          "id": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "from": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "to": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "type": "RELATES_TO",
+          "strength": 19,
+          "sharedTopics": [
+            "critical minerals",
+            "supply chain security"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "rare earths",
+            "mineral independence"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+        {
+          "id": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "from": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "to": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "type": "RELATES_TO",
+          "strength": 19,
+          "sharedTopics": [
+            "Critical Minerals",
+            "Supply Chain Security"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "rare earths",
+            "mineral independence"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+        {
+          "id": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "from": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "to": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "type": "RELATES_TO",
+          "strength": 16,
+          "sharedTopics": [
+            "critical minerals",
+            "supply chain security"
+          ],
+          "sharedKeywords": [
+            "critical minerals",
+            "rare earths",
+            "mineral independence"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+        {
+          "id": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "from": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "to": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "supply chain"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "from": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "rare earths",
+            "supply chain",
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+        {
+          "id": "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "from": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "to": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "type": "RELATES_TO",
+          "strength": 26,
+          "sharedTopics": [
+            "rare earth elements",
+            "supply chain diversification",
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [
+            "supply chain",
+            "China dominance",
+            "Malaysia"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "from": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "type": "RELATES_TO",
+          "strength": 22,
+          "sharedTopics": [
+            "rare earth elements",
+            "supply chain diversification",
+            "US-China trade relations",
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "supply chain",
+            "Malaysia"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        {
+          "id": "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "from": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "to": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "type": "RELATES_TO",
+          "strength": 9,
+          "sharedTopics": [
+            "critical minerals",
+            "rare earth elements"
+          ],
+          "sharedKeywords": [],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+        {
+          "id": "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "from": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "to": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "Critical Minerals"
+          ],
+          "sharedKeywords": [
+            "supply chain"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+        {
+          "id": "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "from": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "to": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "type": "RELATES_TO",
+          "strength": 7,
+          "sharedTopics": [
+            "Critical Minerals"
+          ],
+          "sharedKeywords": [],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+        {
+          "id": "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "from": "db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "to": "a043b947-8ea6-40ef-98d0-5d907d410031",
+          "type": "RELATES_TO",
+          "strength": 25,
+          "sharedTopics": [
+            "rare earth elements",
+            "defense supply chains",
+            "China trade relations",
+            "military procurement"
+          ],
+          "sharedKeywords": [
+            "rare earth",
+            "defense supply chains",
+            "DFARS 2027"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+        {
+          "id": "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "from": "db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "to": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "type": "RELATES_TO",
+          "strength": 18,
+          "sharedTopics": [
+            "rare earth elements",
+            "defense supply chains"
+          ],
+          "sharedKeywords": [
+            "rare earth",
+            "defense supply chains",
+            "DFARS 2027"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+        {
+          "id": "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "from": "db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "to": "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "type": "RELATES_TO",
+          "strength": 12,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "rare earth",
+            "defense supply chains",
+            "friendshoring"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+        {
+          "id": "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "from": "db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "to": "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "rare earth elements",
+            "China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earth"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+        {
+          "id": "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "from": "db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "to": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "rare earth elements",
+            "China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earth"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+        {
+          "id": "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "from": "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "to": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "type": "RELATES_TO",
+          "strength": 26,
+          "sharedTopics": [
+            "rare earth elements",
+            "supply chain transparency",
+            "China trade relations",
+            "critical minerals",
+            "industrial metals"
+          ],
+          "sharedKeywords": [
+            "rare earth",
+            "supply chain",
+            "transparency"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+        {
+          "id": "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "from": "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "to": "a043b947-8ea6-40ef-98d0-5d907d410031",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "rare earth elements",
+            "China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earth"
+          ],
+          "createdAt": "2026-02-26T13:48:55.488Z"
+        }
+      ],
+      [
+        "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+        {
+          "id": "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "from": "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "to": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "critical minerals",
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:48:55.489Z"
+        }
+      ],
+      [
+        "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+        {
+          "id": "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "from": "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "to": "db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "rare earth elements",
+            "China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earth"
+          ],
+          "createdAt": "2026-02-26T13:48:55.489Z"
+        }
+      ],
+      [
+        "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+        {
+          "id": "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "from": "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "to": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "rare earth"
+          ],
+          "createdAt": "2026-02-26T13:48:55.489Z"
+        }
+      ],
+      [
+        "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+        {
+          "id": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "from": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "to": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "type": "RELATES_TO",
+          "strength": 26,
+          "sharedTopics": [
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [
+            "supply chain",
+            "China dominance"
+          ],
+          "createdAt": "2026-02-26T13:52:35.729Z"
+        }
+      ],
+      [
+        "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+        {
+          "id": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "from": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "to": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "type": "RELATES_TO",
+          "strength": 22,
+          "sharedTopics": [
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earths",
+            "supply chain",
+            "China dominance"
+          ],
+          "createdAt": "2026-02-26T13:52:35.729Z"
+        }
+      ],
+      [
+        "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "from": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "type": "RELATES_TO",
+          "strength": 16,
+          "sharedTopics": [
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earths",
+            "supply chain"
+          ],
+          "createdAt": "2026-02-26T13:52:35.729Z"
+        }
+      ],
+      [
+        "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+        {
+          "id": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "from": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "to": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "type": "RELATES_TO",
+          "strength": 7,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "supply chain",
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:52:35.729Z"
+        }
+      ],
+      [
+        "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        {
+          "id": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "from": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "to": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:52:35.729Z"
+        }
+      ],
+      [
+        "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "from": "e0f61467-ae58-40e5-9997-3d3f76f792f3",
+          "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:53:07.730Z"
+        }
+      ],
+      [
+        "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+        {
+          "id": "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "from": "e0f61467-ae58-40e5-9997-3d3f76f792f3",
+          "to": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "supply chain security",
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:53:07.730Z"
+        }
+      ],
+      [
+        "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+        {
+          "id": "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "from": "e0f61467-ae58-40e5-9997-3d3f76f792f3",
+          "to": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "China"
+          ],
+          "createdAt": "2026-02-26T13:53:07.730Z"
+        }
+      ],
+      [
+        "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+        {
+          "id": "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "from": "e0f61467-ae58-40e5-9997-3d3f76f792f3",
+          "to": "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "China"
+          ],
+          "createdAt": "2026-02-26T13:53:07.730Z"
+        }
+      ],
+      [
+        "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        {
+          "id": "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "from": "e0f61467-ae58-40e5-9997-3d3f76f792f3",
+          "to": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "supply chain security",
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:53:07.730Z"
+        }
+      ],
+      [
+        "0b0f8d30-57d1-4000-a662-b6bec3347b9c-RELATES_TO-e0f61467-ae58-40e5-9997-3d3f76f792f3",
+        {
+          "id": "0b0f8d30-57d1-4000-a662-b6bec3347b9c-RELATES_TO-e0f61467-ae58-40e5-9997-3d3f76f792f3",
+          "from": "0b0f8d30-57d1-4000-a662-b6bec3347b9c",
+          "to": "e0f61467-ae58-40e5-9997-3d3f76f792f3",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "mining"
+          ],
+          "createdAt": "2026-02-26T13:53:17.987Z"
+        }
+      ],
+      [
+        "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        {
+          "id": "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "from": "2de5db65-3d62-493b-b1c9-bf93f57b0f0c",
+          "to": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "critical minerals",
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:53:32.649Z"
+        }
+      ],
+      [
+        "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+        {
+          "id": "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "from": "2de5db65-3d62-493b-b1c9-bf93f57b0f0c",
+          "to": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "type": "RELATES_TO",
+          "strength": 7,
+          "sharedTopics": [
+            "rare earth elements",
+            "critical minerals"
+          ],
+          "sharedKeywords": [],
+          "createdAt": "2026-02-26T13:53:32.649Z"
+        }
+      ],
+      [
+        "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+        {
+          "id": "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "from": "2de5db65-3d62-493b-b1c9-bf93f57b0f0c",
+          "to": "6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "Critical Minerals"
+          ],
+          "sharedKeywords": [
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:53:32.649Z"
+        }
+      ],
+      [
+        "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+        {
+          "id": "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "from": "2de5db65-3d62-493b-b1c9-bf93f57b0f0c",
+          "to": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "Critical Minerals"
+          ],
+          "sharedKeywords": [
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:53:32.649Z"
+        }
+      ],
+      [
+        "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "from": "2de5db65-3d62-493b-b1c9-bf93f57b0f0c",
+          "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "rare earth elements",
+            "critical minerals"
+          ],
+          "sharedKeywords": [
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:53:32.649Z"
+        }
+      ],
+      [
+        "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+        {
+          "id": "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "from": "0e04b217-7fec-402b-993a-a29252b379fb",
+          "to": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "type": "RELATES_TO",
+          "strength": 9,
+          "sharedTopics": [
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earths",
+            "China dominance"
+          ],
+          "createdAt": "2026-02-26T13:53:55.172Z"
+        }
+      ],
+      [
+        "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+        {
+          "id": "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "from": "0e04b217-7fec-402b-993a-a29252b379fb",
+          "to": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "type": "RELATES_TO",
+          "strength": 9,
+          "sharedTopics": [
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earths",
+            "China dominance"
+          ],
+          "createdAt": "2026-02-26T13:53:55.172Z"
+        }
+      ],
+      [
+        "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+        {
+          "id": "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "from": "0e04b217-7fec-402b-993a-a29252b379fb",
+          "to": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "type": "RELATES_TO",
+          "strength": 8,
+          "sharedTopics": [
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [
+            "China dominance"
+          ],
+          "createdAt": "2026-02-26T13:53:55.172Z"
+        }
+      ],
+      [
+        "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "from": "0e04b217-7fec-402b-993a-a29252b379fb",
+          "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [
+            "rare earths"
+          ],
+          "createdAt": "2026-02-26T13:53:55.172Z"
+        }
+      ],
+      [
+        "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        {
+          "id": "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "from": "aad87cd8-e5d3-4f23-91d4-14a4415bf67a",
+          "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [],
+          "createdAt": "2026-02-26T13:54:03.402Z"
+        }
+      ],
+      [
+        "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+        {
+          "id": "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "from": "aad87cd8-e5d3-4f23-91d4-14a4415bf67a",
+          "to": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [],
+          "createdAt": "2026-02-26T13:54:03.402Z"
+        }
+      ],
+      [
+        "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+        {
+          "id": "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "from": "aad87cd8-e5d3-4f23-91d4-14a4415bf67a",
+          "to": "090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [],
+          "createdAt": "2026-02-26T13:54:03.402Z"
+        }
+      ],
+      [
+        "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+        {
+          "id": "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "from": "aad87cd8-e5d3-4f23-91d4-14a4415bf67a",
+          "to": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [],
+          "createdAt": "2026-02-26T13:54:03.402Z"
+        }
+      ],
+      [
+        "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-0e04b217-7fec-402b-993a-a29252b379fb",
+        {
+          "id": "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-0e04b217-7fec-402b-993a-a29252b379fb",
+          "from": "aad87cd8-e5d3-4f23-91d4-14a4415bf67a",
+          "to": "0e04b217-7fec-402b-993a-a29252b379fb",
+          "type": "RELATES_TO",
+          "strength": 6,
+          "sharedTopics": [
+            "US-China trade relations"
+          ],
+          "sharedKeywords": [],
+          "createdAt": "2026-02-26T13:54:03.402Z"
+        }
+      ],
+      [
+        "85fa7bb0-1a35-4c43-b21d-662bf1b4dce3-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+        {
+          "id": "85fa7bb0-1a35-4c43-b21d-662bf1b4dce3-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "from": "85fa7bb0-1a35-4c43-b21d-662bf1b4dce3",
+          "to": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "supply chain",
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:54:14.958Z"
+        }
+      ],
+      [
+        "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-85fa7bb0-1a35-4c43-b21d-662bf1b4dce3",
+        {
+          "id": "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-85fa7bb0-1a35-4c43-b21d-662bf1b4dce3",
+          "from": "c541e647-378c-4f71-a0ad-b280e546b92b",
+          "to": "85fa7bb0-1a35-4c43-b21d-662bf1b4dce3",
+          "type": "RELATES_TO",
+          "strength": 11,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "critical minerals",
+            "supply chain",
+            "lithium"
+          ],
+          "createdAt": "2026-02-26T13:54:24.506Z"
+        }
+      ],
+      [
+        "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+        {
+          "id": "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "from": "c541e647-378c-4f71-a0ad-b280e546b92b",
+          "to": "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "type": "RELATES_TO",
+          "strength": 7,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:54:24.506Z"
+        }
+      ],
+      [
+        "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+        {
+          "id": "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "from": "c541e647-378c-4f71-a0ad-b280e546b92b",
+          "to": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [
+            "supply chain diversification",
+            "critical minerals strategy"
+          ],
+          "sharedKeywords": [
+            "supply chain"
+          ],
+          "createdAt": "2026-02-26T13:54:24.506Z"
+        }
+      ],
+      [
+        "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+        {
+          "id": "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "from": "c541e647-378c-4f71-a0ad-b280e546b92b",
+          "to": "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "supply chain",
+            "critical minerals"
+          ],
+          "createdAt": "2026-02-26T13:54:24.506Z"
+        }
+      ],
+      [
+        "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+        {
+          "id": "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "from": "c541e647-378c-4f71-a0ad-b280e546b92b",
+          "to": "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "type": "RELATES_TO",
+          "strength": 5,
+          "sharedTopics": [],
+          "sharedKeywords": [
+            "critical minerals",
+            "supply chain"
+          ],
+          "createdAt": "2026-02-26T13:54:24.506Z"
+        }
       ]
     ],
     "nodeEdges": [
@@ -596,14 +3291,31 @@
           "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
           "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
           "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
-          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a"
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562"
         ]
       ],
       [
         "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
         [
           "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
-          "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031"
+          "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e"
         ]
       ],
       [
@@ -614,7 +3326,19 @@
           "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
           "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
           "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
-          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7"
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f"
         ]
       ],
       [
@@ -623,14 +3347,29 @@
           "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
           "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
           "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
-          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7"
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7"
         ]
       ],
       [
         "a043b947-8ea6-40ef-98d0-5d907d410031",
         [
           "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
-          "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031"
+          "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031"
         ]
       ],
       [
@@ -639,7 +3378,228 @@
           "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
           "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
           "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
-          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a"
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a"
+        ]
+      ],
+      [
+        "d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+        [
+          "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "85fa7bb0-1a35-4c43-b21d-662bf1b4dce3-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59"
+        ]
+      ],
+      [
+        "8ebcf1b2-0247-44e9-80c9-996aacca2967",
+        []
+      ],
+      [
+        "a14b54bc-7718-4967-b7fc-740dbf933ea1",
+        [
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1"
+        ]
+      ],
+      [
+        "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+        [
+          "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8"
+        ]
+      ],
+      [
+        "3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+        [
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70"
+        ]
+      ],
+      [
+        "090cd307-4f75-4e2d-9ce9-55161357e45b",
+        [
+          "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "6d1aae20-0851-4621-ad8b-cc3ecaead4b7-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "3c2b814f-ba01-4cc7-bcc5-910c8a679e70-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "090cd307-4f75-4e2d-9ce9-55161357e45b-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b"
+        ]
+      ],
+      [
+        "db514e6b-388a-4191-ba11-2f6d82c5be60",
+        [
+          "d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-d798b54b-5a99-4eba-9bb6-ac3ab8e0a6e8",
+          "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60"
+        ]
+      ],
+      [
+        "19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+        [
+          "a14b54bc-7718-4967-b7fc-740dbf933ea1-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "d0234ab4-a8a2-4c65-bf9c-39e375c65c59-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "a043b947-8ea6-40ef-98d0-5d907d410031-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "381483b7-eb82-4dbb-a9a7-fede33ea4f3e-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "db514e6b-388a-4191-ba11-2f6d82c5be60-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-a043b947-8ea6-40ef-98d0-5d907d410031",
+          "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-db514e6b-388a-4191-ba11-2f6d82c5be60",
+          "19f60bf2-01ad-4770-8868-66f2eca6c0d9-RELATES_TO-381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+          "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9"
+        ]
+      ],
+      [
+        "3cdcb9dd-28b9-42c4-af45-396ad87e9d8b",
+        []
+      ],
+      [
+        "0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+        [
+          "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "0f91e6b1-212f-46d3-87c9-b97a4686a6e7-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-0f91e6b1-212f-46d3-87c9-b97a4686a6e7"
+        ]
+      ],
+      [
+        "816c107d-4416-4934-a36c-2d5a76cf324c",
+        []
+      ],
+      [
+        "e0f61467-ae58-40e5-9997-3d3f76f792f3",
+        [
+          "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-19f60bf2-01ad-4770-8868-66f2eca6c0d9",
+          "e0f61467-ae58-40e5-9997-3d3f76f792f3-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "0b0f8d30-57d1-4000-a662-b6bec3347b9c-RELATES_TO-e0f61467-ae58-40e5-9997-3d3f76f792f3"
+        ]
+      ],
+      [
+        "0b0f8d30-57d1-4000-a662-b6bec3347b9c",
+        [
+          "0b0f8d30-57d1-4000-a662-b6bec3347b9c-RELATES_TO-e0f61467-ae58-40e5-9997-3d3f76f792f3"
+        ]
+      ],
+      [
+        "2d5e973e-c89f-41d6-a8cc-18130e4e1a44",
+        []
+      ],
+      [
+        "2de5db65-3d62-493b-b1c9-bf93f57b0f0c",
+        [
+          "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+          "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-6d1aae20-0851-4621-ad8b-cc3ecaead4b7",
+          "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70",
+          "2de5db65-3d62-493b-b1c9-bf93f57b0f0c-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f"
+        ]
+      ],
+      [
+        "0e04b217-7fec-402b-993a-a29252b379fb",
+        [
+          "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "0e04b217-7fec-402b-993a-a29252b379fb-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-0e04b217-7fec-402b-993a-a29252b379fb"
+        ]
+      ],
+      [
+        "aad87cd8-e5d3-4f23-91d4-14a4415bf67a",
+        [
+          "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+          "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-090cd307-4f75-4e2d-9ce9-55161357e45b",
+          "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
+          "aad87cd8-e5d3-4f23-91d4-14a4415bf67a-RELATES_TO-0e04b217-7fec-402b-993a-a29252b379fb"
+        ]
+      ],
+      [
+        "85fa7bb0-1a35-4c43-b21d-662bf1b4dce3",
+        [
+          "85fa7bb0-1a35-4c43-b21d-662bf1b4dce3-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-85fa7bb0-1a35-4c43-b21d-662bf1b4dce3"
+        ]
+      ],
+      [
+        "c541e647-378c-4f71-a0ad-b280e546b92b",
+        [
+          "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-85fa7bb0-1a35-4c43-b21d-662bf1b4dce3",
+          "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-a14b54bc-7718-4967-b7fc-740dbf933ea1",
+          "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+          "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-d0234ab4-a8a2-4c65-bf9c-39e375c65c59",
+          "c541e647-378c-4f71-a0ad-b280e546b92b-RELATES_TO-3c2b814f-ba01-4cc7-bcc5-910c8a679e70"
         ]
       ]
     ]

@@ -1,5 +1,5 @@
 {
-  "id": "93f3c25d-8e62-4baa-ac38-3bb0c49ae37a",
+  "id": "0f91e6b1-212f-46d3-87c9-b97a4686a6e7",
   "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
   "title": "Malaysia becomes a lynchpin in US-led effort to break China’s grip on rare earths",
   "author": null,
@@ -10,17 +10,17 @@
   "tags": [
     "EconomyRare earthsMineral and metal resourcesMalaysiaAustraliaChina-US competitionCaixin"
   ],
-  "scrapedAt": "2026-02-26T12:28:46.090Z",
+  "scrapedAt": "2026-02-26T13:52:29.260Z",
   "labels": {
     "categories": [
-      "Economy",
+      "Economics",
       "International Relations"
     ],
     "topics": [
-      "rare earth elements",
-      "supply chain diversification",
+      "Rare earth supply chains",
       "US-China trade relations",
-      "critical minerals strategy"
+      "Strategic minerals",
+      "Malaysia manufacturing hub"
     ],
     "entities": {
       "people": [
@@ -30,17 +30,17 @@
         "Lu Yutong"
       ],
       "organizations": [
-        "Lynas Rare Earths Ltd.",
         "Caixin Global",
+        "Lynas Rare Earths Ltd.",
         "US government",
-        "Trump administration"
+        "White House"
       ],
       "locations": [
         "Malaysia",
         "China",
         "United States",
-        "Kuantan",
         "Australia",
+        "Kuantan",
         "South Korea",
         "Thailand",
         "Japan",
@@ -57,15 +57,15 @@
       "rare earths",
       "supply chain",
       "China dominance",
-      "Malaysia",
-      "US alliance"
+      "Malaysia processing",
+      "trade war"
     ],
     "sentiment": "neutral",
-    "summary": "Malaysia has become a key partner in the US-led effort to reduce dependence on China's rare earth supply chain, serving as a crucial processing hub. The US has accelerated efforts to build alternative supply chains through agreements with allies, though China's market dominance remains significant.",
+    "summary": "Malaysia has become a key player in the US-led effort to establish rare earth supply chains outside of China's control, serving as a crucial processing and manufacturing hub. The article examines the strategic importance of this shift following recent US-China trade discussions and various international agreements on critical minerals.",
     "readingTime": "4",
     "complexity": "intermediate",
     "contentType": "analysis",
-    "labelledAt": "2026-02-26T12:28:52.534Z",
+    "labelledAt": "2026-02-26T13:52:35.540Z",
     "modelUsed": "claude-sonnet-4-20250514"
   }
 }

@@ -128,6 +128,22 @@ router.get('/articles/:id', async (req, res) => {
   }
 });
 
+router.get('/articles/by-url', async (req, res) => {
+  try {
+    const { url } = req.query;
+    if (!url) return res.status(400).json({ error: 'url query param required' });
+
+    const RawArticle = await getRawArticleModel();
+    const article    = await RawArticle.findOne({ sourceUrl: url }).lean();
+
+    if (!article) return res.status(404).json({ error: 'Article not found' });
+
+    res.json({ success: true, article: { id: article.sourceId, ...article } });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // DELETE /api/articles/:id - Delete article
 router.delete('/articles/:id', async (req, res) => {
   try {
