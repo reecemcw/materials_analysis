@@ -9,12 +9,12 @@ const __dirname = dirname(__filename);
 
 const PATHS = {
   raw:    '/data/local/articles',
-  tagged: '/data/local/tagged-articles',
+  labelled: '/data/local/labelled-articles',
 };
 
 const PREFIXES = {
   raw:    'article',
-  tagged: 'tagged',
+  labelled: 'labelled',
 };
 
 class Storage {
@@ -22,7 +22,7 @@ class Storage {
     const projectRoot = join(__dirname, '..');
     this.dataDirs = {
       raw:    join(projectRoot, PATHS.raw),
-      tagged: join(projectRoot, PATHS.tagged),
+      labelled: join(projectRoot, PATHS.labelled),
     };
     this._ensureDataDirs();
   }
@@ -115,25 +115,32 @@ class Storage {
 	}
 
   async getTaggedArticle(id) {
-    return this._readFromFile('tagged', id).catch(err => {
-      if (err.code === 'ENOENT') return null;
-      logger.error('[Tagged] Failed to read tagged article:', err);
-      throw err;
-    });
-  }
+		try {
+			return await this._readFromFile('labelled', id);
+		} catch (err) {
+			if (err.code !== 'ENOENT') logger.error('[Labelled] File read failed:', err);
+			return this._getLabelledFromMongo(id);
+		}
+	}
 
   async getAllTaggedArticles(limit = 1000, offset = 0) {
-    try {
-      return await this._getAllFromFiles('tagged', limit, offset);
-    } catch (err) {
-      logger.error('[Tagged] Failed to get all tagged articles:', err);
-      return [];
-    }
-  }
+		try {
+			const files = await this._getAllFromFiles('labelled', limit, offset);
+			if (files.length > 0) return files;
+			// Fall through to Mongo if no files exist
+			return this._getAllLabelledFromMongo(limit, offset);
+		} catch (err) {
+			logger.error('[Labelled] File layer failed, falling back to MongoDB:', err);
+			return this._getAllLabelledFromMongo(limit, offset);
+		}
+	}
 
   async deleteTaggedArticle(id) {
-    return this._deleteFromFile('tagged', id);
-  }
+		await Promise.allSettled([
+			this._deleteFromFile('labelled', id),
+			this._deleteLabelledFromMongo(id),
+		]);
+	}
 
   // ─── Shared File Helpers ──────────────────────────────────────────────────
 
@@ -145,6 +152,11 @@ class Storage {
 	}
 
 	async _saveLabelledToFile(article) {
+  	console.log('DEBUG saveLabelledToFile:', { 
+    id: article?.id, 
+    dataDirs: this.dataDirs,
+    filePath: this._getFilePath('labelled', article?.id)
+  });
 		const filePath = this._getFilePath('labelled', article.id);
 		await fs.writeFile(filePath, JSON.stringify(article, null, 2), 'utf8');
 		logger.info(`[File][labelled] Saved article: ${article.id}`);
@@ -311,6 +323,77 @@ class Storage {
         logger.error(`[MongoDB][labelled] Failed to save article: ${article.id} — ${err.message}`);
         throw err;
     }
+	}
+
+	async _getLabelledFromMongo(id) {
+		try {
+			const LabelledArticle = await getLabelledArticleModel();
+			const RawArticle      = await getRawArticleModel();
+
+			const enriched = await LabelledArticle.findOne({ sourceId: id }).lean();
+			if (!enriched) return null;
+
+			// Join raw article data so callers get the full picture
+			const raw = await RawArticle.findOne({ sourceId: id }).lean();
+
+			return {
+				id:          enriched.sourceId,
+				title:       raw?.title       ?? null,
+				url:         raw?.sourceUrl   ?? null,
+				author:      raw?.author      ?? null,
+				publishDate: raw?.publishDate ?? null,
+				content:     raw?.content     ?? null,
+				excerpt:     raw?.excerpt     ?? null,
+				labels:      enriched.enrichedData,
+				processedAt: enriched.processedAt,
+			};
+		} catch (err) {
+			logger.error('[MongoDB] Read failed for labelled article:', id, err);
+			return null;
+		}
+	}
+
+	async _getAllLabelledFromMongo(limit, offset) {
+		try {
+			const LabelledArticle = await getLabelledArticleModel();
+			const RawArticle      = await getRawArticleModel();
+
+			const enrichedDocs = await LabelledArticle.find()
+				.sort({ processedAt: -1 })
+				.skip(offset)
+				.limit(limit)
+				.lean();
+
+			if (enrichedDocs.length === 0) return [];
+
+			// Batch fetch matching raw articles
+			const rawDocs = await RawArticle.find({
+				sourceId: { $in: enrichedDocs.map(d => d.sourceId) },
+			}).lean();
+
+			const rawMap = Object.fromEntries(rawDocs.map(r => [r.sourceId, r]));
+
+			return enrichedDocs.map(enriched => ({
+				id:          enriched.sourceId,
+				title:       rawMap[enriched.sourceId]?.title       ?? null,
+				url:         rawMap[enriched.sourceId]?.sourceUrl   ?? null,
+				author:      rawMap[enriched.sourceId]?.author      ?? null,
+				publishDate: rawMap[enriched.sourceId]?.publishDate ?? null,
+				content:     rawMap[enriched.sourceId]?.content     ?? null,
+				excerpt:     rawMap[enriched.sourceId]?.excerpt     ?? null,
+				labels:      enriched.enrichedData,
+				processedAt: enriched.processedAt,
+			}));
+		} catch (err) {
+			logger.error('[MongoDB] Failed to get all labelled articles:', err);
+			return [];
+		}
+	}
+
+	async _deleteLabelledFromMongo(id) {
+		const LabelledArticle = await getLabelledArticleModel();
+		await LabelledArticle.deleteOne({ sourceId: id });
+		logger.info(`[MongoDB][labelled] Deleted article: ${id}`);
 	}
 }
 

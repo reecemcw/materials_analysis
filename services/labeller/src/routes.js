@@ -20,80 +20,40 @@ const storage = new Storage();
 const LABELLER_PORT = process.env.LABELLER_PORT || 3002;
 const SCRAPER_URL = process.env.SCRAPER_URL || 'http://localhost:3001';
 
-// POST /api/label/:id - Label a single article
-router.post('/label/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    logger.info(`Fetching article ${id} from scraper service`);
-    
-    // Fetch article from scraper service
-    const response = await axios.get(`${SCRAPER_URL}/api/articles/${id}`);
-    const article = response.data.article;
-
-    // Label the article
-    const labels = await labeller.labelArticle(article);
-
-    // Create tagged article
-    const taggedArticle = {
-      ...article,
-      labels
-    };
-
-    // Save labelled article
-    await storage.saveLabelledArticle(taggedArticle);
-
-    res.json({
-      success: true,
-      taggedArticle,
-      message: 'Article labelled successfully'
-    });
-  } catch (error) {
-    logger.error('Label error:', error);
-    
-    if (error.response?.status === 404) {
-      return res.status(404).json({ error: 'Article not found in scraper service' });
-    }
-    
-    res.status(500).json({ error: error.message });
-  }
-});
-
 // POST /api/label/batch - Label multiple articles
 router.post('/label/batch', async (req, res) => {
   try {
-    const { articleIds } = req.body;
+    // If no articleIds provided, label all unlabelled articles
+    let { articleIds } = req.body;
 
-    if (!articleIds || !Array.isArray(articleIds)) {
-      return res.status(400).json({ error: 'articleIds array is required' });
+    if (!articleIds) {
+      const allArticles = await storage.getAllArticles(1000);
+      articleIds = allArticles.map(a => a.id ?? a.sourceId);
+    }
+
+    if (!Array.isArray(articleIds) || articleIds.length === 0) {
+      return res.status(400).json({ error: 'No articles to label' });
     }
 
     logger.info(`Batch labelling ${articleIds.length} articles`);
 
     const articles = [];
-    
-    // Fetch all articles
     for (const id of articleIds) {
-      try {
-        const response = await get(`${SCRAPER_URL}/api/articles/${id}`);
-        articles.push(response.data.article);
-      } catch (error) {
-        logger.warn(`Failed to fetch article ${id}:`, error.message);
+      const article = await storage.getArticle(id);
+      if (article) {
+        articles.push(article);
+      } else {
+        logger.warn(`Article not found, skipping: ${id}`);
       }
     }
 
-    // Label all articles
     const results = await labeller.batchLabel(articles);
 
-    // Save successful labels
     const savedArticles = [];
     for (const result of results) {
       if (result.success) {
-        const article = articles.find(a => a.id === result.articleId);
-        const taggedArticle = {
-          ...article,
-          labels: result.labels
-        };
+        const article = articles.find(a => (a.id ?? a.sourceId) === result.articleId);
+        const taggedArticle = { ...article, labels: result.labels };
         await storage.saveLabelledArticle(taggedArticle);
         savedArticles.push(taggedArticle);
       }
@@ -101,20 +61,41 @@ router.post('/label/batch', async (req, res) => {
 
     res.json({
       success: true,
-      totalArticles: articleIds.length,
-      successCount: savedArticles.length,
-      failureCount: results.filter(r => !r.success).length,
+      totalArticles:  articleIds.length,
+      successCount:   savedArticles.length,
+      failureCount:   results.filter(r => !r.success).length,
       taggedArticles: savedArticles,
-      errors: results.filter(r => !r.success).map(r => ({
-        articleId: r.articleId,
-        error: r.error
-      }))
+      errors: results.filter(r => !r.success).map(r => ({ articleId: r.articleId, error: r.error }))
     });
   } catch (error) {
     logger.error('Batch label error:', error);
     res.status(500).json({ error: error.message });
   }
 });
+
+// POST /api/label/:id - Label a single article
+router.post('/label/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Read directly from MongoDB, no HTTP hop needed
+    const article = await storage.getArticle(id);
+
+    if (!article) {
+      return res.status(404).json({ error: `Article ${id} not found` });
+    }
+
+    const labels = await labeller.labelArticle(article);
+    const taggedArticle = { ...article, labels };
+    await storage.saveLabelledArticle(taggedArticle);
+
+    res.json({ success: true, taggedArticle, message: 'Article labelled successfully' });
+  } catch (error) {
+    logger.error('Label error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 // GET /api/tagged/:id - Get tagged article
 router.get('/tagged/:id', async (req, res) => {

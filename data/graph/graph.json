@@ -1,0 +1,241 @@
+{
+  "version": "1.0",
+  "savedAt": "2026-02-26T04:11:07.975Z",
+  "nodes": [
+    [
+      "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+      {
+        "id": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        "title": "US releases 2025 list of critical minerals, featuring 10 additions",
+        "url": "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
+        "labels": {
+          "categories": [
+            "Economics",
+            "Government Policy"
+          ],
+          "topics": [
+            "critical minerals",
+            "supply chain security",
+            "economic disruption",
+            "rare earth elements"
+          ],
+          "entities": {
+            "people": [
+              "Antone Gonsalves"
+            ],
+            "organizations": [
+              "US Government",
+              "PT Vale Indonesia"
+            ],
+            "locations": [
+              "United States",
+              "Sorowako",
+              "South Sulawesi",
+              "Indonesia"
+            ],
+            "products": [
+              "critical minerals",
+              "rare earths",
+              "nickel"
+            ]
+          },
+          "keywords": [
+            "critical minerals",
+            "supply disruption",
+            "US economy",
+            "rare earths",
+            "mineral independence"
+          ],
+          "sentiment": "neutral",
+          "summary": "The US government has released its 2025 list of critical minerals, adding 10 new minerals to bring the total to 60 essential minerals including rare earths. The list identifies minerals that would impose the highest economic costs if their supplies were disrupted.",
+          "readingTime": "2",
+          "complexity": "intermediate",
+          "contentType": "news",
+          "labelledAt": "2026-02-26T04:10:50.060Z",
+          "modelUsed": "claude-sonnet-4-20250514"
+        },
+        "addedAt": "2026-02-26T04:11:07.975Z"
+      }
+    ],
+    [
+      "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+      {
+        "id": "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+        "title": "Securing Defense Supply Chains in a Rare Earth World",
+        "url": "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
+        "labels": {
+          "categories": [
+            "Defense & Security",
+            "Supply Chain Management"
+          ],
+          "topics": [
+            "rare earth elements",
+            "defense supply chains",
+            "DFARS regulations",
+            "friendshoring",
+            "recycling technology"
+          ],
+          "entities": {
+            "people": [
+              "Michael Tucker"
+            ],
+            "organizations": [
+              "HyProMag Recycling",
+              "OSC"
+            ],
+            "locations": [
+              "United States",
+              "China"
+            ],
+            "products": [
+              "rare earth elements"
+            ]
+          },
+          "keywords": [
+            "rare earth",
+            "defense supply chains",
+            "DFARS 2027",
+            "China monopoly",
+            "recycling"
+          ],
+          "sentiment": "neutral",
+          "summary": "The article discusses U.S. efforts to reduce dependence on China's rare earth monopoly through regulatory measures and allied partnerships. A comment highlights HyProMag Recycling's patented process that recovers over 97% of rare earths from feedstock.",
+          "readingTime": "1",
+          "complexity": "intermediate",
+          "contentType": "analysis",
+          "labelledAt": "2026-02-26T04:10:59.718Z",
+          "modelUsed": "claude-sonnet-4-20250514"
+        },
+        "addedAt": "2026-02-26T04:11:07.975Z"
+      }
+    ],
+    [
+      "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+      {
+        "id": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        "title": "Malaysia becomes a lynchpin in US-led effort to break China’s grip on rare earths",
+        "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
+        "labels": {
+          "categories": [
+            "economy",
+            "geopolitics"
+          ],
+          "topics": [
+            "rare earth elements",
+            "supply chain diversification",
+            "US-China trade relations",
+            "critical minerals"
+          ],
+          "entities": {
+            "people": [
+              "Xi Jinping",
+              "Donald Trump",
+              "Anthony Albanese",
+              "Lu Yutong"
+            ],
+            "organizations": [
+              "Caixin Global",
+              "Lynas Rare Earths Ltd.",
+              "US government departments"
+            ],
+            "locations": [
+              "Malaysia",
+              "China",
+              "United States",
+              "Australia",
+              "Kuantan",
+              "South Korea",
+              "Thailand",
+              "Japan",
+              "Central Asia"
+            ],
+            "products": [
+              "rare earth elements",
+              "microchips",
+              "lithium batteries"
+            ]
+          },
+          "keywords": [
+            "rare earths",
+            "supply chain",
+            "US-China trade",
+            "Malaysia",
+            "critical minerals"
+          ],
+          "sentiment": "neutral",
+          "summary": "Malaysia has become a key partner in the US-led effort to reduce dependence on China's dominance in rare earth elements processing and manufacturing. The US has signed multiple agreements worth billions to establish alternative supply chains, though China's market control remains challenging to break.",
+          "readingTime": "4",
+          "complexity": "intermediate",
+          "contentType": "analysis",
+          "labelledAt": "2026-02-26T04:11:07.832Z",
+          "modelUsed": "claude-sonnet-4-20250514"
+        },
+        "addedAt": "2026-02-26T04:11:07.974Z"
+      }
+    ]
+  ],
+  "edges": [
+    [
+      "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+      {
+        "id": "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        "from": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        "to": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        "type": "RELATES_TO",
+        "strength": 6,
+        "sharedTopics": [
+          "critical minerals",
+          "rare earth elements"
+        ],
+        "sharedKeywords": [
+          "critical minerals",
+          "rare earths"
+        ],
+        "createdAt": "2026-02-26T04:11:07.975Z"
+      }
+    ],
+    [
+      "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+      {
+        "id": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        "from": "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        "to": "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+        "type": "RELATES_TO",
+        "strength": 6,
+        "sharedTopics": [
+          "rare earth elements",
+          "critical minerals"
+        ],
+        "sharedKeywords": [
+          "rare earths",
+          "critical minerals"
+        ],
+        "createdAt": "2026-02-26T04:11:07.975Z"
+      }
+    ]
+  ],
+  "nodeEdges": [
+    [
+      "3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+      [
+        "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f"
+      ]
+    ],
+    [
+      "381483b7-eb82-4dbb-a9a7-fede33ea4f3e",
+      []
+    ],
+    [
+      "3125c9c1-3146-4114-86ec-0de2a12cfd8f",
+      [
+        "3125c9c1-3146-4114-86ec-0de2a12cfd8f-RELATES_TO-3f8bf3ea-d870-470b-8771-e1fd4e8dd562",
+        "3f8bf3ea-d870-470b-8771-e1fd4e8dd562-RELATES_TO-3125c9c1-3146-4114-86ec-0de2a12cfd8f"
+      ]
+    ]
+  ],
+  "stats": {
+    "nodeCount": 3,
+    "edgeCount": 2
+  }
+}

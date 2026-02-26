@@ -17,7 +17,8 @@
     "dev:labeller": "cd services/labeller && SERVICE_NAME=labeller nodemon src/server.js",
     "dev:kg":       "cd services/knowledge-graph && SERVICE_NAME=knowledge-graph nodemon src/server.js",
     "diagnose-frontend": "node tests/diagnose-frontend.mjs",
-    "debug-query": "node tests/debug-query.mjs"
+    "debug-query": "node tests/debug-query.mjs",
+    "test:kg": "node --test services/knowledge-graph/tests/graph.test.mjs"
   },
   "workspaces": [
     "services/*"

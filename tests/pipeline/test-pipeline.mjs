@@ -186,19 +186,26 @@ async function labelArticle(articleId, title) {
   }
 }
 
-async function addToGraph(articleId) {
+async function addToGraph(articleId, title) {
   const startedAt = new Date();
   const startTime = Date.now();
 
+  log(`\n   🕸️  Adding to graph: ${title}`, 'cyan');
+
   try {
-    const response = await axios.post(`${GRAPH_URL}/api/graph/add/${articleId}`);
+    const response = await axios.post(
+      `${GRAPH_URL}/api/graph/add/${articleId}`,
+      {},
+      { timeout: 10000 }
+    );
     const duration = Date.now() - startTime;
 
-    log(`      ✅ Added to knowledge graph`, 'green');
+    log(`      ✅ Added to knowledge graph (${(duration / 1000).toFixed(2)}s)`, 'green');
     log(`         Relationships created: ${response.data.relationshipsCreated}`);
 
     return {
       success: true,
+      relationshipsCreated: response.data.relationshipsCreated,
       stage: { stage: 'graph', status: 'success', duration, startedAt, completedAt: new Date(), error: null }
     };
   } catch (error) {
@@ -330,52 +337,68 @@ async function main() {
   const results = [];
 
   for (let i = 0; i < urls.length; i++) {
-    const url          = urls[i];
-    const result       = { url, scraped: false, labelled: false, graphed: false };
-    const articleEntry = { url, stages: [] };
+      const url          = urls[i];
+      const result       = { url, scraped: false, labelled: false, graphed: false };
+      const articleEntry = { url, stages: [] };
 
-    const scrapeResult = await scrapeArticle(url, i, urls.length);
-    articleEntry.stages.push(scrapeResult.stage);
+      const scrapeResult = await scrapeArticle(url, i, urls.length);
+      articleEntry.stages.push(scrapeResult.stage);
 
-    if (scrapeResult.success) {
-      result.scraped         = true;
-      result.articleId       = scrapeResult.article.id;
-      result.title           = scrapeResult.article.title;
-      articleEntry.articleId = scrapeResult.article.id;
-      articleEntry.title     = scrapeResult.article.title;
+      if (scrapeResult.success) {
+        result.scraped         = true;
+        result.articleId       = scrapeResult.article.id;
+        result.title           = scrapeResult.article.title;
+        articleEntry.articleId = scrapeResult.article.id;
+        articleEntry.title     = scrapeResult.article.title;
 
-      const labelResult = await labelArticle(scrapeResult.article.id, scrapeResult.article.title);
-      articleEntry.stages.push(labelResult.stage);
+        const labelResult = await labelArticle(scrapeResult.article.id, scrapeResult.article.title);
+        articleEntry.stages.push(labelResult.stage);
 
-      if (labelResult.success) {
-        result.labelled   = true;
-        result.categories = labelResult.labels.categories?.join(', ');
-        result.topics     = labelResult.labels.topics?.slice(0, 3).join(', ');
-        result.sentiment  = labelResult.labels.sentiment;
+        if (labelResult.success) {
+          result.labelled   = true;
+          result.categories = labelResult.labels.categories?.join(', ');
+          result.topics     = labelResult.labels.topics?.slice(0, 3).join(', ');
+          result.sentiment  = labelResult.labels.sentiment;
 
-        const graphResult = await addToGraph(scrapeResult.article.id);
-        articleEntry.stages.push(graphResult.stage);
-        result.graphed = graphResult.success;
+          const graphResult = await addToGraph(scrapeResult.article.id, scrapeResult.article.title);
+          articleEntry.stages.push(graphResult.stage);
+          result.graphed               = graphResult.success;
+          result.relationshipsCreated  = graphResult.relationshipsCreated ?? 0;
+        } else {
+          articleEntry.stages.push({ stage: 'graph', status: 'skipped', error: null });
+        }
       } else {
-        articleEntry.stages.push({ stage: 'graph', status: 'skipped', error: null });
+        result.error = scrapeResult.error;
+        articleEntry.stages.push(
+          { stage: 'label', status: 'skipped', error: null },
+          { stage: 'graph', status: 'skipped', error: null }
+        );
       }
-    } else {
-      result.error = scrapeResult.error;
-      articleEntry.stages.push(
-        { stage: 'label', status: 'skipped', error: null },
-        { stage: 'graph', status: 'skipped', error: null }
-      );
-    }
 
-    await observer.recordArticle(articleEntry);
-    results.push(result);
+      await observer.recordArticle(articleEntry);
+      results.push(result);
 
-    if (i < urls.length - 1) {
-      await new Promise(r => setTimeout(r, 2000));
+      // Show live graph snapshot every 3 articles
+      if ((i + 1) % 3 === 0 && i < urls.length - 1) {
+        log('\n📊 Graph snapshot:', 'blue');
+        await displayGraphStats();
+      }
+
+      if (i < urls.length - 1) {
+        await new Promise(r => setTimeout(r, 2000));
+      }
     }
-  }
 
   await observer.finalise();
+
+  // Final sync — picks up anything that failed to graph individually
+  log('\n🔄 Running final graph sync...', 'cyan');
+  try {
+    const syncResponse = await axios.post(`${GRAPH_URL}/api/graph/sync`, {}, { timeout: 30000 });
+    log(`   ✅ Sync complete — ${syncResponse.data.nodesAdded} nodes, ${syncResponse.data.relationshipsCreated} relationships`, 'green');
+  } catch (err) {
+    log(`   ⚠️  Final sync failed: ${err.message}`, 'yellow');
+  }
 
   log('\n' + '═'.repeat(60) + '\n');
   await displayResults(results);
@@ -383,13 +406,14 @@ async function main() {
   await saveReport(results, runId);
 
   log('╔════════════════════════════════════════════════════════╗', 'bright');
-  log('║                 TEST COMPLETE!                         ║', 'bright');
+  log('║                 PIPELINE COMPLETE!                     ║', 'bright');
   log('╚════════════════════════════════════════════════════════╝\n', 'bright');
 
   log('💡 Next steps:', 'cyan');
   log('   • View articles in frontend: http://localhost:3000');
-  log('   • Check graph stats: curl http://localhost:3003/api/graph/stats');
-  log(`   • Query this run: db.${process.env.NODE_ENV || 'test'}.findOne({ runId: "${runId}" })\n`);
+  log('   • Check graph stats:         curl http://localhost:3003/api/graph/stats');
+  log('   • Query the graph:           curl "http://localhost:3003/api/graph/query/topic?q=lithium"');
+  log(`   • Find this run in MongoDB:  db.${process.env.NODE_ENV || 'test'}.findOne({ runId: "${runId}" })\n`);
 
   process.exit(0);
 }
