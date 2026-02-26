@@ -5,7 +5,8 @@ import dotenv from 'dotenv';
 import express, { json } from 'express';
 import cors from 'cors';
 import labellerRoutes from './routes.js';
-import logger from './utils/logger.js';
+import logger from '../../../utils/logger.js';
+import { connectAllDatabases } from '../../../data/connection.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -48,11 +49,16 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  logger.info(`Labeller service running on port ${PORT}`);
-  if (!process.env.ANTHROPIC_API_KEY) {
-    warn('WARNING: ANTHROPIC_API_KEY not configured');
-  }
+connectAllDatabases().then(() => {
+  app.listen(PORT, () => {
+    logger.info(`Labeller service running on port ${PORT}`);
+    if (!process.env.ANTHROPIC_API_KEY) {
+      warn('WARNING: ANTHROPIC_API_KEY not configured');
+    }
+  });
+}).catch((err) => {
+  logger.error('Failed to connect to MongoDB:', err);
+  process.exit(1);
 });
 
 export default app;

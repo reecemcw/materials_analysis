@@ -1,5 +1,5 @@
 import logger from '../../../utils/logger.js';
-import GraphPersistence from './graph-persist.js';
+import GraphPersistence from './graph_persist.js';
 
 class KnowledgeGraph {
   constructor() {

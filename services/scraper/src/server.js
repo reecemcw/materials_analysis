@@ -6,7 +6,7 @@ import express, { json } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import scraperRoutes from './routes.js';
-import logger from './utils/logger.js';
+import logger from '../../../utils/logger.js';
 import { connectAllDatabases } from '../../../data/connection.js';
 
 

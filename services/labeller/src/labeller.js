@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import Anthropic from '@anthropic-ai/sdk';
-import logger from './utils/logger.js';
+import logger from '../../../utils/logger.js';
 
 // Create __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);

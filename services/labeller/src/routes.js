@@ -2,11 +2,11 @@ import { Router } from 'express';
 const router = Router();
 import axios from 'axios';
 import AILabeller from './labeller.js';
-import TaggedArticleStorage from './storage.js';
-import logger from './utils/logger.js';
+import Storage from '../../../utils/storage.js';
+import logger from '../../../utils/logger.js';
 
 const labeller = new AILabeller();
-const storage = new TaggedArticleStorage();
+const storage = new Storage();
 
 const SCRAPER_URL = process.env.SCRAPER_URL || 'http://localhost:3001';
 

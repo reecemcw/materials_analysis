@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import os from 'os';
 
 const labelledArticleSchema = new mongoose.Schema({
   sourceId: { 

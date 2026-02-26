@@ -4,7 +4,7 @@ import { dirname } from 'path';
 import dotenv from 'dotenv';
 import express from 'express';
 import apiRoutes from './routes.js';
-import logger from './utils/logger.js';
+import logger from '../../../utils/logger.js';
 import { getArticlesDB } from '../../../data/connection.js';
 import { get } from 'http';
 

@@ -1,7 +1,7 @@
 import express from 'express';
 import axios from 'axios';
 import Anthropic from '@anthropic-ai/sdk';
-import logger from './utils/logger.js';
+import logger from '../../../utils/logger.js';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';

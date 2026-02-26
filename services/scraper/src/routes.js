@@ -1,12 +1,12 @@
 import { Router } from 'express';
 const router = Router();
 import { v4 as uuidv4 } from 'uuid';
-import ArticleScraper from './ArticleScraper.js';
-import ArticleStorage from './ArticleStorage.js';
-import logger from './utils/logger.js';
+import Scraper from './scraper.js';
+import Storage from '../../../utils/storage.js';
+import logger from '../../../utils/logger.js';
 
-const scraper = new ArticleScraper();
-const storage = new ArticleStorage();
+const scraper = new Scraper();
+const storage = new Storage();
 
 // POST /api/scrape - Scrape a single URL
 router.post('/scrape', async (req, res) => {

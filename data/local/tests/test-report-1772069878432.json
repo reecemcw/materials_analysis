@@ -1,0 +1,46 @@
+{
+  "runId": "96375ce1-ad09-40ed-94cc-c9c1d24455b0",
+  "testDate": "2026-02-26T01:37:58.432Z",
+  "summary": {
+    "total": 3,
+    "scraped": 3,
+    "labelled": 3,
+    "graphed": 3,
+    "failed": 0
+  },
+  "results": [
+    {
+      "url": "https://www.supplychaindive.com/news/usgs-releases-2025-list-of-us-essential-minerals/805364/",
+      "scraped": true,
+      "labelled": true,
+      "graphed": true,
+      "articleId": "560e81dd-9022-4a99-9157-87b15f4e9177",
+      "title": "US releases 2025 list of critical minerals, featuring 10 additions",
+      "categories": "Economics, Government Policy",
+      "topics": "Critical Minerals, Supply Chain Security, Economic Disruption Risk",
+      "sentiment": "neutral"
+    },
+    {
+      "url": "https://rareearthexchanges.com/news/securing-defense-supply-chains-in-a-rare-earth-world/",
+      "scraped": true,
+      "labelled": true,
+      "graphed": true,
+      "articleId": "10d3e25c-60ef-4948-9b5d-83f24c8cd409",
+      "title": "Securing Defense Supply Chains in a Rare Earth World",
+      "categories": "Defense & Security, Supply Chain Management",
+      "topics": "rare earth elements, defense supply chains, China trade relations",
+      "sentiment": "neutral"
+    },
+    {
+      "url": "https://www.thinkchina.sg/economy/malaysia-becomes-lynchpin-us-led-effort-break-chinas-grip-rare-earths",
+      "scraped": true,
+      "labelled": true,
+      "graphed": true,
+      "articleId": "3feb9953-518e-4fdf-aa75-f9e7e93b26b5",
+      "title": "Malaysia becomes a lynchpin in US-led effort to break China’s grip on rare earths",
+      "categories": "Economics, International Relations",
+      "topics": "rare earth elements, supply chain diversification, US-China trade relations",
+      "sentiment": "neutral"
+    }
+  ]
+}
