@@ -2,6 +2,45 @@
  * Material Risk Analysis - Frontend Application
  */
 
+// ===================================
+// Sidebar Navigation
+// ===================================
+
+class SidebarNav {
+  constructor() {
+    this.navLinks = document.querySelectorAll('.nav-link');
+    this.pages = document.querySelectorAll('.page');
+    this.init();
+  }
+
+  init() {
+    this.navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const targetPage = link.dataset.page;
+        this.navigateTo(targetPage);
+      });
+    });
+  }
+
+  navigateTo(pageId) {
+    // Update nav links
+    this.navLinks.forEach(link => {
+      link.classList.toggle('active', link.dataset.page === pageId);
+    });
+
+    // Update pages
+    this.pages.forEach(page => {
+      const isTarget = page.id === `page-${pageId}`;
+      page.classList.toggle('active', isTarget);
+    });
+  }
+}
+
+
+// ===================================
+// Main App
+// ===================================
+
 class MaterialRiskApp {
   constructor() {
     this.articles = [];
@@ -10,7 +49,7 @@ class MaterialRiskApp {
 
   async init() {
     this.setupEventListeners();
-    await this.loadArticles();
+    await Promise.all([this.loadArticles(), this.loadGraphVersion()]);
   }
 
   setupEventListeners() {
@@ -18,8 +57,8 @@ class MaterialRiskApp {
     const queryInput = document.getElementById('query-input');
 
     submitButton.addEventListener('click', () => this.handleQuery());
-    
-    // Allow Enter + Shift to submit
+
+    // Allow Shift+Enter to submit
     queryInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && e.shiftKey) {
         e.preventDefault();
@@ -28,19 +67,44 @@ class MaterialRiskApp {
     });
   }
 
+  async loadGraphVersion() {
+    const badge = document.getElementById('kg-version-badge');
+    if (!badge) return;
+    try {
+      const res = await fetch('/api/stats');
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      const nodes = data.stats?.graphNodes;
+      const edges = data.stats?.graphEdges;
+      if (nodes !== undefined) {
+        badge.textContent = `knowledge-graph · ${nodes.toLocaleString()} nodes`;
+        badge.title = `${nodes.toLocaleString()} nodes · ${(edges || 0).toLocaleString()} edges`;
+      }
+    } catch {
+      // leave default text in place
+    }
+  }
+
+
   async loadArticles() {
     const tbody = document.getElementById('articles-tbody');
-    
+
     try {
-      // Call the labeller service to get tagged articles
       const response = await fetch('http://localhost:3002/api/tagged?limit=50');
-      
+
       if (!response.ok) {
         throw new Error('Failed to load articles');
       }
 
       const data = await response.json();
       this.articles = data.taggedArticles || data.articles || [];
+
+      // Sort by date descending (newest first)
+      this.articles.sort((a, b) => {
+        const dateA = new Date(a.publishDate || a.scrapedAt || 0);
+        const dateB = new Date(b.publishDate || b.scrapedAt || 0);
+        return dateB - dateA;
+      });
 
       if (this.articles.length === 0) {
         tbody.innerHTML = `
@@ -75,7 +139,6 @@ class MaterialRiskApp {
   renderArticles() {
     const tbody = document.getElementById('articles-tbody');
     tbody.innerHTML = '';
-
     this.articles.forEach(article => {
       const row = this.createArticleRow(article);
       tbody.appendChild(row);
@@ -85,62 +148,86 @@ class MaterialRiskApp {
   createArticleRow(article) {
     const row = document.createElement('tr');
 
-    // Extract data
     const imageUrl = article.imageUrl;
     const date = this.formatDate(article.publishDate || article.scrapedAt);
     const publisher = this.extractPublisher(article.url);
-    const author = article.author || '—';
     const title = article.title || 'Untitled';
     const tags = article.labels?.categories || article.labels?.topics || [];
     const url = article.url;
 
-    // Image cell
+    // Organizations — handle array or nested object
+    const orgs = article.labels?.entities?.organizations || [];
+
+    // Sentiment — handle string ("positive") or object ({ label: "positive", score: 0.9 })
+    const rawSentiment = article.labels?.sentiment;
+    const sentimentLabel = typeof rawSentiment === 'string'
+      ? rawSentiment.toLowerCase()
+      : (rawSentiment?.label || rawSentiment?.value || '').toLowerCase();
+
+    // --- Image cell (larger, rectangular card style) ---
     const imageCell = document.createElement('td');
+    imageCell.className = 'td-image';
     if (imageUrl) {
-      imageCell.innerHTML = `<img src="${imageUrl}" alt="" class="article-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="article-image-placeholder" style="display: none;">${title.charAt(0).toUpperCase()}</div>`;
+      imageCell.innerHTML = `
+        <img src="${imageUrl}" alt="" class="article-image"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="article-image-placeholder" style="display:none;">${title.charAt(0).toUpperCase()}</div>`;
     } else {
       imageCell.innerHTML = `<div class="article-image-placeholder">${title.charAt(0).toUpperCase()}</div>`;
     }
 
-    // Date cell
+    // --- Date ---
     const dateCell = document.createElement('td');
     dateCell.innerHTML = `<span class="article-date">${date}</span>`;
 
-    // Publisher cell
+    // --- Publisher ---
     const publisherCell = document.createElement('td');
     publisherCell.innerHTML = `<span class="article-publisher">${publisher}</span>`;
 
-    // Author cell
-    const authorCell = document.createElement('td');
-    authorCell.innerHTML = `<span class="article-author">${author}</span>`;
-
-    // Title cell
+    // --- Title ---
     const titleCell = document.createElement('td');
     titleCell.innerHTML = `<a href="${url}" target="_blank" class="article-title-link">
       <span class="article-title">${title}</span>
     </a>`;
 
-    // Tags cell
+    // --- Organizations ---
+    const orgsCell = document.createElement('td');
+    if (orgs.length > 0) {
+      const orgsHtml = orgs.slice(0, 3).map(org =>
+        `<span class="org-tag">${org}</span>`
+      ).join('');
+      orgsCell.innerHTML = `<div class="article-orgs">${orgsHtml}</div>`;
+    } else {
+      orgsCell.innerHTML = `<span class="article-author">—</span>`;
+    }
+
+    // --- Tags ---
     const tagsCell = document.createElement('td');
-    const tagsHtml = tags.slice(0, 3).map(tag => 
+    const tagsHtml = tags.slice(0, 3).map(tag =>
       `<span class="tag">${tag}</span>`
     ).join('');
     tagsCell.innerHTML = `<div class="article-tags">${tagsHtml || '—'}</div>`;
 
+    // --- Sentiment ---
+    const sentimentCell = document.createElement('td');
+    sentimentCell.innerHTML = sentimentLabel
+      ? `<span class="sentiment-badge sentiment-${sentimentLabel}">${sentimentLabel}</span>`
+      : `<span class="article-author">—</span>`;
+
     row.appendChild(imageCell);
     row.appendChild(dateCell);
     row.appendChild(publisherCell);
-    row.appendChild(authorCell);
     row.appendChild(titleCell);
+    row.appendChild(orgsCell);
     row.appendChild(tagsCell);
+    row.appendChild(sentimentCell);
 
     return row;
   }
 
   formatDate(dateString) {
     if (!dateString) return '—';
-    
+
     try {
       const date = new Date(dateString);
       const now = new Date();
@@ -151,9 +238,9 @@ class MaterialRiskApp {
       if (diffDays === 1) return 'Yesterday';
       if (diffDays < 7) return `${diffDays} days ago`;
       if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
-      
-      return date.toLocaleDateString('en-US', { 
-        month: 'short', 
+
+      return date.toLocaleDateString('en-US', {
+        month: 'short',
         day: 'numeric',
         year: date.getFullYear() !== now.getFullYear() ? 'numeric' : undefined
       });
@@ -166,16 +253,11 @@ class MaterialRiskApp {
     try {
       const urlObj = new URL(url);
       let hostname = urlObj.hostname;
-      
-      // Remove www. prefix
       hostname = hostname.replace(/^www\./, '');
-      
-      // Capitalize first letter
       const parts = hostname.split('.');
       if (parts.length > 0) {
         return parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
       }
-      
       return hostname;
     } catch (e) {
       return '—';
@@ -186,19 +268,12 @@ class MaterialRiskApp {
     const queryInput = document.getElementById('query-input');
     const responseContainer = document.getElementById('query-response');
     const submitButton = document.getElementById('submit-query');
-    
-    const query = queryInput.value.trim();
-    
-    if (!query) {
-      return;
-    }
 
-    // Disable button and show loading
+    const query = queryInput.value.trim();
+    if (!query) return;
+
     submitButton.disabled = true;
-    submitButton.innerHTML = `
-      <span class="button-text">Processing...</span>
-      <div class="loading-spinner" style="width: 16px; height: 16px; border-width: 2px;"></div>
-    `;
+    submitButton.innerHTML = `<div class="loading-spinner" style="width:15px;height:15px;border-width:2px;border-color:rgba(255,255,255,0.3);border-top-color:rgba(255,255,255,0.9);"></div>`;
 
     responseContainer.innerHTML = `
       <div class="response-loading">
@@ -208,25 +283,17 @@ class MaterialRiskApp {
     `;
 
     try {
-      // Call the RAG API endpoint
       const response = await fetch('/api/query', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query, maxSources: 5 })
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to process query');
-      }
+      if (!response.ok) throw new Error('Failed to process query');
 
       const data = await response.json();
-      
-      if (!data.success) {
-        throw new Error(data.error || 'Query failed');
-      }
-      
+      if (!data.success) throw new Error(data.error || 'Query failed');
+
       this.displayRAGResponse(data);
     } catch (error) {
       console.error('RAG query error:', error);
@@ -239,28 +306,19 @@ class MaterialRiskApp {
         </div>
       `;
     } finally {
-      // Re-enable button
       submitButton.disabled = false;
-      submitButton.innerHTML = `
-        <span class="button-text">Ask Question</span>
-        <svg class="button-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M1 8L15 8M15 8L8 1M15 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      `;
+      submitButton.innerHTML = `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 13V3M8 3L3 8M8 3L13 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
     }
   }
 
   displayRAGResponse(data) {
     const responseContainer = document.getElementById('query-response');
-    
-    const { query, answer, sources, metadata } = data;
-    
-    // Format the answer with markdown-like styling
+    const { answer, sources, metadata } = data;
+
     const formattedAnswer = answer
       .replace(/\n\n/g, '</p><p>')
       .replace(/\n/g, '<br>');
-    
-    // Build sources HTML
+
     const sourcesHTML = sources && sources.length > 0 ? `
       <div class="sources-section">
         <h4>📚 Sources (${sources.length})</h4>
@@ -274,24 +332,15 @@ class MaterialRiskApp {
               </div>
               ${source.summary ? `<p class="source-summary">${source.summary}</p>` : ''}
               <div class="source-meta">
-                ${source.categories && source.categories.length > 0 ? `
-                  <span class="meta-item">
-                    📁 ${source.categories.join(', ')}
-                  </span>
-                ` : ''}
-                ${source.topics && source.topics.length > 0 ? `
-                  <span class="meta-item">
-                    🏷️ ${source.topics.slice(0, 3).join(', ')}
-                  </span>
-                ` : ''}
+                ${source.categories?.length ? `<span class="meta-item">📁 ${source.categories.join(', ')}</span>` : ''}
+                ${source.topics?.length ? `<span class="meta-item">🏷️ ${source.topics.slice(0, 3).join(', ')}</span>` : ''}
               </div>
             </div>
           `).join('')}
         </div>
       </div>
     ` : '<p class="text-muted">No specific sources found for this query.</p>';
-    
-    // Build metadata HTML
+
     const metadataHTML = metadata ? `
       <div class="query-metadata">
         <span>Searched ${metadata.totalArticlesSearched} articles</span>
@@ -301,25 +350,25 @@ class MaterialRiskApp {
         <span>${new Date(metadata.timestamp).toLocaleTimeString()}</span>
       </div>
     ` : '';
-    
+
     responseContainer.innerHTML = `
       <div class="rag-response">
         <div class="answer-section">
           <h3 class="response-title">💡 Answer</h3>
-          <div class="answer-text">
-            <p>${formattedAnswer}</p>
-          </div>
+          <div class="answer-text"><p>${formattedAnswer}</p></div>
         </div>
-        
         ${sourcesHTML}
-        
         ${metadataHTML}
       </div>
     `;
   }
 }
 
-// Initialize the app when DOM is ready
+// ===================================
+// Boot
+// ===================================
+
 document.addEventListener('DOMContentLoaded', () => {
+  new SidebarNav();
   new MaterialRiskApp();
 });

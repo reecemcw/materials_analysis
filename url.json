@@ -11,7 +11,7 @@
       "label": "Rare Earth Exchanges",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:15:52.280Z",
+      "lastScraped": "2026-02-27T18:00:11.147Z",
       "notes": "Specialist rare earth market news"
     },
     {
@@ -19,7 +19,7 @@
       "label": "Renewables Now",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:16:48.254Z",
+      "lastScraped": "2026-02-27T18:00:20.461Z",
       "notes": "Renewable energy materials demand"
     },
     {
@@ -27,7 +27,7 @@
       "label": "Think China — Economy",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:52:25.827Z",
+      "lastScraped": "2026-02-27T18:00:27.240Z",
       "notes": "China supply chain context — disabled by default, enable when needed"
     },
     {
@@ -35,7 +35,7 @@
       "label": "USGS 2025 Essential Minerals List",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:16:56.958Z",
+      "lastScraped": "2026-02-27T18:00:35.405Z",
       "notes": "Official USGS list of essential minerals for national security"
     },
     {
@@ -43,7 +43,7 @@
       "label": "Rare Earth Exchanges — Defense Supply Chains",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:17:06.800Z",
+      "lastScraped": "2026-02-27T18:00:44.916Z",
       "notes": "Focus on defense supply chain issues"
     },
     {
@@ -51,7 +51,7 @@
       "label": "Think China — Malaysia Rare Earths",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:52:35.731Z",
+      "lastScraped": "2026-02-27T18:00:53.630Z",
       "notes": "Malaysia's role in rare earth supply chains — disabled by default, enable when needed"
     },
     {
@@ -59,7 +59,7 @@
       "label": "Proactive Investors — Antimony",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:52:43.931Z",
+      "lastScraped": "2026-02-27T18:01:01.055Z",
       "notes": "Focus on antimony supply chain issues — disabled by default, enable when needed"
     },
     {
@@ -75,7 +75,7 @@
       "label": "BBC Worklife — Greenland Rare Earths",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:53:07.731Z",
+      "lastScraped": "2026-02-27T18:01:24.593Z",
       "notes": "Focus on Greenland's rare earth potential — disabled by default, enable when needed"
     },
     {
@@ -83,7 +83,7 @@
       "label": "Junior Mining Network — Romania JV",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:53:17.988Z",
+      "lastScraped": "2026-02-27T18:01:33.601Z",
       "notes": "Focus on Romania rare earth joint venture news — disabled by default, enable when needed"
     },
     {
@@ -99,7 +99,7 @@
       "label": "Renewables Now — Vulcan Lithium Geothermal",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:53:25.218Z",
+      "lastScraped": "2026-02-27T18:01:41.083Z",
       "notes": "Focus on Vulcan's German lithium geothermal project news — disabled by default, enable when needed"
     },
     {
@@ -107,7 +107,7 @@
       "label": "JPMorgan — Critical Minerals Research",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:53:32.650Z",
+      "lastScraped": "2026-02-27T18:01:47.522Z",
       "notes": "Focus on JPMorgan's critical minerals research and insights — disabled by default, enable when needed"
     },
     {
@@ -123,7 +123,7 @@
       "label": "WION — Chinese Chokehold on Rare Earths",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:53:55.173Z",
+      "lastScraped": "2026-02-27T18:02:09.876Z",
       "notes": "Focus on Chinese dominance of rare earths and impact on US defense"
     },
     {
@@ -131,7 +131,7 @@
       "label": "Global Banking & Finance — Rare Earth Shortages",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:54:03.403Z",
+      "lastScraped": "2026-02-27T18:02:18.246Z",
       "notes": "Focus on rare earth shortages impacting US aerospace and semiconductor industries"
     },
     {
@@ -139,7 +139,7 @@
       "label": "Rare Earth Exchanges — New African Scramble",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:54:14.958Z",
+      "lastScraped": "2026-02-27T18:02:29.004Z",
       "notes": "Focus on new African rare earth exploration and development contracts"
     },
     {
@@ -147,7 +147,7 @@
       "label": "Rare Earth Exchanges — Chile Critical Minerals Strategy",
       "frequency": "daily",
       "active": true,
-      "lastScraped": "2026-02-26T13:54:24.507Z",
+      "lastScraped": "2026-02-27T18:02:38.823Z",
       "notes": "Focus on Chile's new national critical minerals strategy and implications for rare earths"
     }
   ],

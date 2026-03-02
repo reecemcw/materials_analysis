@@ -1,0 +1,48 @@
+{
+  "id": "85062074-57c4-450b-a2fd-bd157b3dd632",
+  "url": "https://www.thinkchina.sg/economy/",
+  "title": "Latest China Economy News & Headlines, Top Economy News - ThinkChina",
+  "author": null,
+  "publishDate": null,
+  "content": "about uscontributorsnewsletter|politicseconomytechnologyhistorysocietyculturevideocartoonEconomy1.1.1",
+  "excerpt": "Economy News - Get latest Economy news today in China & Greater China. Find top Economy stories in China & Greater China at thinkchina.sg",
+  "imageUrl": "https://www.thinkchina.sg/placeholder.svg",
+  "tags": [],
+  "scrapedAt": "2026-02-27T18:00:23.008Z",
+  "labels": {
+    "categories": [
+      "Economy",
+      "News"
+    ],
+    "topics": [
+      "China Economy",
+      "Greater China Economy",
+      "Economic News"
+    ],
+    "entities": {
+      "people": [],
+      "organizations": [
+        "ThinkChina"
+      ],
+      "locations": [
+        "China",
+        "Greater China"
+      ],
+      "products": []
+    },
+    "keywords": [
+      "economy",
+      "news",
+      "China",
+      "Greater China",
+      "headlines"
+    ],
+    "sentiment": "neutral",
+    "summary": "This is a news portal page for ThinkChina's economy section, featuring the latest economic news and headlines from China and Greater China region. The page appears to be a navigation hub for accessing various economic stories and updates.",
+    "readingTime": "1",
+    "complexity": "beginner",
+    "contentType": "news",
+    "labelledAt": "2026-02-27T18:00:27.171Z",
+    "modelUsed": "claude-sonnet-4-20250514"
+  }
+}
