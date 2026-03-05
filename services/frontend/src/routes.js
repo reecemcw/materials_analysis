@@ -31,36 +31,27 @@ const anthropic = new Anthropic({
 // GET /api/recent - Get recent articles
 router.get('/recent', async (req, res) => {
   try {
-    const { limit = 20 } = req.query;
+    const { limit = 50 } = req.query;
 
-    // Get tagged articles from labeller service
-    const response = await axios.get(`${LABELLER_URL}/api/tagged?limit=${limit}`);
-    const articles = response.data.taggedArticles;
+    const response = await axios.get(`${LABELLER_URL}/api/tagged?limit=500`); // get all, sort after
+    let articles = response.data.taggedArticles;
 
-    // Enrich with graph data (similar articles)
-    const enrichedArticles = await Promise.all(
-      articles.map(async (article) => {
-        try {
-          const similarResponse = await axios.get(`${GRAPH_URL}/api/graph/similar/${article.id}?limit=3`);
-          return {
-            ...article,
-            similarArticles: similarResponse.data.similar
-          };
-        } catch (error) {
-          return article;
-        }
-      })
-    );
-
-    res.json({
-      success: true,
-      articles: enrichedArticles
+    // Sort newest first
+    articles.sort((a, b) => {
+      const dateA = new Date(a.publishDate || a.processedAt || 0);
+      const dateB = new Date(b.publishDate || b.processedAt || 0);
+      return dateB - dateA;
     });
-  } catch (error) {
-    logger.error('Get recent articles error:', error);
-    res.status(500).json({ error: error.message });
-  }
-});
+
+    // Then slice to requested limit
+    articles = articles.slice(0, parseInt(limit));
+
+    res.json({ success: true, articles });
+    } catch (error) {
+      logger.error('Get recent articles error:', error);
+      res.status(500).json({ error: error.message });
+    }
+  });
 
 // POST /api/query - Natural language query with RAG
 router.post('/query', async (req, res) => {

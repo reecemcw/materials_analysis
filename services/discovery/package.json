@@ -1,0 +1,24 @@
+{
+  "name": "@article-kb/discovery",
+  "version": "1.0.0",
+  "description": "Daily URL discovery service \u2014 crawls RSS feeds and XML sitemaps to populate the url.json registry",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "discover": "node -e \"import('./src/runner.js').then(m => import('../../../sources.json', {assert:{type:'json'}}).then(s => m.runDiscovery(s.default.sources))).then(r => console.log(JSON.stringify(r,null,2)))\""
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "node-cron": "^3.0.3",
+    "winston": "^3.11.0",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

@@ -182,15 +182,15 @@ class Storage {
       })
     );
 
+    // sort newest first by file modification time
     filesWithStats.sort((a, b) => b.mtime - a.mtime);
 
+    const paginated = filesWithStats.slice(offset, offset + limit);
+
     return Promise.all(
-      filesWithStats
-        .slice(offset, offset + limit)
-        .map(async ({ file }) => {
-          const data = await fs.readFile(join(this.dataDirs[type], file), 'utf8');
-          return JSON.parse(data);
-        })
+      paginated.map(({ file }) =>
+        fs.readFile(join(this.dataDirs[type], file), 'utf8').then(JSON.parse)
+      )
     );
   }
 

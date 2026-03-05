@@ -1,0 +1,147 @@
+{
+  "_comment": "Discovery source registry. Each entry defines a site to monitor for new article URLs.",
+  "_schema": {
+    "name": "Human-readable source name",
+    "baseUrl": "Homepage URL \u2014 used for auto-discovery and as a fallback",
+    "active": "Set false to disable without removing",
+    "autoDiscover": "If true (default), the service will probe the homepage for RSS/sitemap links",
+    "feeds": "Explicit RSS/Atom feed URLs \u2014 overrides auto-discovery if provided",
+    "sitemaps": "Explicit sitemap URLs \u2014 overrides auto-discovery if provided",
+    "sitemapDepth": "How deep to recurse into sitemap indexes (default 2)",
+    "urlFilter": "Optional regex \u2014 only URLs matching this pattern will be added to the registry",
+    "frequency": "Passed through to url.json entries: daily | weekly | monthly",
+    "notes": "Appended to the notes field of discovered entries"
+  },
+  "sources": [
+    {
+      "name": "Rare Earth Exchanges",
+      "baseUrl": "https://rareearthexchanges.com",
+      "active": true,
+      "autoDiscover": true,
+      "feeds": [
+        "https://rareearthexchanges.com/feed/"
+      ],
+      "sitemaps": [],
+      "urlFilter": "/news/",
+      "frequency": "daily",
+      "notes": "Specialist rare earth market news"
+    },
+    {
+      "name": "Renewables Now",
+      "baseUrl": "https://renewablesnow.com",
+      "active": true,
+      "autoDiscover": true,
+      "feeds": [
+        "https://renewablesnow.com/feed/"
+      ],
+      "sitemaps": [],
+      "urlFilter": "/news/",
+      "frequency": "daily",
+      "notes": "Renewable energy materials demand"
+    },
+    {
+      "name": "Think China \u2014 Economy",
+      "baseUrl": "https://www.thinkchina.sg",
+      "active": true,
+      "autoDiscover": true,
+      "feeds": [],
+      "sitemaps": [
+        "https://www.thinkchina.sg/sitemap.xml"
+      ],
+      "urlFilter": "/economy/",
+      "sitemapDepth": 2,
+      "frequency": "daily",
+      "notes": "China supply chain context"
+    },
+    {
+      "name": "Junior Mining Network",
+      "baseUrl": "https://www.juniorminingnetwork.com",
+      "active": true,
+      "autoDiscover": true,
+      "feeds": [],
+      "sitemaps": [
+        "https://www.juniorminingnetwork.com/sitemap.xml"
+      ],
+      "urlFilter": "/junior-miner-news/",
+      "sitemapDepth": 2,
+      "frequency": "daily",
+      "notes": "Junior mining and critical minerals news"
+    },
+    {
+      "name": "Supply Chain Dive",
+      "baseUrl": "https://www.supplychaindive.com",
+      "active": true,
+      "autoDiscover": true,
+      "feeds": [
+        "https://www.supplychaindive.com/feeds/news/"
+      ],
+      "sitemaps": [],
+      "urlFilter": "/news/",
+      "frequency": "daily",
+      "notes": "Supply chain risk and critical materials coverage"
+    },
+    {
+      "name": "Proactive Investors",
+      "baseUrl": "https://www.proactiveinvestors.co.uk",
+      "active": true,
+      "autoDiscover": true,
+      "feeds": [],
+      "sitemaps": [
+        "https://www.proactiveinvestors.co.uk/sitemap.xml"
+      ],
+      "urlFilter": "/companies/news/",
+      "sitemapDepth": 2,
+      "frequency": "daily",
+      "notes": "Critical materials and mining investment news"
+    },
+    {
+      "name": "JPMorgan Critical Minerals",
+      "baseUrl": "https://www.jpmorgan.com",
+      "active": false,
+      "autoDiscover": false,
+      "feeds": [],
+      "sitemaps": [],
+      "urlFilter": "/insights/.*(?:critical.mineral|commodit|rare.earth)",
+      "frequency": "weekly",
+      "notes": "JPMorgan research \u2014 check manually, no public feed"
+    },
+    {
+      "name": "BBC Worklife",
+      "baseUrl": "https://www.bbc.co.uk",
+      "active": true,
+      "autoDiscover": false,
+      "feeds": [
+        "https://feeds.bbci.co.uk/news/business/rss.xml"
+      ],
+      "sitemaps": [],
+      "urlFilter": "/worklife/article/",
+      "frequency": "daily",
+      "notes": "BBC long-form business and materials stories"
+    },
+    {
+      "name": "Global Banking and Finance",
+      "baseUrl": "https://www.globalbankingandfinance.com",
+      "active": true,
+      "autoDiscover": true,
+      "feeds": [
+        "https://www.globalbankingandfinance.com/feed/"
+      ],
+      "sitemaps": [],
+      "frequency": "daily",
+      "notes": "Critical minerals finance and supply chain articles"
+    },
+    {
+      "name": "WION News",
+      "baseUrl": "https://www.wionews.com",
+      "active": true,
+      "autoDiscover": true,
+      "feeds": [
+        "https://www.wionews.com/feeds/rss"
+      ],
+      "sitemaps": [],
+      "urlFilter": "(?:rare.earth|critical.mineral|supply.chain|china)",
+      "frequency": "daily",
+      "notes": "Geopolitical supply chain coverage"
+    }
+  ]
+}

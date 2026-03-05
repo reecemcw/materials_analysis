@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Scraper from './scraper.js';
 import Storage from '../../../utils/storage.js';
 import logger from '../../../utils/logger.js';
+import { getRawArticleModel } from '../../../data/models/model_factory.js';
 
 const scraper = new Scraper();
 const storage = new Storage();
@@ -138,6 +139,7 @@ router.get('/articles/by-url', async (req, res) => {
 
     if (!article) return res.status(404).json({ error: 'Article not found' });
 
+    // Return sourceId as id — this is what the scheduler's dedup check expects
     res.json({ success: true, article: { id: article.sourceId, ...article } });
   } catch (err) {
     res.status(500).json({ error: err.message });

@@ -44,6 +44,12 @@ export const getGraphDB = () => {
   return createConnection('graph', uri.replace(/\/?$/, '/graph'));
 };
 
+export const getUrlDB = () => {
+  const uri = process.env.MONGODB_URI_URLS || process.env.MONGODB_URI;
+  if (!uri) throw new Error('MONGODB_URI is not defined — check your .env path');
+  return createConnection('urls', uri.replace(/\/?$/, '/urls'));
+};
+
 export const connectAllDatabases = async () => {
   await Promise.all([getArticlesDB(), getPipelineRunsDB(), getGraphDB()]);
   logger.info('[MongoDB] All database connections established');

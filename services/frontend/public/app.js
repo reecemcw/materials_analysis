@@ -90,7 +90,7 @@ class MaterialRiskApp {
     const tbody = document.getElementById('articles-tbody');
 
     try {
-      const response = await fetch('http://localhost:3002/api/tagged?limit=50');
+      const response = await fetch('api/recent?limit=50');
 
       if (!response.ok) {
         throw new Error('Failed to load articles');
