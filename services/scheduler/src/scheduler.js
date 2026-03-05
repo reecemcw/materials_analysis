@@ -1,14 +1,10 @@
-import { promises as fs } from 'fs';
-import { join, dirname }  from 'path';
-import { fileURLToPath }  from 'url';
 import { randomUUID }     from 'crypto';
 import axios              from 'axios';
 import logger             from '../../../utils/logger.js';
+import { getActiveUrls} from '../../../utils/url-registry.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname  = dirname(__filename);
-
-const REGISTRY_PATH = join(__dirname, '../../../url.json');
+const activeUrls = await getActiveUrls();          // all active
+const dailyUrls  = await getActiveUrls('daily');   // filtered by frequency
 
 const SCRAPER_URL  = process.env.SCRAPER_URL  || 'http://localhost:3001';
 const LABELLER_URL = process.env.LABELLER_URL || 'http://localhost:3002';
@@ -34,22 +30,8 @@ function isDue(entry) {
 
 // ─── Registry I/O ─────────────────────────────────────────────────────────────
 
-async function loadRegistry() {
-  const raw = await fs.readFile(REGISTRY_PATH, 'utf8');
-  return JSON.parse(raw);
-}
-
-async function saveRegistry(registry) {
-  await fs.writeFile(REGISTRY_PATH, JSON.stringify(registry, null, 2), 'utf8');
-}
-
 async function markScraped(url, success) {
-  const registry = await loadRegistry();
-  const entry    = registry.urls.find(e => e.url === url);
-  if (entry && success) {
-    entry.lastScraped = new Date().toISOString();
-  }
-  await saveRegistry(registry);
+  if (success) await registryMarkScraped(url);
 }
 
 // ─── Dedup Check ──────────────────────────────────────────────────────────────
@@ -195,8 +177,8 @@ export async function runScheduledPipeline() {
   }
 
   // Load registry and filter to URLs that are due
-  const registry = await loadRegistry();
-  const dueUrls  = registry.urls.filter(isDue);
+  const allActiveUrls = await getActiveUrls();
+  const dueUrls = allActiveUrls.filter(isDue);
 
   if (dueUrls.length === 0) {
     logger.info('[Scheduler] No URLs due for scraping');
@@ -205,8 +187,7 @@ export async function runScheduledPipeline() {
 
   logger.info(
     `[Scheduler] ${dueUrls.length} URLs due — ` +
-    `${registry.urls.filter(e => !e.active).length} inactive, ` +
-    `${registry.urls.filter(e => e.active && !isDue(e)).length} not yet due`
+    `${allActiveUrls.filter(e => !isDue(e)).length} not yet due`
   );
 
   // ── Process each URL ──────────────────────────────────────────────────────
@@ -330,4 +311,4 @@ export async function runScheduledPipeline() {
   return summary;
 }
 
-export { checkServices, loadRegistry, isDue };
+export { checkServices, isDue };

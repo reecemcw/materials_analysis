@@ -6,7 +6,8 @@ import express from 'express';
 import cors from 'cors';
 import cron from 'node-cron';
 import logger from '../../../utils/logger.js';
-import { runScheduledPipeline, checkServices, loadRegistry, isDue } from './scheduler.js';
+import { runScheduledPipeline, checkServices, isDue } from './scheduler.js';
+import { getAllUrls } from '../../../utils/url-registry.js';  
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = dirname(__filename);
@@ -101,8 +102,8 @@ app.get('/status', (req, res) => {
 // Registry — show which URLs are registered and whether they're due
 app.get('/registry', async (req, res) => {
   try {
-    const registry = await loadRegistry();
-    const enriched = registry.urls.map(entry => ({
+    const urls     = await getAllUrls();
+    const enriched = urls.map(entry => ({
       ...entry,
       due: isDue(entry),
       nextDue: entry.lastScraped && entry.active
@@ -116,10 +117,10 @@ app.get('/registry', async (req, res) => {
 
     res.json({
       success: true,
-      total:    enriched.length,
-      active:   enriched.filter(e => e.active).length,
-      due:      enriched.filter(e => e.due).length,
-      urls:     enriched,
+      total:   enriched.length,
+      active:  enriched.filter(e => e.active).length,
+      due:     enriched.filter(e => e.due).length,
+      urls:    enriched,
     });
   } catch (err) {
     res.status(500).json({ error: err.message });

@@ -138,6 +138,59 @@ graphSnapshotSchema.index({ version: -1 });
 graphSnapshotSchema.index({ triggerReason: 1 });
 graphSnapshotSchema.index({ createdAt: -1 });
 
+// ─── Article Registry Schema ─────────────────────────────────────
+const urlRegistrySchema = new mongoose.Schema({
+  url: {
+    type:     String,
+    required: true,
+    unique:   true,
+    trim:     true,
+  },
+  label: {
+    type:    String,
+    default: '',
+  },
+  frequency: {
+    type:    String,
+    enum:    ['daily', 'weekly', 'monthly'],
+    default: 'daily',
+  },
+  active: {
+    type:    Boolean,
+    default: true,
+  },
+  lastScraped: {
+    type:    Date,
+    default: null,
+  },
+  notes: {
+    type:    String,
+    default: '',
+  },
+  // Discovery metadata — populated by discovery service, null for manually added URLs
+  discoveredAt: {
+    type:    Date,
+    default: null,
+  },
+  discoveredFrom: {
+    type:    String,   // base URL of the source that led to discovery
+    default: null,
+  },
+  sourceType: {
+    type:    String,
+    enum:    ['rss', 'sitemap', 'manual', null],
+    default: null,
+  },
+  publishedAt: {
+    type:    Date,
+    default: null,
+  },
+}, { timestamps: true });  // adds createdAt + updatedAt automatically
+
+urlRegistrySchema.index({ active: 1, frequency: 1 });   // scheduler query
+urlRegistrySchema.index({ url: 1 }, { unique: true });   // dedup lookups
+urlRegistrySchema.index({ lastScraped: 1 });             // due-for-scrape queries
+urlRegistrySchema.index({ discoveredAt: -1 });           // discovery audit
 
 // ─── Model Factory ────────────────────────────────────────────────────────────
 
@@ -178,4 +231,9 @@ export const computeChecksum = (graphData) => {
     .createHash('sha256')
     .update(JSON.stringify(graphData))
     .digest('hex');
+};
+
+export const getUrlRegistryModel = async () => {
+  const conn = await getArticlesDB();
+  return getModel(conn, 'UrlRegistry', urlRegistrySchema, 'urls');
 };
