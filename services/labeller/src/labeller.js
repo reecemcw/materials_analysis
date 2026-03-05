@@ -53,6 +53,15 @@ class AILabeller {
 
   buildPrompt(article) {
     return `Analyze this article and provide structured metadata in JSON format.
+You are a helpful analyst with expertise in content categorisation, topic extraction, and entity recognition across a range of Rare Earth Material and supply chain news. Your task is to read the article and generate the following labels:
+1. Categories: Broad categories that the article belongs to (e.g., "Market News", "Company Update", "Technological Development", "Policy & Regulation", "Environmental Impact").
+2. Topics: More specific topics covered in the article (e.g., "Lithium Supply", "Battery Recycling", "Rare Earth Mining", "Sustainability Initiatives").
+3. Entities: Key entities mentioned in the article, categorized into:
+   - People: Names of individuals mentioned
+   - Organizations: Companies, institutions, or groups mentioned
+   - Locations: Geographic locations mentioned
+   - Products: Specific products or materials mentioned
+   - Industry: Specific industries or sectors mentioned
 
 Article Title: ${article.title}
 Author: ${article.author || 'Unknown'}
@@ -66,6 +75,7 @@ Please provide the following analysis in valid JSON format:
   "entities": {
     "people": ["person 1", "person 2"],
     "organizations": ["org 1", "org 2"],
+    "industry": ["industry 1", "industry 2"],
     "locations": ["location 1", "location 2"],
     "products": ["product 1"]
   },

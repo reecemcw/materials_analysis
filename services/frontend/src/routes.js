@@ -115,7 +115,7 @@ router.post('/query', async (req, res) => {
       max_tokens: 2000,
       messages: [{
         role: 'user',
-        content: `You are an expert research assistant with access to a knowledge base of articles. Your task is to provide accurate, well-sourced answers based on the retrieved articles.
+        content: `You are an expert research assistant with access to a knowledge base of articles and news about rare earth materials and supply chains. Your task is to provide accurate, well-sourced answers based on the retrieved articles.
 
 ${context}
 
@@ -126,6 +126,10 @@ IMPORTANT INSTRUCTIONS:
 4. Be concise but comprehensive
 5. If multiple articles provide different perspectives, acknowledge this
 6. Synthesize information across articles when relevant
+
+Be sure to be succint and prompt the user to drill down into more information. Be sure to use bullet points to display information for people who want a snapshot status.
+
+Most importantly - phrase your expertise in terms of impacts. Synthesize and Quote impacts in terms of affected organisations, materials, people and locations.
 
 User Question: ${query}
 
