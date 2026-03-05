@@ -13,6 +13,7 @@ const REGISTRY_PATH = join(__dirname, '../../../url.json');
 const SCRAPER_URL  = process.env.SCRAPER_URL  || 'http://localhost:3001';
 const LABELLER_URL = process.env.LABELLER_URL || 'http://localhost:3002';
 const GRAPH_URL    = process.env.GRAPH_URL    || 'http://localhost:3003';
+const DISCOVERY_URL = process.env.DISCOVERY_URL || 'http://localhost:3005';
 
 // ─── Frequency Helpers ────────────────────────────────────────────────────────
 
@@ -155,6 +156,7 @@ async function checkServices() {
     { name: 'scraper',  url: SCRAPER_URL  },
     { name: 'labeller', url: LABELLER_URL },
     { name: 'graph',    url: GRAPH_URL    },
+    { name: 'discovery',    url: DISCOVERY_URL    },
   ];
 
   const results = await Promise.all(
