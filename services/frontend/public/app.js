@@ -67,6 +67,26 @@ class MaterialRiskApp {
     });
   }
 
+  typewriterAnimate(el, text) {
+    if (!el) return;
+    el.textContent = '';
+
+    const BASE_DELAY = 38;
+    const JITTER     = 28;
+    let cumulative   = 0;
+
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      let charDelay = BASE_DELAY + Math.random() * JITTER;
+      if (ch === ' ')                             charDelay += 60;
+      if (ch === '.' || ch === ',' || ch === '!') charDelay += 90;
+      if (ch === '…')                             charDelay += 140;
+      cumulative += charDelay;
+      const snapshot = cumulative;
+      setTimeout(() => { if (el.isConnected) el.textContent += ch; }, snapshot);
+    }
+  }
+
   async loadGraphVersion() {
     const badge = document.getElementById('kg-version-badge');
     if (!badge) return;
@@ -265,41 +285,62 @@ class MaterialRiskApp {
   }
 
   async handleQuery() {
-    const queryInput = document.getElementById('query-input');
+    const queryInput        = document.getElementById('query-input');
     const responseContainer = document.getElementById('query-response');
-    const submitButton = document.getElementById('submit-query');
+    const submitButton      = document.getElementById('submit-query');
 
     const query = queryInput.value.trim();
     if (!query) return;
 
+    // Disable button + show spinner
     submitButton.disabled = true;
     submitButton.innerHTML = `<div class="loading-spinner" style="width:15px;height:15px;border-width:2px;border-color:rgba(255,255,255,0.3);border-top-color:rgba(255,255,255,0.9);"></div>`;
 
+    // Show typewriter loading state
     responseContainer.innerHTML = `
       <div class="response-loading">
         <div class="loading-spinner"></div>
-        <span>🔍 Searching knowledge base and generating answer...</span>
+        <span id="loading-typewriter"></span>
       </div>
     `;
 
+    // Kick off typewriter — element is in the DOM now
+    const typewriterEl = document.getElementById('loading-typewriter');
+    this.typewriterAnimate(typewriterEl, 'Mining the depths of Moria for answers...');
+
+    // Timeout guard — 30s before we give up
+    const controller  = new AbortController();
+    const timeoutId   = setTimeout(() => controller.abort(), 30000);
+
     try {
       const response = await fetch('/api/query', {
-        method: 'POST',
+        method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query, maxSources: 5 })
+        body:    JSON.stringify({ query, maxSources: 5 }),
+        signal:  controller.signal,
       });
 
-      if (!response.ok) throw new Error('Failed to process query');
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        const errBody = await response.json().catch(() => ({}));
+        throw new Error(errBody.error || `HTTP ${response.status}`);
+      }
 
       const data = await response.json();
       if (!data.success) throw new Error(data.error || 'Query failed');
 
       this.displayRAGResponse(data);
+
     } catch (error) {
+      clearTimeout(timeoutId);
       console.error('RAG query error:', error);
+
+      const isTimeout = error.name === 'AbortError';
       responseContainer.innerHTML = `
         <div class="error-message">
-          <strong>⚠️ Error:</strong> ${error.message}
+          <strong>⚠️ ${isTimeout ? 'Request timed out' : 'Error'}:</strong>
+          ${isTimeout ? 'The query took too long to respond. Try a shorter question or check service logs.' : error.message}
           <p class="text-muted text-small" style="margin-top: 0.5rem;">
             Make sure all services are running and the Anthropic API key is configured.
           </p>

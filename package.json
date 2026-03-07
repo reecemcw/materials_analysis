@@ -4,10 +4,9 @@
   "description": "NodeJS App which (ethically) scrapes materials analysis articles, stores article data, generates metadata, and allows the user to query the database with natural language effectively with RAG. ",
   "main": "index.js",
   "scripts": {
-    "ports:kill":  "kill -15 $(lsof -ti:3000,3001,3002,3003,3004,3005)",
+    "ports:kill": "kill -15 $(lsof -ti:3000,3001,3002,3003,3004,3005)",
     "install:all": "npm install && npm run install:services",
     "install:services": "npm install --workspaces",
-
     "dev": "npm run dev:all",
     "dev:all": "concurrently \"npm run dev:discovery\" \"npm run dev:scraper\" \"npm run dev:frontend\" \"npm run dev:labeller\" \"npm run dev:kg\" \"npm run dev:scheduler\"",
     "dev:scraper": "cd services/scraper && SERVICE_NAME=scraper nodemon src/server.js",
@@ -16,7 +15,6 @@
     "dev:kg": "cd services/knowledge-graph && SERVICE_NAME=knowledge-graph nodemon src/server.js",
     "dev:scheduler": "cd services/scheduler && SERVICE_NAME=scheduler nodemon src/server.js",
     "dev:discovery": "cd services/discovery && SERVICE_NAME=discovery nodemon src/server.js",
-
     "test-pipeline": "cd tests/pipeline && node test-pipeline.mjs",
     "test:discovery": "cd tests/pipeline && node test-discovery.mjs",
     "test:discovery:dry": "node services/discovery/test-discovery.mjs --dry-run",
@@ -51,6 +49,7 @@
     "express": "^5.2.1",
     "mongodb": "^7.1.0",
     "mongoose": "^9.2.1",
+    "mongosh": "^2.7.0",
     "node-cron": "^4.2.1",
     "nodemon": "^3.0.2"
   },

@@ -124,16 +124,16 @@ class Storage {
 	}
 
   async getAllTaggedArticles(limit = 1000, offset = 0) {
-		try {
-			const files = await this._getAllFromFiles('labelled', limit, offset);
-			if (files.length > 0) return files;
-			// Fall through to Mongo if no files exist
-			return this._getAllLabelledFromMongo(limit, offset);
-		} catch (err) {
-			logger.error('[Labelled] File layer failed, falling back to MongoDB:', err);
-			return this._getAllLabelledFromMongo(limit, offset);
-		}
-	}
+    try {
+      const mongoResults = await this._getAllLabelledFromMongo(limit, offset);
+      if (mongoResults.length > 0) return mongoResults;
+      // Fall back to files only if Mongo returns nothing
+      return await this._getAllFromFiles('labelled', limit, offset);
+    } catch (err) {
+      console.error('[Storage] MongoDB read failed, falling back to files:', err.message);
+      return this._getAllFromFiles('labelled', limit, offset);
+    }
+  }
 
   async deleteTaggedArticle(id) {
 		await Promise.allSettled([

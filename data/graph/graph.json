@@ -1,11 +1,9 @@
 {
-  "version": 68,
-  "savedAt": "2026-03-05T16:42:52.627Z",
-  "checksum": "db4f019bbc2d4b35482c9060070f64bfe9ffdc580e827ca25d1f9e62ff803f14",
-  "stats": {
-    "nodeCount": 580,
-    "edgeCount": 2704
-  },
+  "_id": "69aa14d44ac7cea7d9c483ed",
+  "version": 69,
+  "__v": 0,
+  "checksum": "fb357c228cb2f72bda310938e5325687aa71ea749644c4efb2d2f040adfdde19",
+  "createdAt": "2026-03-05T23:39:28.828Z",
   "graph": {
     "nodes": [
       [
@@ -34088,7 +34086,7 @@
             "labelledAt": "2026-03-05T16:42:30.513Z",
             "modelUsed": "claude-sonnet-4-20250514"
           },
-          "addedAt": "2026-03-05T16:42:30.563Z"
+          "addedAt": "2026-03-05T23:39:23.539Z"
         }
       ],
       [
@@ -34138,7 +34136,7 @@
             "labelledAt": "2026-03-05T16:42:42.327Z",
             "modelUsed": "claude-sonnet-4-20250514"
           },
-          "addedAt": "2026-03-05T16:42:42.376Z"
+          "addedAt": "2026-03-05T23:39:23.531Z"
         }
       ],
       [
@@ -34191,7 +34189,403 @@
             "labelledAt": "2026-03-05T16:42:52.207Z",
             "modelUsed": "claude-sonnet-4-20250514"
           },
-          "addedAt": "2026-03-05T16:42:52.253Z"
+          "addedAt": "2026-03-05T23:39:23.531Z"
+        }
+      ],
+      [
+        "cd9e4b82-92f9-429e-b3a1-98a672bdc861",
+        {
+          "id": "cd9e4b82-92f9-429e-b3a1-98a672bdc861",
+          "title": "From Dysprosium to Deterrence: Rare Earth Element Supply Chains--Vulnerability in Great Powers Era 2.0",
+          "url": "https://rareearthexchanges.com/news/from-dysprosium-to-deterrence-rare-earth-element-supply-chains-vulnerability-in-great-powers-era-2-0/",
+          "labels": {
+            "categories": [
+              "Defense Technology",
+              "Supply Chain Security"
+            ],
+            "topics": [
+              "Rare Earth Elements",
+              "Military Defense Systems",
+              "Geopolitical Dependencies",
+              "Critical Materials Supply"
+            ],
+            "entities": {
+              "people": [],
+              "organizations": [
+                "REEx Insights",
+                "BYD",
+                "Baogang Group",
+                "China Northern Rare Earth Group",
+                "Lynas Rare Earths",
+                "MP Materials",
+                "USA Rare Earths"
+              ],
+              "locations": [
+                "China",
+                "United States",
+                "Iran",
+                "Israel",
+                "Russia",
+                "North Korea",
+                "Inner Mongolia",
+                "Western Australia"
+              ],
+              "products": [
+                "Tomahawk cruise missiles",
+                "NdFeB magnets",
+                "precision weapons",
+                "radar systems"
+              ]
+            },
+            "keywords": [
+              "dysprosium",
+              "terbium",
+              "rare earth elements",
+              "supply chain vulnerability",
+              "defense technology"
+            ],
+            "sentiment": "neutral",
+            "summary": "The article examines how modern precision weapons, particularly missiles, depend on rare earth elements like dysprosium and terbium that are predominantly controlled by China. It highlights the strategic vulnerability this creates for defense systems, especially with new 2027 regulations prohibiting defense acquisition of magnets from certain countries.",
+            "readingTime": "8",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "labelledAt": "2026-03-05T23:39:23.095Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-03-05T23:39:23.531Z"
+        }
+      ],
+      [
+        "35c1a717-74d5-4ec9-b617-83376215d39c",
+        {
+          "id": "35c1a717-74d5-4ec9-b617-83376215d39c",
+          "title": "China Northern Rare Earth Tightens Control, Accelerates Scale, and Signals Long-Term Strategic Intent",
+          "url": "https://rareearthexchanges.com/news/china-northern-rare-earth-tightens-control-accelerates-scale-and-signals-long-term-strategic-intent/",
+          "labels": {
+            "categories": [
+              "Industrial Metals",
+              "Geopolitics"
+            ],
+            "topics": [
+              "rare earth supply chain",
+              "strategic minerals control",
+              "Chinese industrial policy",
+              "national security assets",
+              "production scaling"
+            ],
+            "entities": {
+              "people": [],
+              "organizations": [
+                "China Northern Rare Earth Group",
+                "REEx Insights"
+              ],
+              "locations": [
+                "China",
+                "Inner Mongolia"
+              ],
+              "products": [
+                "NdFeB magnets",
+                "rare earth alloys",
+                "rare earth elements"
+              ]
+            },
+            "keywords": [
+              "rare earth",
+              "China Northern Rare Earth",
+              "supply chain",
+              "strategic control",
+              "production expansion"
+            ],
+            "sentiment": "neutral",
+            "summary": "China Northern Rare Earth Group is implementing strict confidentiality measures and scaling production capabilities as part of China's strategy to institutionalize dominance in the critical rare earth minerals supply chain. The company reported $4.2B revenue through Q3 2025 while commissioning major expansions including magnet and alloy production facilities.",
+            "readingTime": "3",
+            "complexity": "intermediate",
+            "contentType": "analysis",
+            "labelledAt": "2026-03-05T16:43:51.754Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-03-05T23:39:23.531Z"
+        }
+      ],
+      [
+        "ca11e0e7-f407-4756-a8d0-5f6240d3689b",
+        {
+          "id": "ca11e0e7-f407-4756-a8d0-5f6240d3689b",
+          "title": "Lynas Announces CEO Transition as Company Enters Next Growth Phase",
+          "url": "https://rareearthexchanges.com/news/lynas-announces-ceo-transition-as-company-enters-next-growth-phase/",
+          "labels": {
+            "categories": [
+              "Business News",
+              "Mining & Materials"
+            ],
+            "topics": [
+              "CEO transition",
+              "rare earth elements",
+              "corporate leadership",
+              "mining industry",
+              "market capitalization"
+            ],
+            "entities": {
+              "people": [
+                "Amanda Lacaze"
+              ],
+              "organizations": [
+                "Lynas Rare Earths Ltd",
+                "REEx Insights"
+              ],
+              "locations": [
+                "China",
+                "Western Australia"
+              ],
+              "products": [
+                "rare earth elements",
+                "light rare earths"
+              ]
+            },
+            "keywords": [
+              "Lynas",
+              "CEO retirement",
+              "rare earths",
+              "Amanda Lacaze",
+              "leadership transition"
+            ],
+            "sentiment": "neutral",
+            "summary": "Lynas Rare Earths announces that CEO Amanda Lacaze will retire after 12 years, during which she transformed the company from financial distress to a A$15 billion market cap. The company is conducting a global search for her successor as it enters its next growth phase.",
+            "readingTime": "3",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-03-05T16:43:41.996Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-03-05T23:39:23.531Z"
+        }
+      ],
+      [
+        "e6a55dc7-2183-4443-a342-4dbdecca8da3",
+        {
+          "id": "e6a55dc7-2183-4443-a342-4dbdecca8da3",
+          "title": "China Northern Rare Earth Signals Expansion and Full-Spectrum Integration in 2026 Outlook",
+          "url": "https://rareearthexchanges.com/news/china-northern-rare-earth-signals-expansion-and-full-spectrum-integration-in-2026-outlook/",
+          "labels": {
+            "categories": [
+              "Business & Industry",
+              "Mining & Resources"
+            ],
+            "topics": [
+              "Rare Earth Elements",
+              "Supply Chain Management",
+              "Chinese Industrial Policy",
+              "Market Integration",
+              "Strategic Planning"
+            ],
+            "entities": {
+              "people": [],
+              "organizations": [
+                "China Northern Rare Earth Group",
+                "REEx Insights"
+              ],
+              "locations": [
+                "China",
+                "Baotou",
+                "Inner Mongolia"
+              ],
+              "products": [
+                "Rare Earth Elements",
+                "Light Rare Earths",
+                "Heavy Rare Earths"
+              ]
+            },
+            "keywords": [
+              "rare earth",
+              "China",
+              "expansion",
+              "integration",
+              "supply chain",
+              "mining",
+              "market dominance",
+              "strategic planning"
+            ],
+            "sentiment": "neutral",
+            "summary": "China Northern Rare Earth Group announced its 2026 strategic priorities focusing on capacity expansion and vertical integration after completing its 14th Five-Year Plan objectives in 2025. The company's approach emphasizes state-coordinated supply chain control and technology advancement, reinforcing China's strategic dominance in the rare earth sector.",
+            "readingTime": "3",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-03-05T16:43:32.811Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-03-05T23:39:23.531Z"
+        }
+      ],
+      [
+        "19ce4195-b520-46fa-b985-79b7b085d2d4",
+        {
+          "id": "19ce4195-b520-46fa-b985-79b7b085d2d4",
+          "title": "Does Baotou Accelerates Digital Transformation of Rare Earth Industry? China's Next Manufacturing Advantage?",
+          "url": "https://rareearthexchanges.com/news/does-baotou-accelerates-digital-transformation-of-rare-earth-industry-chinas-next-manufacturing-advantage/",
+          "labels": {
+            "categories": [
+              "Manufacturing Technology",
+              "Industrial Transformation"
+            ],
+            "topics": [
+              "Digital transformation",
+              "Rare earth manufacturing",
+              "AI automation",
+              "Smart factory technology"
+            ],
+            "entities": {
+              "people": [],
+              "organizations": [
+                "Jinlong Rare Earth New Materials",
+                "Baogang Group",
+                "BYD",
+                "China Northern Rare Earth Group",
+                "Lynas Rare Earths",
+                "MP Materials",
+                "USA Rare Earths"
+              ],
+              "locations": [
+                "Baotou",
+                "China",
+                "Inner Mongolia"
+              ],
+              "products": [
+                "Rare earth elements",
+                "Smart factory systems",
+                "IoT sensors",
+                "AI optimization systems"
+              ]
+            },
+            "keywords": [
+              "digital transformation",
+              "rare earth",
+              "smart factory",
+              "AI",
+              "IoT",
+              "manufacturing",
+              "automation",
+              "China",
+              "Baotou",
+              "productivity"
+            ],
+            "sentiment": "positive",
+            "summary": "Baotou has successfully digitized its rare earth industry with a $3.3M smart factory achieving 52% faster production through AI and IoT integration. All 107 large-scale rare earth enterprises in the region have completed digital transformation, boosting productivity by 25% and strengthening China's competitive advantage in rare earth manufacturing.",
+            "readingTime": "3",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-03-05T16:43:22.879Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-03-05T23:39:23.531Z"
+        }
+      ],
+      [
+        "26544cd3-10f8-405a-9624-d1253db5048b",
+        {
+          "id": "26544cd3-10f8-405a-9624-d1253db5048b",
+          "title": "G7 Talks Rare Earths-Urgency Rises, Details Lag",
+          "url": "https://rareearthexchanges.com/news/g7-talks-rare-earths-urgency-rises-details-lag/",
+          "labels": {
+            "categories": [
+              "International Trade",
+              "Supply Chain Management"
+            ],
+            "topics": [
+              "rare earth elements",
+              "export controls",
+              "supply chain vulnerabilities",
+              "G7 economic policy",
+              "China trade relations"
+            ],
+            "entities": {
+              "people": [
+                "Scott Bessent"
+              ],
+              "organizations": [
+                "G7",
+                "U.S. Treasury",
+                "European Union"
+              ],
+              "locations": [
+                "Washington",
+                "China",
+                "Japan",
+                "United States",
+                "Australia"
+              ],
+              "products": [
+                "rare earth elements",
+                "magnets"
+              ]
+            },
+            "keywords": [
+              "G7",
+              "rare earths",
+              "supply chain",
+              "China",
+              "export controls"
+            ],
+            "sentiment": "neutral",
+            "summary": "G7 finance ministers met in Washington to address rare earth supply chain vulnerabilities amid China's export controls, but failed to produce concrete commitments. While political alignment was achieved, rebuilding non-Chinese rare earth supply chains requires years of capital-intensive investment.",
+            "readingTime": "2",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-03-05T16:43:11.611Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-03-05T23:39:23.531Z"
+        }
+      ],
+      [
+        "393de2cb-bad5-484f-b4cc-c22c0fe32f35",
+        {
+          "id": "393de2cb-bad5-484f-b4cc-c22c0fe32f35",
+          "title": "Korea Zinc Bets on Recycling-Can Magnet Scrap Close the Rare Earth Gap?",
+          "url": "https://rareearthexchanges.com/news/korea-zinc-bets-on-recycling-can-magnet-scrap-close-the-rare-earth-gap/",
+          "labels": {
+            "categories": [
+              "Industrial Metals",
+              "Clean Energy Technology"
+            ],
+            "topics": [
+              "rare earth recycling",
+              "permanent magnet processing",
+              "supply chain security"
+            ],
+            "entities": {
+              "people": [],
+              "organizations": [
+                "Korea Zinc",
+                "Alta Resource Technologies",
+                "PedalPoint"
+              ],
+              "locations": [
+                "United States",
+                "China",
+                "South Korea"
+              ],
+              "products": [
+                "rare earth oxides",
+                "permanent magnets",
+                "zinc"
+              ]
+            },
+            "keywords": [
+              "rare earth",
+              "recycling",
+              "permanent magnets",
+              "supply chain",
+              "China dependence"
+            ],
+            "sentiment": "neutral",
+            "summary": "Korea Zinc and Alta Resource Technologies announced a joint venture to build a 100-ton-per-year facility in the U.S. to process end-of-life permanent magnets into rare earth oxides by 2027. The initiative aims to reduce dependence on Chinese supply chains, though the modest scale represents more of a pilot program than a transformative solution to rare earth shortages.",
+            "readingTime": "2",
+            "complexity": "intermediate",
+            "contentType": "news",
+            "labelledAt": "2026-03-05T16:43:01.580Z",
+            "modelUsed": "claude-sonnet-4-20250514"
+          },
+          "addedAt": "2026-03-05T23:39:23.531Z"
         }
       ]
     ],
@@ -79229,6 +79623,89 @@
           "sharedKeywords": [],
           "createdAt": "2026-03-05T16:42:42.379Z"
         }
+      ],
+      [
+        "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-e977f711-bf31-4994-b3d3-741b0fb0c3c3",
+        {
+          "id": "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-e977f711-bf31-4994-b3d3-741b0fb0c3c3",
+          "from": "cd9e4b82-92f9-429e-b3a1-98a672bdc861",
+          "to": "e977f711-bf31-4994-b3d3-741b0fb0c3c3",
+          "type": "RELATES_TO",
+          "strength": 17,
+          "sharedTopics": [],
+          "sharedKeywords": [],
+          "createdAt": "2026-03-05T23:39:23.422Z"
+        }
+      ],
+      [
+        "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-99479395-5525-45fb-b767-6526afcffcde",
+        {
+          "id": "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-99479395-5525-45fb-b767-6526afcffcde",
+          "from": "cd9e4b82-92f9-429e-b3a1-98a672bdc861",
+          "to": "99479395-5525-45fb-b767-6526afcffcde",
+          "type": "RELATES_TO",
+          "strength": 17,
+          "sharedTopics": [
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "rare earth elements"
+          ],
+          "createdAt": "2026-03-05T23:39:23.422Z"
+        }
+      ],
+      [
+        "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-815f8ae9-c474-4070-9343-42dc7638f7e7",
+        {
+          "id": "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-815f8ae9-c474-4070-9343-42dc7638f7e7",
+          "from": "cd9e4b82-92f9-429e-b3a1-98a672bdc861",
+          "to": "815f8ae9-c474-4070-9343-42dc7638f7e7",
+          "type": "RELATES_TO",
+          "strength": 17,
+          "sharedTopics": [
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "rare earth elements"
+          ],
+          "createdAt": "2026-03-05T23:39:23.423Z"
+        }
+      ],
+      [
+        "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-325a33e9-ed2f-4894-8fd9-a40fd56bbe02",
+        {
+          "id": "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-325a33e9-ed2f-4894-8fd9-a40fd56bbe02",
+          "from": "cd9e4b82-92f9-429e-b3a1-98a672bdc861",
+          "to": "325a33e9-ed2f-4894-8fd9-a40fd56bbe02",
+          "type": "RELATES_TO",
+          "strength": 17,
+          "sharedTopics": [
+            "rare earth elements"
+          ],
+          "sharedKeywords": [
+            "rare earth elements",
+            "dysprosium",
+            "terbium"
+          ],
+          "createdAt": "2026-03-05T23:39:23.423Z"
+        }
+      ],
+      [
+        "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-26df0d22-1cd8-4cb7-b591-5a6171534c8c",
+        {
+          "id": "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-26df0d22-1cd8-4cb7-b591-5a6171534c8c",
+          "from": "cd9e4b82-92f9-429e-b3a1-98a672bdc861",
+          "to": "26df0d22-1cd8-4cb7-b591-5a6171534c8c",
+          "type": "RELATES_TO",
+          "strength": 17,
+          "sharedTopics": [
+            "Rare Earth Elements"
+          ],
+          "sharedKeywords": [
+            "rare earth elements"
+          ],
+          "createdAt": "2026-03-05T23:39:23.423Z"
+        }
       ]
     ],
     "nodeEdges": [
@@ -81524,7 +82001,8 @@
           "80cf9116-bd60-4830-8844-581aa11c287f-RELATES_TO-e977f711-bf31-4994-b3d3-741b0fb0c3c3",
           "b8f87a55-9b2a-42b2-8d63-0bf2bcb0ca8c-RELATES_TO-e977f711-bf31-4994-b3d3-741b0fb0c3c3",
           "ef850425-088e-4d0a-b390-6d8133d491b8-RELATES_TO-e977f711-bf31-4994-b3d3-741b0fb0c3c3",
-          "54254770-5791-4582-bfef-741e6d1b7afa-RELATES_TO-e977f711-bf31-4994-b3d3-741b0fb0c3c3"
+          "54254770-5791-4582-bfef-741e6d1b7afa-RELATES_TO-e977f711-bf31-4994-b3d3-741b0fb0c3c3",
+          "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-e977f711-bf31-4994-b3d3-741b0fb0c3c3"
         ]
       ],
       [
@@ -82000,7 +82478,8 @@
           "483dcde3-2ab4-4a15-9e2c-c6d97fe37109-RELATES_TO-99479395-5525-45fb-b767-6526afcffcde",
           "67d2db16-32ab-4a67-a31a-ddf651c91e09-RELATES_TO-99479395-5525-45fb-b767-6526afcffcde",
           "2a4a1a8b-7695-40a0-a05e-a4b8ed2bb6a1-RELATES_TO-99479395-5525-45fb-b767-6526afcffcde",
-          "e1f77085-3ca3-4450-89dc-473fddf4ed8d-RELATES_TO-99479395-5525-45fb-b767-6526afcffcde"
+          "e1f77085-3ca3-4450-89dc-473fddf4ed8d-RELATES_TO-99479395-5525-45fb-b767-6526afcffcde",
+          "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-99479395-5525-45fb-b767-6526afcffcde"
         ]
       ],
       [
@@ -82200,7 +82679,8 @@
           "d6f75101-2161-4cb9-9ab6-28d7971c5546-RELATES_TO-815f8ae9-c474-4070-9343-42dc7638f7e7",
           "6b5663cd-0ece-4a89-89bc-cb7fe5231576-RELATES_TO-815f8ae9-c474-4070-9343-42dc7638f7e7",
           "975f6413-ec8c-41a8-96d7-802d5ff16892-RELATES_TO-815f8ae9-c474-4070-9343-42dc7638f7e7",
-          "121c050f-8968-459f-8ccf-63851f39d91f-RELATES_TO-815f8ae9-c474-4070-9343-42dc7638f7e7"
+          "121c050f-8968-459f-8ccf-63851f39d91f-RELATES_TO-815f8ae9-c474-4070-9343-42dc7638f7e7",
+          "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-815f8ae9-c474-4070-9343-42dc7638f7e7"
         ]
       ],
       [
@@ -83703,7 +84183,8 @@
           "32588a3b-b5ea-46c2-affc-10a4ef5d0713-RELATES_TO-325a33e9-ed2f-4894-8fd9-a40fd56bbe02",
           "847daed4-bd3a-4a3f-bc2f-430ba80aafd1-RELATES_TO-325a33e9-ed2f-4894-8fd9-a40fd56bbe02",
           "57f035f4-eb7b-4aa1-bcc1-86b4af4f16f9-RELATES_TO-325a33e9-ed2f-4894-8fd9-a40fd56bbe02",
-          "813b0a58-f347-4c5e-b246-1e710a4b15f8-RELATES_TO-325a33e9-ed2f-4894-8fd9-a40fd56bbe02"
+          "813b0a58-f347-4c5e-b246-1e710a4b15f8-RELATES_TO-325a33e9-ed2f-4894-8fd9-a40fd56bbe02",
+          "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-325a33e9-ed2f-4894-8fd9-a40fd56bbe02"
         ]
       ],
       [
@@ -84773,7 +85254,8 @@
           "1f8b2300-7add-4248-ae60-f02c12ffe57a-RELATES_TO-26df0d22-1cd8-4cb7-b591-5a6171534c8c",
           "56d7e7d6-209a-4878-bdb7-64b29b40a779-RELATES_TO-26df0d22-1cd8-4cb7-b591-5a6171534c8c",
           "53a811b7-6214-4c28-b16a-4fcd70258459-RELATES_TO-26df0d22-1cd8-4cb7-b591-5a6171534c8c",
-          "8d4d373d-34c9-4937-9fbe-e4ad7f762980-RELATES_TO-26df0d22-1cd8-4cb7-b591-5a6171534c8c"
+          "8d4d373d-34c9-4937-9fbe-e4ad7f762980-RELATES_TO-26df0d22-1cd8-4cb7-b591-5a6171534c8c",
+          "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-26df0d22-1cd8-4cb7-b591-5a6171534c8c"
         ]
       ],
       [
@@ -87522,7 +88004,49 @@
       [
         "bdc4badd-ac1a-4c14-a2aa-5d579f3d372b",
         []
+      ],
+      [
+        "cd9e4b82-92f9-429e-b3a1-98a672bdc861",
+        [
+          "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-e977f711-bf31-4994-b3d3-741b0fb0c3c3",
+          "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-99479395-5525-45fb-b767-6526afcffcde",
+          "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-815f8ae9-c474-4070-9343-42dc7638f7e7",
+          "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-325a33e9-ed2f-4894-8fd9-a40fd56bbe02",
+          "cd9e4b82-92f9-429e-b3a1-98a672bdc861-RELATES_TO-26df0d22-1cd8-4cb7-b591-5a6171534c8c"
+        ]
+      ],
+      [
+        "35c1a717-74d5-4ec9-b617-83376215d39c",
+        []
+      ],
+      [
+        "ca11e0e7-f407-4756-a8d0-5f6240d3689b",
+        []
+      ],
+      [
+        "e6a55dc7-2183-4443-a342-4dbdecca8da3",
+        []
+      ],
+      [
+        "19ce4195-b520-46fa-b985-79b7b085d2d4",
+        []
+      ],
+      [
+        "26544cd3-10f8-405a-9624-d1253db5048b",
+        []
+      ],
+      [
+        "393de2cb-bad5-484f-b4cc-c22c0fe32f35",
+        []
       ]
     ]
-  }
+  },
+  "localPath": "/Users/reecemcwalter/materials_analysis_app/data/graph/graph.json",
+  "runId": null,
+  "stats": {
+    "nodeCount": 595,
+    "edgeCount": 3980
+  },
+  "triggerReason": "scheduled",
+  "updatedAt": "2026-03-05T23:41:04.432Z"
 }
