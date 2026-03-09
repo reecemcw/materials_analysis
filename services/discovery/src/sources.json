@@ -27,19 +27,6 @@
       "notes": "Specialist rare earth market news"
     },
     {
-      "name": "Renewables Now",
-      "baseUrl": "https://renewablesnow.com",
-      "active": true,
-      "autoDiscover": true,
-      "feeds": [
-        "https://renewablesnow.com/feed/"
-      ],
-      "sitemaps": [],
-      "urlFilter": "/news/",
-      "frequency": "daily",
-      "notes": "Renewable energy materials demand"
-    },
-    {
       "name": "Think China \u2014 Economy",
       "baseUrl": "https://www.thinkchina.sg",
       "active": true,
@@ -55,14 +42,12 @@
     },
     {
       "name": "Junior Mining Network",
-      "baseUrl": "https://www.juniorminingnetwork.com",
+      "baseUrl": "https://www.juniorminingnetwork.com/junior-miner-news.html",
       "active": true,
       "autoDiscover": true,
-      "feeds": [],
-      "sitemaps": [
-        "https://www.juniorminingnetwork.com/sitemap.xml"
-      ],
-      "urlFilter": "/junior-miner-news/",
+      "feeds": ["https://www.juniorminingnetwork.com/junior-miner-news.html"],
+      "sitemaps": [],
+      "urlFilter": "/junior-miner-news.html",
       "sitemapDepth": 2,
       "frequency": "daily",
       "notes": "Junior mining and critical minerals news"
@@ -81,6 +66,19 @@
       "notes": "Supply chain risk and critical materials coverage"
     },
     {
+      "name": "Manufacturing Dive",
+      "baseUrl": "https://www.manufacturingdive.com",
+      "active": true,
+      "autoDiscover": true,
+      "feeds": [
+        "https://www.manufacturingdive.com/feeds/news/"
+      ],
+      "sitemaps": [],
+      "urlFilter": "/news/",
+      "frequency": "daily",
+      "notes": "Supply chain risk and critical materials coverage"
+    },
+    {
       "name": "Proactive Investors",
       "baseUrl": "https://www.proactiveinvestors.co.uk",
       "active": true,
@@ -89,21 +87,10 @@
       "sitemaps": [
         "https://www.proactiveinvestors.co.uk/sitemap.xml"
       ],
-      "urlFilter": "/companies/news/",
+      "urlFilter": "/basic-materials|/energy|/mining|/battery-metals|/rare-earths-specialist-minerals",
       "sitemapDepth": 2,
       "frequency": "daily",
       "notes": "Critical materials and mining investment news"
-    },
-    {
-      "name": "JPMorgan Critical Minerals",
-      "baseUrl": "https://www.jpmorgan.com",
-      "active": false,
-      "autoDiscover": false,
-      "feeds": [],
-      "sitemaps": [],
-      "urlFilter": "/insights/.*(?:critical.mineral|commodit|rare.earth)",
-      "frequency": "weekly",
-      "notes": "JPMorgan research \u2014 check manually, no public feed"
     },
     {
       "name": "BBC Worklife",
@@ -119,29 +106,74 @@
       "notes": "BBC long-form business and materials stories"
     },
     {
-      "name": "Global Banking and Finance",
-      "baseUrl": "https://www.globalbankingandfinance.com",
+      "name": "Reuters Business News",
+      "baseUrl": "https://www.reuters.com",
       "active": true,
-      "autoDiscover": true,
+      "autoDiscover": false,
       "feeds": [
-        "https://www.globalbankingandfinance.com/feed/"
+        "https://www.reutersagency.com/feed/?best-topics=business&post_type=best",
+        "https://www.reuters.com/site-search/?query=rare+earth",
+        "https://www.reuters.com/markets/commodities/"
       ],
       "sitemaps": [],
+      "urlFilter": "/business/|/markets/commodities/|/site-search/?query=rare+earth",
       "frequency": "daily",
-      "notes": "Critical minerals finance and supply chain articles"
+      "notes": "Reuters business news feed"
     },
     {
-      "name": "WION News",
-      "baseUrl": "https://www.wionews.com",
+      "name": "Investor News",
+      "baseUrl": "https://investornews.com",
       "active": true,
-      "autoDiscover": true,
+      "autoDiscover": false,
       "feeds": [
-        "https://www.wionews.com/feeds/rss"
+        "https://investornews.com/category/critical-minerals-rare-earths/"
       ],
       "sitemaps": [],
-      "urlFilter": "(?:rare.earth|critical.mineral|supply.chain|china)",
+      "urlFilter": "/releases/|/news/",
       "frequency": "daily",
-      "notes": "Geopolitical supply chain coverage"
+      "notes": "Materials news for investors"
+    },
+    {
+      "name": "Simply Wall Street",
+      "baseUrl": "https://simplywall.st",
+      "active": true,
+      "autoDiscover": false,
+      "feeds": [
+        "https://simplywall.st/community/narratives/gb/materials",
+        "https://simplywall.st/community/narratives/us/materials",
+        "https://simplywall.st/community/narratives/nl/materials"
+      ],
+      "sitemaps": [],
+      "urlFilter": "/community/narratives/",
+      "frequency": "daily",
+      "notes": "Materials news for investors"
+    },
+    {
+      "name": "S&P Global",
+      "baseUrl": "https://www.spglobal.com",
+      "active": true,
+      "autoDiscover": false,
+      "feeds": [
+        "https://www.spglobal.com/marketintelligence/en/news-insights/latest-news/",
+        "https://www.spglobal.com/energy/en/news-research/latest-news?q=&rows=100&pagenum=1&sort=es_unified_dt%20desc&facets={%22es_theme_ss%22:[%22Battery%20Metals%22,%22Energy%20%26%20Commodities%22,%22Energy%20Transition%22,%22Energy%20Transition%20Sustainability%22,%22Exploration%20%26%20Production%20(E%26P)%22,%22Exploration%20%26%20Production%20(E%26P)%20Economics%22,%22Geopolitics%22,%22Ferrous%22,%22Industry%20Monitoring%20and%20Trends%22,%22Infrastructure%22,%22Metallurgical%20Coal%22,%22Metals%20%26%20Mining%20Theme%22,%22Non-Ferrous%22,%22Nuclear%22,%22Technology%20%26%20Innovation%22,%22Steel%22]}#q=&rows=20&pagenum=1&sort=es_unified_dt%20desc"
+      ],
+      "sitemaps": [],
+      "urlFilter": "/news-insights/latest-news/|/energy/en/news-research",
+      "frequency": "daily",
+      "notes": "S&P Global news feeds"
+    },
+    {
+      "name": "Financial Times",
+      "baseUrl": "https://www.ft.com",
+      "active": true,
+      "autoDiscover": false,
+      "feeds": [
+        "https://www.ft.com/news-feed"
+      ],
+      "sitemaps": [],
+      "urlFilter": "/rare-earths|/news-feed",
+      "frequency": "daily",
+      "notes": "Financial Times international edition"
     }
   ]
 }

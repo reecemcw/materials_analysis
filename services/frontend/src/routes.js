@@ -286,12 +286,14 @@ function buildRAGContext(query, articles) {
     const categories = article.labels?.categories?.join(', ') || 'None';
     const summary = article.labels?.summary || 'No summary available';
     const keywords = article.labels?.keywords?.slice(0, 8).join(', ') || 'None';
-    const date = article.publishDate || article.addedAt ? new Date(article.publishDate || article.addedAt).toISOString().split('T')[0]
+    const rawDate = article.publishDate || article.addedAt || null;
+    const date = rawDate && !isNaN(new Date(rawDate).getTime())
+  ? new Date(rawDate).toISOString().split('T')[0]
   : 'Unknown';
 
     return `[Article ${idx + 1}]
 Title: "${article.title}"
-Published: ${article.publishDate || article.addedAt || 'Unknown'}
+Published: ${date}
 URL: ${article.url}
 Categories: ${categories}
 Topics: ${topics}
