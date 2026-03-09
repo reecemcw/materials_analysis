@@ -5,9 +5,59 @@ import Scraper from './scraper.js';
 import Storage from '../../../utils/storage.js';
 import logger from '../../../utils/logger.js';
 import { getRawArticleModel } from '../../../data/models/model_factory.js';
+import { getUrlRegistryModel } from '../../../data/models/model_factory.js';
 
 const scraper = new Scraper();
 const storage = new Storage();
+const UrlModel = await getUrlRegistryModel();
+
+// POST /api/scrape/pending - Scrape unscraped URLs from the registry
+router.post('/scrape/pending', async (req, res) => {
+  try {
+    const { limit = 10 } = req.body;
+
+    // Fetch unscraped URLs from registry
+    const pendingUrls = await UrlModel.find({
+      lastScraped: null,
+      active: true
+    }).limit(parseInt(limit)).lean();
+
+    if (pendingUrls.length === 0) {
+      return res.json({ success: true, message: 'No pending URLs found', totalUrls: 0, successCount: 0, articles: [] });
+    }
+
+    logger.info(`Scraping ${pendingUrls.length} pending URLs from registry`);
+    const urls = pendingUrls.map(u => u.url);
+    const results = await scraper.scrapeBatch(urls);
+
+    const savedArticles = [];
+    for (const result of results) {
+      if (result.success) {
+        const article = { id: uuidv4(), ...result.article };
+        await storage.saveRawArticle(article);
+        savedArticles.push(article);
+
+        // Mark as scraped in registry
+        await UrlModel.updateOne(
+          { url: result.url },
+          { $set: { lastScraped: new Date() } }
+        );
+      }
+    }
+
+    res.json({
+      success: true,
+      totalUrls: pendingUrls.length,
+      successCount: savedArticles.length,
+      failureCount: results.filter(r => !r.success).length,
+      articles: savedArticles,
+      errors: results.filter(r => !r.success).map(r => ({ url: r.url, error: r.error }))
+    });
+  } catch (error) {
+    logger.error('Pending scrape error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
 
 // POST /api/scrape - Scrape a single URL
 router.post('/scrape', async (req, res) => {

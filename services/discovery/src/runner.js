@@ -22,7 +22,7 @@ import logger from "../../../utils/logger.js";
  * @param {object[]} sources  Array of source config objects from sources.json
  * @returns {object}          Run report
  */
-export async function runDiscovery(sources) {
+export async function runDiscovery(sources, { since = null } = {}) {
   const startedAt = new Date().toISOString();
   logger.info("[Discovery] === Discovery run started ===");
 
@@ -53,7 +53,7 @@ export async function runDiscovery(sources) {
     const feedUrls = await resolveFeeds(source);
     for (const feedUrl of feedUrls) {
       try {
-        const items = await discoverFromFeed(feedUrl);
+        const items = await discoverFromFeed(feedUrl, { since });
         allDiscovered.push(...items);
       } catch (err) {
         const msg = "Feed error (" + feedUrl + "): " + err.message;
@@ -69,6 +69,7 @@ export async function runDiscovery(sources) {
       try {
         const items = await discoverFromSitemap(sitemapUrl, {
           maxDepth: source.sitemapDepth ?? 2,
+          since,
         });
         allDiscovered.push(...items);
       } catch (err) {

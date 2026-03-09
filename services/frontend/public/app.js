@@ -306,7 +306,7 @@ class MaterialRiskApp {
 
     // Kick off typewriter — element is in the DOM now
     const typewriterEl = document.getElementById('loading-typewriter');
-    this.typewriterAnimate(typewriterEl, 'Mining the depths of Moria for answers...');
+    this.typewriterAnimate(typewriterEl, 'How are you now Lara how are things were you on the pints was it...');
 
     // Timeout guard — 30s before we give up
     const controller  = new AbortController();

@@ -68,48 +68,70 @@ router.post('/query', async (req, res) => {
     const keywords = extractKeywords(query);
     logger.info(`Extracted keywords: ${keywords.join(', ')}`);
 
-    // Step 2: Multi-strategy retrieval from knowledge graph
-    const retrievalResults = await Promise.allSettled([
-      // Search by topics
-      axios.get(`${GRAPH_URL}/api/graph/query/topic`, {
-        params: { q: keywords.join(' '), limit: 10 }
-      }),
-      // Search by keywords
-      axios.get(`${GRAPH_URL}/api/graph/query/keyword`, {
-        params: { q: keywords.join(' '), limit: 10 }
-      }),
-      // Get recent articles as fallback
-      axios.get(`${LABELLER_URL}/api/tagged`, {
-        params: { limit: 10 }
-      })
-    ]);
+    // Step 2: Multi-strategy retrieval
+    let allArticles = [];
 
-    // Step 3: Aggregate and deduplicate results
-    const allArticles = [];
-    const seenIds = new Set();
-
-    retrievalResults.forEach(result => {
-      if (result.status === 'fulfilled') {
-        const articles = result.value.data.results || result.value.data.taggedArticles || [];
-        articles.forEach(article => {
-          if (!seenIds.has(article.id)) {
-            seenIds.add(article.id);
-            allArticles.push(article);
-          }
+    if (isTemporalQuery(query) || keywords.length === 0) {
+      // Temporal or empty-keyword queries: fetch recent articles directly
+      try {
+        const response = await axios.get(`${LABELLER_URL}/api/tagged`, {
+          params: { limit: maxSources * 2 }
         });
+        allArticles = response.data.taggedArticles || [];
+        allArticles.sort((a, b) => {
+          const dateA = new Date(a.publishDate || a.addedAt || 0);
+          const dateB = new Date(b.publishDate || b.addedAt || 0);
+          return dateB - dateA;
+        });
+        allArticles = allArticles.slice(0, maxSources);
+      } catch (err) {
+        logger.warn('Temporal fallback retrieval failed:', err.message);
       }
-    });
+    } else {
+      // Normal keyword/topic graph retrieval
+      const [topicResults, keywordResults] = await Promise.allSettled([
+        axios.get(`${GRAPH_URL}/api/graph/query/topic`, { params: { topic: keywords[0], limit: maxSources } }),
+        axios.get(`${GRAPH_URL}/api/graph/query/keyword`, { params: { keyword: keywords[0], limit: maxSources } })
+      ]);
 
-    // Step 4: Rank articles by relevance to query
-    const rankedArticles = rankArticlesByRelevance(query, allArticles)
-      .slice(0, maxSources);
+      const topicArticles = topicResults.status === 'fulfilled' ? topicResults.value.data.articles || [] : [];
+      const keywordArticles = keywordResults.status === 'fulfilled' ? keywordResults.value.data.articles || [] : [];
+
+      // Deduplicate
+      const seen = new Set();
+      for (const article of [...topicArticles, ...keywordArticles]) {
+        const id = article.id ?? article.sourceId;
+        if (id && !seen.has(id)) {
+          seen.add(id);
+          allArticles.push(article);
+        }
+      }
+
+      // Fallback if graph returned nothing
+      if (allArticles.length === 0) {
+        logger.warn('Graph retrieval returned no results, falling back to labeller');
+        try {
+          const response = await axios.get(`${LABELLER_URL}/api/tagged`, { params: { limit: maxSources * 2 } });
+          allArticles = response.data.taggedArticles || [];
+        } catch (err) {
+          logger.warn('Fallback retrieval also failed:', err.message);
+        }
+      }
+    }
+
+    // Step 3: Rank articles by relevance to query
+    const rankedArticles = isTemporalQuery(query)
+    ? allArticles.slice(0, maxSources)
+    : rankArticlesByRelevance(query, allArticles)
+        .filter(a => a.relevanceScore > 0)
+        .slice(0, maxSources);
 
     logger.info(`Retrieved ${rankedArticles.length} relevant articles`);
 
-    // Step 5: Build rich context for Claude
+    // Step 4: Build rich context for Claude
     const context = buildRAGContext(query, rankedArticles);
 
-    // Step 6: Generate answer with Claude
+    // Step 5: Generate answer with Claude
     const message = await anthropic.messages.create({
       model: process.env.AI_MODEL || 'claude-sonnet-4-20250514',
       max_tokens: 2000,
@@ -135,7 +157,7 @@ Provide your answer:`
 
     const answer = message.content[0].text;
 
-    // Step 7: Return response with sources
+    // Step 6: Return response with sources
     res.json({
       success: true,
       query,
@@ -157,7 +179,7 @@ Provide your answer:`
     });
   } catch (error) {
     logger.error('RAG query error:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       success: false,
       error: error.message,
       query: req.body.query
@@ -167,20 +189,27 @@ Provide your answer:`
 
 // Helper: Extract keywords from query
 function extractKeywords(query) {
-  // Remove common stop words
   const stopWords = new Set([
-    'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 
-    'from', 'has', 'he', 'in', 'is', 'it', 'its', 'of', 'on',
-    'that', 'the', 'to', 'was', 'will', 'with', 'what', 'when',
-    'where', 'who', 'how', 'about', 'can', 'could', 'should'
+  'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for',
+  'from', 'has', 'he', 'in', 'is', 'it', 'its', 'of', 'on',
+  'that', 'the', 'to', 'was', 'will', 'with', 'what', 'when',
+  'where', 'who', 'how', 'about', 'can', 'could', 'should',
+  'most', 'recent', 'latest', 'last', 'first', 'oldest', 'newest',
+  'article', 'articles', 'news', 'story', 'stories', 'post', 'posts',
+  'tell', 'show', 'give', 'find', 'get', 'any'
   ]);
-
   return query
     .toLowerCase()
     .replace(/[^\w\s]/g, ' ')
     .split(/\s+/)
     .filter(word => word.length > 2 && !stopWords.has(word))
-    .slice(0, 10); // Limit to 10 keywords
+    .slice(0, 10);
+}
+
+// Helper: Detect if query is temporal/meta (needs recency-based retrieval)
+function isTemporalQuery(query) {
+  const temporalTerms = /\b(recent|latest|last|newest|oldest|first|today|yesterday|this week|this month)\b/i;
+  return temporalTerms.test(query);
 }
 
 // Helper: Rank articles by relevance
@@ -243,7 +272,6 @@ function rankArticlesByRelevance(query, articles) {
       relevanceScore: score
     };
   })
-  .filter(article => article.relevanceScore > 0)
   .sort((a, b) => b.relevanceScore - a.relevanceScore);
 }
 
@@ -258,9 +286,12 @@ function buildRAGContext(query, articles) {
     const categories = article.labels?.categories?.join(', ') || 'None';
     const summary = article.labels?.summary || 'No summary available';
     const keywords = article.labels?.keywords?.slice(0, 8).join(', ') || 'None';
+    const date = article.publishDate || article.addedAt ? new Date(article.publishDate || article.addedAt).toISOString().split('T')[0]
+  : 'Unknown';
 
     return `[Article ${idx + 1}]
 Title: "${article.title}"
+Published: ${article.publishDate || article.addedAt || 'Unknown'}
 URL: ${article.url}
 Categories: ${categories}
 Topics: ${topics}

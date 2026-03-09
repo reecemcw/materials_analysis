@@ -47,7 +47,7 @@
     "axios": "^1.6.0",
     "dotenv": "^16.6.1",
     "express": "^5.2.1",
-    "mongodb": "^7.1.0",
+    "mongodb": "3.7",
     "mongoose": "^9.2.1",
     "mongosh": "^2.7.0",
     "node-cron": "^4.2.1",

@@ -40,7 +40,7 @@ async function fetchXml(url) {
 
 // ─── RSS / Atom ────────────────────────────────────────────────────────────────
 
-export async function discoverFromFeed(feedUrl) {
+export async function discoverFromFeed(feedUrl, { since = null } = {}) {
   logger.info(`[Discoverer] Fetching feed: ${feedUrl}`);
 
   let parsed;
@@ -60,12 +60,14 @@ export async function discoverFromFeed(feedUrl) {
     for (const item of items) {
       const url = item.link || item.guid?._ || item.guid;
       if (!isValidHttpUrl(url)) continue;
+      const publishedAt = parseDate(item.pubDate || item['dc:date']) ?? null;
+      if (since && publishedAt && new Date(publishedAt) <= new Date(since)) continue;
       discovered.push({
         url: normaliseUrl(url),
         label: item.title || url,
         sourceType: 'rss',
         sourceFeed: feedUrl,
-        publishedAt: parseDate(item.pubDate || item['dc:date']) ?? null,
+        publishedAt,
       });
     }
     logger.info(`[Discoverer] RSS: found ${discovered.length} items in ${feedUrl}`);
@@ -81,12 +83,14 @@ export async function discoverFromFeed(feedUrl) {
       const altLink = links.find(l => !l.rel || l.rel === 'alternate') ?? links[0];
       const url = altLink?.href || altLink;
       if (!isValidHttpUrl(url)) continue;
+      const publishedAt = parseDate(entry.published || entry.updated) ?? null;
+      if (since && publishedAt && new Date(publishedAt) <= new Date(since)) continue;
       discovered.push({
         url: normaliseUrl(url),
         label: entry.title?._ || entry.title || url,
         sourceType: 'rss',
         sourceFeed: feedUrl,
-        publishedAt: parseDate(entry.published || entry.updated) ?? null,
+        publishedAt,
       });
     }
     logger.info(`[Discoverer] Atom: found ${discovered.length} entries in ${feedUrl}`);
@@ -99,7 +103,7 @@ export async function discoverFromFeed(feedUrl) {
 
 // ─── Sitemap ───────────────────────────────────────────────────────────────────
 
-export async function discoverFromSitemap(sitemapUrl, { maxDepth = 2, depth = 0 } = {}) {
+export async function discoverFromSitemap(sitemapUrl, { maxDepth = 2, depth = 0, since = null } = {}) {
   logger.info(`[Discoverer] Fetching sitemap${depth > 0 ? ` (depth ${depth})` : ''}: ${sitemapUrl}`);
 
   let parsed;
@@ -120,7 +124,7 @@ export async function discoverFromSitemap(sitemapUrl, { maxDepth = 2, depth = 0 
     const childSitemaps = toArray(index.sitemap).map(s => s.loc).filter(Boolean);
     logger.info(`[Discoverer] Sitemap index: ${childSitemaps.length} child sitemaps`);
     const nested = await Promise.all(
-      childSitemaps.map(child => discoverFromSitemap(child, { maxDepth, depth: depth + 1 }))
+      childSitemaps.map(child => discoverFromSitemap(child, { maxDepth, depth: depth + 1, since }))
     );
     return nested.flat();
   }
@@ -133,6 +137,8 @@ export async function discoverFromSitemap(sitemapUrl, { maxDepth = 2, depth = 0 
     for (const entry of entries) {
       const url = entry.loc;
       if (!isValidHttpUrl(url)) continue;
+      const publishedAt = parseDate(entry.lastmod) ?? null;
+      if (since && publishedAt && new Date(publishedAt) <= new Date(since)) continue;
       discovered.push({
         url: normaliseUrl(url),
         label: null,

@@ -56,7 +56,7 @@ export async function markScraped(url) {
   const result = await UrlRegistry.findOneAndUpdate(
     { url: url.trim() },
     { $set: { lastScraped: new Date() } },
-    { new: true }
+    { upsert: true, returnDocument: 'after', rawResult: true }
   ).lean();
 
   if (!result) {
@@ -78,16 +78,15 @@ export async function upsertUrl(entry) {
   const result = await UrlRegistry.findOneAndUpdate(
     { url: url.trim() },
     { $setOnInsert: { url: url.trim(), ...rest } },
-    { upsert: true, new: true, rawResult: true }
+    { upsert: true, returnDocument: 'after', rawResult: true }
   );
 
   const wasInserted = !result.lastErrorObject?.updatedExisting;
-  logger.info(`[UrlRegistry] ${wasInserted ? 'Inserted' : 'Already exists'}: ${url}`);
-
-  return {
-    doc: toPlain(result.value),
+    logger.info(`[UrlRegistry] ${wasInserted ? 'Inserted' : 'Already exists'}: ${url}`);
+    return {
+    doc: result.value ? toPlain(result.value) : null,
     inserted: wasInserted,
-  };
+    };
 }
 
 /**
@@ -99,11 +98,15 @@ export async function bulkUpsertUrls(entries) {
   let skipped = 0;
 
   for (const entry of entries) {
+    if (!entry?.url) {
+      logger.warn('[UrlRegistry] Skipping entry with no URL:', JSON.stringify(entry));
+      continue;
+    }
     try {
       const { inserted } = await upsertUrl(entry);
       inserted ? added++ : skipped++;
     } catch (err) {
-      logger.error(`[UrlRegistry] Failed to upsert ${entry.url}:`, err.message);
+      logger.error(`[UrlRegistry] Failed to upsert ${entry.url}: ${err.message} (code: ${err.code}) ${err.stack}`);
     }
   }
 
@@ -130,20 +133,21 @@ export async function deactivateUrl(url) {
  * This means callers that used to read url.json need zero changes.
  */
 function toPlain(doc) {
-  return {
-    url:           doc.url,
-    label:         doc.label         || '',
-    frequency:     doc.frequency     || 'daily',
-    active:        doc.active        ?? true,
-    lastScraped:   doc.lastScraped   ? doc.lastScraped.toISOString() : null,
-    notes:         doc.notes         || '',
-    // Discovery metadata
-    discoveredAt:   doc.discoveredAt   ? doc.discoveredAt.toISOString()   : null,
-    discoveredFrom: doc.discoveredFrom || null,
-    sourceType:     doc.sourceType     || null,
-    publishedAt:    doc.publishedAt    ? doc.publishedAt.toISOString()    : null,
-    // Timestamps
-    createdAt:      doc.createdAt      ? doc.createdAt.toISOString()      : null,
-    updatedAt:      doc.updatedAt      ? doc.updatedAt.toISOString()      : null,
-  };
+    if (!doc) return null;
+    const d = doc.toObject ? doc.toObject() : doc;
+    return {
+        url:            d.url,
+        label:          d.label           || '',
+        frequency:      d.frequency       || 'daily',
+        active:         d.active          ?? true,
+        lastScraped:    d.lastScraped     ? d.lastScraped.toISOString()   : null,
+        notes:          d.notes           || '',
+        discoveredAt:   d.discoveredAt    ? d.discoveredAt.toISOString()  : null,
+        discoveredFrom: d.discoveredFrom  || null,
+        sourceType:     doc.sourceType     || null,
+        publishedAt:    doc.publishedAt    ? doc.publishedAt.toISOString()    : null,
+        // Timestamps
+        createdAt:      doc.createdAt      ? doc.createdAt.toISOString()      : null,
+        updatedAt:      doc.updatedAt      ? doc.updatedAt.toISOString()      : null,
+    };
 }

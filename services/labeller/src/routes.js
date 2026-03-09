@@ -24,11 +24,21 @@ const SCRAPER_URL = process.env.SCRAPER_URL || 'http://localhost:3001';
 router.post('/label/batch', async (req, res) => {
   try {
     // If no articleIds provided, label all unlabelled articles
-    let { articleIds } = req.body;
+    let { articleIds, since, limit = 20 } = req.body;
 
     if (!articleIds) {
       const allArticles = await storage.getAllArticles(1000);
-      articleIds = allArticles.map(a => a.id ?? a.sourceId);
+      let filtered = allArticles;
+      if (since) {
+        const sinceDate = new Date(since);
+        filtered = allArticles.filter(a => {
+          const created = new Date(a.createdAt || a.scrapedAt || 0);
+          return created > sinceDate;
+        });
+      }
+      // Apply limit
+      filtered = filtered.slice(0, parseInt(limit));
+      articleIds = filtered.map(a => a.id ?? a.sourceId);
     }
 
     if (!Array.isArray(articleIds) || articleIds.length === 0) {

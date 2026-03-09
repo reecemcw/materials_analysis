@@ -77,33 +77,36 @@ Please provide the following analysis in valid JSON format:
   "contentType": "news|opinion|tutorial|research|review|analysis"
 }
 
-Respond ONLY with valid JSON, no additional text.`;
-  }
+Respond ONLY with a raw JSON object. Do not use markdown, code fences, or any text before or after the JSON.`;  }
 
   parseLabels(responseText) {
     try {
-      // Try to extract JSON from the response
-      const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+      // Strip markdown code fences
+      const cleaned = responseText
+        .replace(/^[\s\S]*?```json\s*/i, '')  // remove everything up to and including ```json
+        .replace(/```[\s\S]*$/i, '')           // remove closing ``` and anything after
+        .trim();
+
+      // Try cleaned version first
+      try {
+        return JSON.parse(cleaned);
+      } catch {}
+
+      // Fall back: extract first complete JSON object
+      const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
         return JSON.parse(jsonMatch[0]);
       }
-      
-      // If no JSON found, try parsing the entire response
+
+      // Last resort: try raw response
       return JSON.parse(responseText);
     } catch (error) {
       logger.error('Failed to parse AI response:', error);
-      debug('Response text:', responseText);
-      
-      // Return default structure if parsing fails
+      debug('Response text:', responseText.substring(0, 500));
       return {
         categories: [],
         topics: [],
-        entities: {
-          people: [],
-          organizations: [],
-          locations: [],
-          products: []
-        },
+        entities: { people: [], organizations: [], locations: [], products: [] },
         keywords: [],
         sentiment: 'neutral',
         summary: 'Failed to generate summary',

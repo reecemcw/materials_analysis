@@ -5,6 +5,12 @@ export async function mergeDiscovered(discovered, sourceConfig = {}) {
   const entries = [];
 
   for (const item of discovered) {
+    // Guard against undefined/null items
+    if (!item?.url) {
+      logger.warn('[Registry] Skipping item with no URL:', JSON.stringify(item));
+      continue;
+    }
+
     // Apply per-source URL filter
     if (sourceConfig.urlFilter) {
       const re = new RegExp(sourceConfig.urlFilter, 'i');
@@ -14,9 +20,16 @@ export async function mergeDiscovered(discovered, sourceConfig = {}) {
       }
     }
 
+    // Normalise URL — strip CMS duplicate suffix (-2, -3 etc.)
+    const normalisedUrl = item.url.replace(/-\d+\/$/, '/').replace(/-\d+$/, '');
+    if (!normalisedUrl) {
+      logger.warn('[Registry] Normalisation produced empty URL for: ' + item.url);
+      continue;
+    }
+
     entries.push({
-      url:            item.url,
-      label:          item.label ?? deriveLabel(item.url, sourceConfig),
+      url:            normalisedUrl,
+      label:          item.label ?? deriveLabel(normalisedUrl, sourceConfig),
       frequency:      sourceConfig.frequency ?? 'daily',
       active:         sourceConfig.active    ?? true,
       lastScraped:    null,

@@ -35,7 +35,7 @@ const app  = express();
 const PORT = process.env.DISCOVERY_PORT || 3005;
 
 const SOURCES_PATH   = process.env.SOURCES_PATH
-  ?? path.join(__dirname, "../../../sources.json");
+  ?? path.join(__dirname, "./sources.json");
 
 // Cron: daily at 05:00 UTC (runs before the scheduler at 06:00)
 const CRON_SCHEDULE  = process.env.DISCOVERY_CRON || "0 5 * * *";
@@ -67,13 +67,12 @@ async function executeRun() {
     logger.warn("[Discovery] Run skipped — previous run still in progress");
     return;
   }
-
   state.running = true;
   state.runCount++;
-
   try {
     const { sources } = await loadSources();
-    const summary     = await runDiscovery(sources);
+    const since       = state.lastRunAt;
+    const summary     = await runDiscovery(sources, { since });
     state.lastRun     = summary;
     state.lastRunAt   = new Date().toISOString();
   } catch (err) {
