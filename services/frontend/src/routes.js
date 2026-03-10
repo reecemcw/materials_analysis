@@ -32,26 +32,30 @@ const anthropic = new Anthropic({
 router.get('/recent', async (req, res) => {
   try {
     const { limit = 50 } = req.query;
-
-    const response = await axios.get(`${LABELLER_URL}/api/tagged?limit=500`); // get all, sort after
+    const response = await axios.get(`${LABELLER_URL}/api/tagged?limit=1000`);
     let articles = response.data.taggedArticles;
 
-    // Sort newest first
+    const safeDate = (val) => {
+      const d = new Date(val);
+      return isNaN(d.getTime()) ? 0 : d.getTime();
+    };
+
     articles.sort((a, b) => {
-      const dateA = new Date(a.publishDate || a.processedAt || 0);
-      const dateB = new Date(b.publishDate || b.processedAt || 0);
-      return dateB - dateA;
+      const safeDate = (val) => {
+        const d = new Date(val);
+        return isNaN(d.getTime()) ? 0 : d.getTime();
+      };
+      return safeDate(b.processedAt) - safeDate(a.processedAt);
     });
 
-    // Then slice to requested limit
     articles = articles.slice(0, parseInt(limit));
-
-    res.json({ success: true, articles });
-    } catch (error) {
-      logger.error('Get recent articles error:', error);
-      res.status(500).json({ error: error.message });
-    }
-  });
+    articles = articles.filter(a => a.title && a.title.trim().length > 0);
+    res.json({ success: true, taggedArticles: articles });
+  } catch (error) {
+    logger.error('Get recent articles error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
 
 // POST /api/query - Natural language query with RAG
 router.post('/query', async (req, res) => {

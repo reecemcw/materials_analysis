@@ -110,7 +110,7 @@ class MaterialRiskApp {
     const tbody = document.getElementById('articles-tbody');
 
     try {
-      const response = await fetch('api/recent?limit=50');
+      const response = await fetch('api/recent?limit=200');
 
       if (!response.ok) {
         throw new Error('Failed to load articles');
@@ -121,9 +121,8 @@ class MaterialRiskApp {
 
       // Sort by date descending (newest first)
       this.articles.sort((a, b) => {
-        const dateA = new Date(a.publishDate || a.scrapedAt || 0);
-        const dateB = new Date(b.publishDate || b.scrapedAt || 0);
-        return dateB - dateA;
+        const safeDate = v => { const d = new Date(v); return isNaN(d.getTime()) ? 0 : d.getTime(); };
+        return safeDate(b.processedAt) - safeDate(a.processedAt);
       });
 
       if (this.articles.length === 0) {
@@ -169,8 +168,7 @@ class MaterialRiskApp {
     const row = document.createElement('tr');
 
     const imageUrl = article.imageUrl;
-    const date = this.formatDate(article.publishDate || article.scrapedAt);
-    const publisher = this.extractPublisher(article.url);
+    const date = this.formatDate(article.processedAt);    const publisher = this.extractPublisher(article.url);
     const title = article.title || 'Untitled';
     const tags = article.labels?.categories || article.labels?.topics || [];
     const url = article.url;

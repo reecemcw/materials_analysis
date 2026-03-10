@@ -11,7 +11,7 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 
 data/local/
-data/graph/graph.json
+graph.json
 
 
 # Runtime data

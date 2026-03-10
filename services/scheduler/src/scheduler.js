@@ -101,11 +101,11 @@ async function label(articleId) {
   }
 }
 
-async function addToGraph(articleId) {
+async function addToGraph(articleId, article) {
   try {
     const response = await axios.post(
       `${GRAPH_URL}/api/graph/add/${articleId}`,
-      {},
+      { article },
       { timeout: 15000 }
     );
     logger.info(`[Scheduler] Graphed: ${articleId} — ${response.data.relationshipsCreated} relationships`);

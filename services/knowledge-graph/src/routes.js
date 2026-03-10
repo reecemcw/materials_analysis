@@ -27,32 +27,30 @@ graph.loadFromDisk().then(loaded => {
 
 // ─── Article Management ───────────────────────────────────────────────────────
 
+// Two changes:
+//   1. POST /graph/add/:id  — remove findSimilarArticles call (was O(n) per add,
+//      blocks event loop at scale). Relationships built during sync only.
+//   2. POST /graph/sync     — batched edge-building with event loop yields between
+//      batches so health/other endpoints stay responsive during long syncs.
 router.post('/graph/add/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
-    const response = await axios.get(`${LABELLER_URL}/api/tagged/${id}`);
-    const article  = response.data.taggedArticle;
-
-    const node            = graph.addArticleNode(article);
-    const similarArticles = graph.findSimilarArticles(id);
-
-    for (const similar of similarArticles) {
-      if (similar.similarity > 3) {
-        graph.addRelationship(id, similar.articleId, 'RELATES_TO', {
-          strength:       similar.similarity,
-          sharedTopics:   similar.sharedTopics,
-          sharedKeywords: similar.sharedKeywords.slice(0, 3),
-        });
-      }
+    // Accept article from body (fast path) or fetch from labeller (slow fallback)
+    let article = req.body.article;
+    if (!article) {
+      const response = await axios.get(`${LABELLER_URL}/api/tagged/${id}`);
+      article = response.data.taggedArticle;
     }
 
+    const node = graph.addArticleNode(article);
+
     res.json({
-      success:              true,
+      success: true,
       node,
-      relationshipsCreated: similarArticles.filter(s => s.similarity > 3).length,
-      graphVersion:         graph.currentVersion,
-      message:              'Article added to knowledge graph',
+      relationshipsCreated: 0,
+      graphVersion: graph.currentVersion,
+      message: 'Article added to knowledge graph',
     });
   } catch (error) {
     logger.error('Add to graph error:', error);
@@ -63,6 +61,7 @@ router.post('/graph/add/:id', async (req, res) => {
   }
 });
 
+// ─── 2. Batched sync — yields between batches to keep event loop free ─────────
 router.post('/graph/sync', async (req, res) => {
   try {
     const { runId = null } = req.body;
@@ -75,6 +74,7 @@ router.post('/graph/sync', async (req, res) => {
     let nodesAdded           = 0;
     let relationshipsCreated = 0;
 
+    // ── Pass 1: add all nodes ─────────────────────────────────────────────────
     for (const article of articles) {
       try {
         graph.addArticleNode(article);
@@ -84,25 +84,40 @@ router.post('/graph/sync', async (req, res) => {
       }
     }
 
-    for (const article of articles) {
-      const similarArticles = graph.findSimilarArticles(article.id);
-      for (const similar of similarArticles) {
-        if (similar.similarity > 3) {
-          try {
-            graph.addRelationship(article.id, similar.articleId, 'RELATES_TO', {
-              strength:       similar.similarity,
-              sharedTopics:   similar.sharedTopics,
-              sharedKeywords: similar.sharedKeywords.slice(0, 3),
-            });
-            relationshipsCreated++;
-          } catch {
-            // edge already exists — idempotent
+    // ── Pass 2: build edges in batches, yielding between each ─────────────────
+    // findSimilarArticles is O(n) per article → O(n²) total.
+    // Yielding every BATCH_SIZE articles keeps the event loop free so health
+    // checks and other requests don't time out during a large sync.
+    const BATCH_SIZE = 50;
+
+    for (let i = 0; i < articles.length; i += BATCH_SIZE) {
+      const batch = articles.slice(i, i + BATCH_SIZE);
+
+      for (const article of batch) {
+        const similarArticles = graph.findSimilarArticles(article.id, 10);
+        for (const similar of similarArticles) {
+          if (similar.similarity > 3) {
+            try {
+              graph.addRelationship(article.id, similar.articleId, 'RELATES_TO', {
+                strength:       similar.similarity,
+                sharedTopics:   similar.sharedTopics,
+                sharedKeywords: similar.sharedKeywords.slice(0, 3),
+              });
+              relationshipsCreated++;
+            } catch {
+              // edge already exists — idempotent, ignore
+            }
           }
         }
       }
+
+      logger.info(`[Sync] Edge pass: ${Math.min(i + BATCH_SIZE, articles.length)}/${articles.length} articles processed`);
+
+      // Yield to event loop between batches
+      await new Promise(r => setTimeout(r, 0));
     }
 
-    // Snapshot after sync
+    // ── Snapshot after sync ───────────────────────────────────────────────────
     const snapshot = await graph.saveToDisk({ triggerReason: 'pipeline_run', runId });
 
     res.json({
