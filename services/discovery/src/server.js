@@ -38,7 +38,8 @@ const SOURCES_PATH   = process.env.SOURCES_PATH
   ?? path.join(__dirname, "./sources.json");
 
 // Cron: daily at 05:00 UTC (runs before the scheduler at 06:00)
-const CRON_SCHEDULE  = process.env.DISCOVERY_CRON || "0 5 * * *";
+// services/discovery/src/server.js
+const CRON_SCHEDULE = process.env.DISCOVERY_CRON || '25 11,14,17,20,23,2,5,8 * * *';
 
 app.use(cors());
 app.use(express.json());

@@ -8,6 +8,7 @@ import cron from 'node-cron';
 import logger from '../../../utils/logger.js';
 import { runScheduledPipeline, checkServices, isDue } from './scheduler.js';
 import { getAllUrls } from '../../../utils/url-registry.js';  
+import { getUrlRegistryModel } from '../../../data/models/model_factory.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = dirname(__filename);
@@ -35,13 +36,51 @@ const state = {
 
 // Default: run at 06:00 and 18:00 every day
 // Override with SCHEDULER_CRON env var, e.g. "0 6 * * *" for once daily at 6am
-const CRON_SCHEDULE = process.env.SCHEDULER_CRON || '0 6,18 * * *';
+const CRON_SCHEDULE = process.env.SCHEDULER_CRON || '47 11,14,17 * * *';
+
+async function saveRunState(summary) {
+  try {
+    const UrlRegistry = await getUrlRegistryModel();
+    await UrlRegistry.db.collection('scheduler_state').findOneAndUpdate(
+      { _id: 'scheduler' },
+      { $set: { lastRun: summary, lastRunAt: new Date().toISOString() } },
+      { upsert: true }
+    );
+  } catch (err) {
+    logger.warn('[Scheduler] Failed to persist run state:', err.message);
+  }
+}
+
+async function loadRunState() {
+  try {
+    const UrlRegistry = await getUrlRegistryModel();
+    const doc = await UrlRegistry.db.collection('scheduler_state').findOne({ _id: 'scheduler' });
+    if (doc) {
+      state.lastRun   = doc.lastRun;
+      state.lastRunAt = doc.lastRunAt;
+      logger.info('[Scheduler] Restored last run state from MongoDB');
+    }
+  } catch (err) {
+    logger.warn('[Scheduler] Failed to load run state:', err.message);
+  }
+}
 
 function getNextRunAt(schedule) {
-  // Rough next-run estimate based on cron expression (not exact, good enough for display)
   try {
-    const interval = cron.schedule(schedule, () => {}, { scheduled: false });
-    return interval.nextDate()?.toISO() ?? null;
+    // Parse cron parts manually — "0 6,18 * * *" → next 06:00 or 18:00 UTC
+    const now = new Date();
+    const parts = schedule.split(' ');
+    const hours = parts[1].split(',').map(Number);
+    
+    const candidates = hours.map(hour => {
+      const candidate = new Date(now);
+      candidate.setUTCHours(hour, 0, 0, 0);
+      if (candidate <= now) candidate.setUTCDate(candidate.getUTCDate() + 1);
+      return candidate;
+    });
+
+    const next = candidates.sort((a, b) => a - b)[0];
+    return next.toISOString();
   } catch {
     return null;
   }
@@ -52,15 +91,14 @@ async function executeRun() {
     logger.warn('[Scheduler] Run skipped — previous run still in progress');
     return;
   }
-
   state.running = true;
   state.runCount++;
-
   try {
-    const summary    = await runScheduledPipeline();
-    state.lastRun    = summary;
-    state.lastRunAt  = new Date().toISOString();
-    state.nextRunAt  = getNextRunAt(CRON_SCHEDULE);
+    const summary   = await runScheduledPipeline();
+    state.lastRun   = summary;
+    state.lastRunAt = new Date().toISOString();
+    state.nextRunAt = getNextRunAt(CRON_SCHEDULE);
+    await saveRunState(summary);        // ← persist
   } catch (err) {
     logger.error('[Scheduler] Run threw an unexpected error:', err);
   } finally {
@@ -150,9 +188,10 @@ app.post('/run', async (req, res) => {
 
 // ─── Start ────────────────────────────────────────────────────────────────────
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   logger.info(`Scheduler service running on port ${PORT}`);
   logger.info(`Cron: "${CRON_SCHEDULE}" — next run: ${state.nextRunAt ?? 'unknown'}`);
+  await loadRunState();   // ← restore on startup
 });
 
 export default app;

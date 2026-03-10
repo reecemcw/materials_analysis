@@ -13,7 +13,19 @@
     "notes": "Appended to the notes field of discovered entries"
   },
   "sources": [
-  
+    {
+      "name": "Rare Earth Exchanges",
+      "baseUrl": "https://rareearthexchanges.com",
+      "active": true,
+      "autoDiscover": true,
+      "feeds": [
+        "https://rareearthexchanges.com/feed/"
+      ],
+      "sitemaps": [],
+      "urlFilter": "/news/",
+      "frequency": "daily",
+      "notes": "Specialist rare earth market news"
+    },
     {
       "name": "Junior Mining Network",
       "baseUrl": "https://www.juniorminingnetwork.com/junior-miner-news.html",

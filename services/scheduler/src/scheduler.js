@@ -1,14 +1,11 @@
 import { randomUUID }     from 'crypto';
 import axios              from 'axios';
 import logger             from '../../../utils/logger.js';
-import { getActiveUrls} from '../../../utils/url-registry.js';
+import { getActiveUrls, markScraped as registryMarkScraped } from '../../../utils/url-registry.js';
 
-const activeUrls = await getActiveUrls();          // all active
-const dailyUrls  = await getActiveUrls('daily');   // filtered by frequency
-
-const SCRAPER_URL  = process.env.SCRAPER_URL  || 'http://localhost:3001';
-const LABELLER_URL = process.env.LABELLER_URL || 'http://localhost:3002';
-const GRAPH_URL    = process.env.GRAPH_URL    || 'http://localhost:3003';
+const SCRAPER_URL   = process.env.SCRAPER_URL   || 'http://localhost:3001';
+const LABELLER_URL  = process.env.LABELLER_URL  || 'http://localhost:3002';
+const GRAPH_URL     = process.env.GRAPH_URL     || 'http://localhost:3003';
 const DISCOVERY_URL = process.env.DISCOVERY_URL || 'http://localhost:3005';
 
 // ─── Frequency Helpers ────────────────────────────────────────────────────────
@@ -21,24 +18,17 @@ const FREQUENCY_MS = {
 
 function isDue(entry) {
   if (!entry.active) return false;
-  if (!entry.lastScraped) return true; // never scraped — always due
+  if (!entry.lastScraped) return true;
 
-  const intervalMs = FREQUENCY_MS[entry.frequency] ?? FREQUENCY_MS.daily;
+  const intervalMs  = FREQUENCY_MS[entry.frequency] ?? FREQUENCY_MS.daily;
   const lastScraped = new Date(entry.lastScraped).getTime();
   return (Date.now() - lastScraped) >= intervalMs;
-}
-
-// ─── Registry I/O ─────────────────────────────────────────────────────────────
-
-async function markScraped(url, success) {
-  if (success) await registryMarkScraped(url);
 }
 
 // ─── Dedup Check ──────────────────────────────────────────────────────────────
 
 async function isAlreadyProcessed(url) {
   try {
-    // Ask scraper if this URL has already been scraped
     const response = await axios.get(
       `${SCRAPER_URL}/api/articles/by-url`,
       { params: { url }, timeout: 5000 }
@@ -47,7 +37,6 @@ async function isAlreadyProcessed(url) {
     const article = response.data.article;
     if (!article) return { processed: false };
 
-    // Article exists — check if it's also been labelled
     const labelResponse = await axios.get(
       `${LABELLER_URL}/api/tagged/${article.id}`,
       { timeout: 5000 }
@@ -58,13 +47,12 @@ async function isAlreadyProcessed(url) {
     return {
       processed:  isLabelled,
       articleId:  article.id,
-      needsLabel: !isLabelled,   // scraped but not yet labelled
+      needsLabel: !isLabelled,
     };
   } catch (err) {
-    // 404 means not found — needs scraping
     if (err.response?.status === 404) return { processed: false };
     logger.warn(`[Scheduler] Dedup check failed for ${url}: ${err.message}`);
-    return { processed: false }; // fail open — scrape anyway
+    return { processed: false };
   }
 }
 
@@ -135,10 +123,10 @@ async function finalSync(runId) {
 
 async function checkServices() {
   const services = [
-    { name: 'scraper',  url: SCRAPER_URL  },
-    { name: 'labeller', url: LABELLER_URL },
-    { name: 'graph',    url: GRAPH_URL    },
-    { name: 'discovery',    url: DISCOVERY_URL    },
+    { name: 'scraper',   url: SCRAPER_URL   },
+    { name: 'labeller',  url: LABELLER_URL  },
+    { name: 'graph',     url: GRAPH_URL     },
+    { name: 'discovery', url: DISCOVERY_URL },
   ];
 
   const results = await Promise.all(
@@ -169,16 +157,14 @@ export async function runScheduledPipeline() {
   const runId = randomUUID();
   logger.info(`[Scheduler] ─── Run ${runId} started ───`);
 
-  // Check services are up before doing anything
   const health = await checkServices();
   if (!health.allHealthy) {
     logger.error('[Scheduler] Aborting — not all services are healthy');
     return { runId, aborted: true, reason: 'unhealthy_services', health };
   }
 
-  // Load registry and filter to URLs that are due
   const allActiveUrls = await getActiveUrls();
-  const dueUrls = allActiveUrls.filter(isDue);
+  const dueUrls       = allActiveUrls.filter(isDue);
 
   if (dueUrls.length === 0) {
     logger.info('[Scheduler] No URLs due for scraping');
@@ -189,8 +175,6 @@ export async function runScheduledPipeline() {
     `[Scheduler] ${dueUrls.length} URLs due — ` +
     `${allActiveUrls.filter(e => !isDue(e)).length} not yet due`
   );
-
-  // ── Process each URL ──────────────────────────────────────────────────────
 
   const results = [];
 
@@ -206,7 +190,7 @@ export async function runScheduledPipeline() {
       skipped:  false,
     };
 
-    // ── Dedup check ───────────────────────────────────────────────────────
+    // ── Dedup check ───────────────────────────────────────────────────────────
     const dedup = await isAlreadyProcessed(entry.url);
 
     if (dedup.processed) {
@@ -214,13 +198,12 @@ export async function runScheduledPipeline() {
       result.skipped   = true;
       result.reason    = 'already_processed';
       result.articleId = dedup.articleId;
-      await markScraped(entry.url, true);
+      await registryMarkScraped(entry.url);
       results.push(result);
       continue;
     }
 
     if (dedup.needsLabel && dedup.articleId) {
-      // Scraped but not labelled — skip scrape, go straight to label
       logger.info(`[Scheduler] ${entry.label} already scraped — labelling only`);
       result.scraped   = true;
       result.articleId = dedup.articleId;
@@ -238,20 +221,18 @@ export async function runScheduledPipeline() {
         result.error = labelResult.error;
       }
 
-      await markScraped(entry.url, result.labelled);
+      if (result.labelled) await registryMarkScraped(entry.url);
       results.push(result);
       await new Promise(r => setTimeout(r, 2000));
       continue;
     }
 
-    // ── Full pipeline ─────────────────────────────────────────────────────
+    // ── Full pipeline ─────────────────────────────────────────────────────────
 
-    // Stage 1: Scrape
     const scrapeResult = await scrape(entry.url);
     if (!scrapeResult.success) {
       result.error = scrapeResult.error;
       results.push(result);
-      await markScraped(entry.url, false);
       continue;
     }
 
@@ -259,12 +240,10 @@ export async function runScheduledPipeline() {
     result.articleId = scrapeResult.article.id;
     result.title     = scrapeResult.article.title;
 
-    // Stage 2: Label
     const labelResult = await label(scrapeResult.article.id);
     if (!labelResult.success) {
       result.error = labelResult.error;
       results.push(result);
-      await markScraped(entry.url, false);
       continue;
     }
 
@@ -272,12 +251,11 @@ export async function runScheduledPipeline() {
     result.categories = labelResult.labels?.categories?.join(', ');
     result.sentiment  = labelResult.labels?.sentiment;
 
-    // Stage 3: Graph
-    const graphResult           = await addToGraph(scrapeResult.article.id);
+    const graphResult           = await addToGraph(scrapeResult.article.id, scrapeResult.article);
     result.graphed              = graphResult.success;
     result.relationshipsCreated = graphResult.relationshipsCreated ?? 0;
 
-    await markScraped(entry.url, result.labelled);
+    await registryMarkScraped(entry.url);
     results.push(result);
 
     await new Promise(r => setTimeout(r, 2000));
