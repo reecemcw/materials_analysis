@@ -109,12 +109,16 @@ class Scraper {
   }
 
   extractDate($) {
-    return (
+    const raw =
       $('meta[property="article:published_time"]').attr('content') ||
       $('time').attr('datetime') ||
+      $('time').first().text().trim() ||
       $('.publish-date, .date').first().text().trim() ||
-      null
-    );
+      null;
+
+    if (!raw) return null;
+    const d = new Date(raw);
+    return isNaN(d.getTime()) ? null : d.toISOString();
   }
 
   extractContent($) {

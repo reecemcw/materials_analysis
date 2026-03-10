@@ -188,7 +188,6 @@ const urlRegistrySchema = new mongoose.Schema({
 }, { timestamps: true });  // adds createdAt + updatedAt automatically
 
 urlRegistrySchema.index({ active: 1, frequency: 1 });   // scheduler query
-urlRegistrySchema.index({ url: 1 }, { unique: true });   // dedup lookups
 urlRegistrySchema.index({ lastScraped: 1 });             // due-for-scrape queries
 urlRegistrySchema.index({ discoveredAt: -1 });           // discovery audit
 
