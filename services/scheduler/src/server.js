@@ -36,7 +36,7 @@ const state = {
 
 // Default: run at 06:00 and 18:00 every day
 // Override with SCHEDULER_CRON env var, e.g. "0 6 * * *" for once daily at 6am
-const CRON_SCHEDULE = process.env.SCHEDULER_CRON || '47 11,14,17 * * *';
+const CRON_SCHEDULE = process.env.SCHEDULER_CRON || '50 11 * * *';
 
 async function saveRunState(summary) {
   try {

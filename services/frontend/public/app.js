@@ -23,12 +23,9 @@ class SidebarNav {
   }
 
   navigateTo(pageId) {
-    // Update nav links
     this.navLinks.forEach(link => {
       link.classList.toggle('active', link.dataset.page === pageId);
     });
-
-    // Update pages
     this.pages.forEach(page => {
       const isTarget = page.id === `page-${pageId}`;
       page.classList.toggle('active', isTarget);
@@ -58,7 +55,6 @@ class MaterialRiskApp {
 
     submitButton.addEventListener('click', () => this.handleQuery());
 
-    // Allow Shift+Enter to submit
     queryInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && e.shiftKey) {
         e.preventDefault();
@@ -70,11 +66,9 @@ class MaterialRiskApp {
   typewriterAnimate(el, text) {
     if (!el) return;
     el.textContent = '';
-
     const BASE_DELAY = 38;
-    const JITTER     = 28;
-    let cumulative   = 0;
-
+    const JITTER = 28;
+    let cumulative = 0;
     for (let i = 0; i < text.length; i++) {
       const ch = text[i];
       let charDelay = BASE_DELAY + Math.random() * JITTER;
@@ -101,25 +95,20 @@ class MaterialRiskApp {
         badge.title = `${nodes.toLocaleString()} nodes · ${(edges || 0).toLocaleString()} edges`;
       }
     } catch {
-      // leave default text in place
+      // leave default text
     }
   }
-
 
   async loadArticles() {
     const tbody = document.getElementById('articles-tbody');
 
     try {
       const response = await fetch('api/recent?limit=200');
-
-      if (!response.ok) {
-        throw new Error('Failed to load articles');
-      }
+      if (!response.ok) throw new Error('Failed to load articles');
 
       const data = await response.json();
       this.articles = data.taggedArticles || data.articles || [];
 
-      // Sort by date descending (newest first)
       this.articles.sort((a, b) => {
         const safeDate = v => { const d = new Date(v); return isNaN(d.getTime()) ? 0 : d.getTime(); };
         return safeDate(b.processedAt) - safeDate(a.processedAt);
@@ -168,21 +157,18 @@ class MaterialRiskApp {
     const row = document.createElement('tr');
 
     const imageUrl = article.imageUrl;
-    const date = this.formatDate(article.processedAt);    const publisher = this.extractPublisher(article.url);
+    const date = this.formatDate(article.processedAt);
+    const publisher = this.extractPublisher(article.url);
     const title = article.title || 'Untitled';
     const tags = article.labels?.categories || article.labels?.topics || [];
     const url = article.url;
-
-    // Organizations — handle array or nested object
     const orgs = article.labels?.entities?.organizations || [];
 
-    // Sentiment — handle string ("positive") or object ({ label: "positive", score: 0.9 })
     const rawSentiment = article.labels?.sentiment;
     const sentimentLabel = typeof rawSentiment === 'string'
       ? rawSentiment.toLowerCase()
       : (rawSentiment?.label || rawSentiment?.value || '').toLowerCase();
 
-    // --- Image cell (larger, rectangular card style) ---
     const imageCell = document.createElement('td');
     imageCell.className = 'td-image';
     if (imageUrl) {
@@ -194,21 +180,17 @@ class MaterialRiskApp {
       imageCell.innerHTML = `<div class="article-image-placeholder">${title.charAt(0).toUpperCase()}</div>`;
     }
 
-    // --- Date ---
     const dateCell = document.createElement('td');
     dateCell.innerHTML = `<span class="article-date">${date}</span>`;
 
-    // --- Publisher ---
     const publisherCell = document.createElement('td');
     publisherCell.innerHTML = `<span class="article-publisher">${publisher}</span>`;
 
-    // --- Title ---
     const titleCell = document.createElement('td');
     titleCell.innerHTML = `<a href="${url}" target="_blank" class="article-title-link">
       <span class="article-title">${title}</span>
     </a>`;
 
-    // --- Organizations ---
     const orgsCell = document.createElement('td');
     if (orgs.length > 0) {
       const orgsHtml = orgs.slice(0, 3).map(org =>
@@ -219,14 +201,12 @@ class MaterialRiskApp {
       orgsCell.innerHTML = `<span class="article-author">—</span>`;
     }
 
-    // --- Tags ---
     const tagsCell = document.createElement('td');
     const tagsHtml = tags.slice(0, 3).map(tag =>
       `<span class="tag">${tag}</span>`
     ).join('');
     tagsCell.innerHTML = `<div class="article-tags">${tagsHtml || '—'}</div>`;
 
-    // --- Sentiment ---
     const sentimentCell = document.createElement('td');
     sentimentCell.innerHTML = sentimentLabel
       ? `<span class="sentiment-badge sentiment-${sentimentLabel}">${sentimentLabel}</span>`
@@ -245,7 +225,6 @@ class MaterialRiskApp {
 
   formatDate(dateString) {
     if (!dateString) return '—';
-
     try {
       const date = new Date(dateString);
       const now = new Date();
@@ -290,11 +269,9 @@ class MaterialRiskApp {
     const query = queryInput.value.trim();
     if (!query) return;
 
-    // Disable button + show spinner
     submitButton.disabled = true;
     submitButton.innerHTML = `<div class="loading-spinner" style="width:15px;height:15px;border-width:2px;border-color:rgba(255,255,255,0.3);border-top-color:rgba(255,255,255,0.9);"></div>`;
 
-    // Show typewriter loading state
     responseContainer.innerHTML = `
       <div class="response-loading">
         <div class="loading-spinner"></div>
@@ -302,20 +279,18 @@ class MaterialRiskApp {
       </div>
     `;
 
-    // Kick off typewriter — element is in the DOM now
     const typewriterEl = document.getElementById('loading-typewriter');
-    this.typewriterAnimate(typewriterEl, 'How are you now Lara how are things were you on the pints was it...');
+    this.typewriterAnimate(typewriterEl, 'Scanning the depths of Moria for information…');
 
-    // Timeout guard — 30s before we give up
-    const controller  = new AbortController();
-    const timeoutId   = setTimeout(() => controller.abort(), 30000);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000);
 
     try {
       const response = await fetch('/api/query', {
-        method:  'POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ query, maxSources: 5 }),
-        signal:  controller.signal,
+        body: JSON.stringify({ query, maxSources: 5 }),
+        signal: controller.signal,
       });
 
       clearTimeout(timeoutId);
@@ -328,17 +303,16 @@ class MaterialRiskApp {
       const data = await response.json();
       if (!data.success) throw new Error(data.error || 'Query failed');
 
-      this.displayRAGResponse(data);
+      this.displayImpactResponse(data);
 
     } catch (error) {
       clearTimeout(timeoutId);
       console.error('RAG query error:', error);
-
       const isTimeout = error.name === 'AbortError';
       responseContainer.innerHTML = `
         <div class="error-message">
           <strong>⚠️ ${isTimeout ? 'Request timed out' : 'Error'}:</strong>
-          ${isTimeout ? 'The query took too long to respond. Try a shorter question or check service logs.' : error.message}
+          ${isTimeout ? 'The query took too long. Try a shorter question or check service logs.' : error.message}
           <p class="text-muted text-small" style="margin-top: 0.5rem;">
             Make sure all services are running and the Anthropic API key is configured.
           </p>
@@ -350,15 +324,55 @@ class MaterialRiskApp {
     }
   }
 
-  displayRAGResponse(data) {
+  // ─── Impact card response renderer ─────────────────────────────────────────
+
+  displayImpactResponse(data) {
     const responseContainer = document.getElementById('query-response');
-    const { answer, sources, metadata } = data;
+    const { structured, sources, metadata } = data;
 
-    const formattedAnswer = answer
-      .replace(/\n\n/g, '</p><p>')
-      .replace(/\n/g, '<br>');
+    // Severity → colour class mapping
+    const severityClass = { high: 'severity-high', medium: 'severity-medium', low: 'severity-low' };
+    const directionIcon = { up: '↑', down: '↓', neutral: '→' };
+    const directionClass = { up: 'dir-up', down: 'dir-down', neutral: 'dir-neutral' };
 
-    const sourcesHTML = sources && sources.length > 0 ? `
+    // ── Headline ────────────────────────────────────────────────────────────
+    const headlineHTML = structured?.headline
+      ? `<p class="impact-headline">${structured.headline}</p>`
+      : '';
+
+    // ── Impact cards ────────────────────────────────────────────────────────
+    let impactCardsHTML = '';
+    if (structured?.impacts?.length > 0) {
+      const cards = structured.impacts.map(impact => {
+        const sev = impact.severity || 'low';
+        const dir = impact.direction || 'neutral';
+        return `
+          <div class="impact-card ${severityClass[sev]}">
+            <div class="impact-card-header">
+              <span class="impact-direction ${directionClass[dir]}">${directionIcon[dir]}</span>
+              <span class="impact-title">${impact.title}</span>
+              <span class="impact-severity-badge ${severityClass[sev]}">${sev}</span>
+            </div>
+            <p class="impact-detail">${impact.detail}</p>
+          </div>
+        `;
+      }).join('');
+
+      impactCardsHTML = `<div class="impact-cards-grid">${cards}</div>`;
+    }
+
+    // ── Summary ──────────────────────────────────────────────────────────────
+    const summaryHTML = structured?.summary
+      ? `<p class="impact-summary">${structured.summary}</p>`
+      : '';
+
+    // ── Data gap notice ──────────────────────────────────────────────────────
+    const gapHTML = structured?.dataGaps
+      ? `<p class="impact-gap">${structured.dataGaps}</p>`
+      : '';
+
+    // ── Sources (original card style) ────────────────────────────────────────
+    const sourcesHTML = sources?.length > 0 ? `
       <div class="sources-section">
         <h4>📚 Sources (${sources.length})</h4>
         <div class="sources-list">
@@ -391,13 +405,51 @@ class MaterialRiskApp {
     ` : '';
 
     responseContainer.innerHTML = `
+      <div class="impact-response">
+        ${headlineHTML}
+        ${impactCardsHTML}
+        ${summaryHTML}
+        ${gapHTML}
+        ${sourcesHTML}
+        ${metadataHTML}
+      </div>
+    `;
+  }
+
+  // ─── Legacy text renderer (fallback) ───────────────────────────────────────
+
+  displayRAGResponse(data) {
+    const responseContainer = document.getElementById('query-response');
+    const { answer, sources, metadata } = data;
+
+    const formattedAnswer = answer
+      .replace(/\n\n/g, '</p><p>')
+      .replace(/\n/g, '<br>');
+
+    const sourcesHTML = sources && sources.length > 0 ? `
+      <div class="sources-section">
+        <h4>Sources (${sources.length})</h4>
+        <div class="sources-list">
+          ${sources.map((source, idx) => `
+            <div class="source-item">
+              <div class="source-header">
+                <span class="source-number">${idx + 1}</span>
+                <a href="${source.url}" target="_blank" class="source-title">${source.title}</a>
+                ${source.relevanceScore ? `<span class="relevance-badge">Score: ${source.relevanceScore}</span>` : ''}
+              </div>
+              ${source.summary ? `<p class="source-summary">${source.summary}</p>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    ` : '<p class="text-muted">No specific sources found for this query.</p>';
+
+    responseContainer.innerHTML = `
       <div class="rag-response">
         <div class="answer-section">
-          <h3 class="response-title">💡 Answer</h3>
           <div class="answer-text"><p>${formattedAnswer}</p></div>
         </div>
         ${sourcesHTML}
-        ${metadataHTML}
       </div>
     `;
   }

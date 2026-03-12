@@ -951,3 +951,25 @@ body {
   .articles-table th,
   .articles-table td { padding: var(--space-3) var(--space-4); }
 }
+
+/* Override brand padding so the SVG sits flush and centred */
+.sidebar-brand {
+  padding: var(--space-4) var(--space-3);
+  justify-content: center;
+}
+ 
+.sidebar-logo {
+  display: block;
+  width: 140px;   /* scale down from 600px viewBox */
+  height: auto;
+  flex-shrink: 0;
+}
+ 
+/* Hide on collapsed mobile sidebar */
+@media (max-width: 768px) {
+  .sidebar-logo {
+    width: 36px;
+    overflow: hidden;
+  }
+}
+ 
